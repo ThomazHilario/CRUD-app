@@ -1,0 +1,18 @@
+#container_error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Titulo de error */
+.titleError{
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Paragrafo da pagina */
+
+#container_error > p{
+    font-size: 20px;
+}
