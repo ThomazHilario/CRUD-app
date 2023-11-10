@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Home from '../Componentes/Home'
+import Register from '../Componentes/Register'
 
 export default function RoutePage(){
     // Style da main
@@ -19,6 +20,7 @@ export default function RoutePage(){
             <main style={mainCss}>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
+                    <Route path='/register' element={<Register/>}/>
                 </Routes>
             </main>
         </BrowserRouter>

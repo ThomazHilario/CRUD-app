@@ -1,17 +1,17 @@
-import {useState} from 'react'
-import { Link } from 'react-router-dom'
-import './home.css'
+import {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import './register.css'
 
-function Home(){
+export default function Register(){
 
     // States - input
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-
+    
     return(
         <form className='formStyle'>
             {/* title form */}
-            <legend>Login</legend>
+            <legend>Cadastro</legend>
 
             {/* container email */}
             <div className='container_input'>
@@ -26,11 +26,8 @@ function Home(){
             </div>
 
             {/* buttons */}
-            <button className='loginButton'>Login</button>
-            <p>Não tem uma conta ? <Link to="/register">Cadastre-se</Link></p>
+            <button className='registerButton'>Registrar</button>
+            <p>Possui uma conta ? <Link to="/">Conectar agora</Link></p>
         </form>
     )
 }
-
-
-export default Home
