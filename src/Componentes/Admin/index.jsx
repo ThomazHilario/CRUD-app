@@ -17,7 +17,7 @@ export default function Admin(){
     const [telefone,setTelefone] = useState('')
 
     // Logout
-    async function singOutUser(){
+    async function logOutUser(){
         try {
             await signOut(auth)
         } catch (error) {
@@ -29,7 +29,7 @@ export default function Admin(){
         <main>
             <header>
                 <button id='addUser'>Incluir usuario</button>
-                <button id='logoutUser'>Sair</button>
+                <button id='logoutUser' onClick={logOutUser}>Sair</button>
             </header>
 
             <div id='container_table'>
