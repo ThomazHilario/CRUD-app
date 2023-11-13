@@ -77,6 +77,7 @@ export default function Register(){
 
                 {/* buttons */}
                 <button className='registerButton' onClick={registrarUsuario}>Registrar</button>
+                
                 <p>Possui uma conta ? <Link to="/">Conectar agora</Link></p>
             </form>
         </main>

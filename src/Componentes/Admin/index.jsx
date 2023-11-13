@@ -31,6 +31,7 @@ export default function Admin(){
                 <button id='addUser'>Incluir usuario</button>
                 <button id='logoutUser'>Sair</button>
             </header>
+
             <div id='container_table'>
                 <table>
                     <thead>
@@ -45,6 +46,7 @@ export default function Admin(){
                     <tbody>
                         
                     </tbody>
+                    
                 </table>
             </div>
         </main>
