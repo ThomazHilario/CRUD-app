@@ -48,26 +48,28 @@ function Home(){
     }
     
     return(
-        <form className='formStyle'>
-            {/* title form */}
-            <legend>Login</legend>
+        <main id='mainHome'>
+            <form className='formStyle'>
+                {/* title form */}
+                <legend>Login</legend>
 
-            {/* container email */}
-            <div className='container_input'>
-                <label>Email:</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-            </div>
+                {/* container email */}
+                <div className='container_input'>
+                    <label>Email:</label>
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                </div>
 
-            {/* container Password */}
-            <div className='container_input'>
-                <label>Password:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            </div>
+                {/* container Password */}
+                <div className='container_input'>
+                    <label>Password:</label>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </div>
 
-            {/* buttons */}
-            <button className='loginButton' onClick={singInUser}>Login</button>
-            <p>Não tem uma conta ? <Link to="/register">Cadastre-se</Link></p>
-        </form>
+                {/* buttons */}
+                <button className='loginButton' onClick={singInUser}>Login</button>
+                <p>Não tem uma conta ? <Link to="/register">Cadastre-se</Link></p>
+            </form>
+        </main>
     )
 }
 

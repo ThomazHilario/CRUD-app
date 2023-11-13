@@ -1,3 +1,14 @@
+/* main */
+#mainHome{
+    background-color:#3682B3;
+    height:100vh;
+
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
 /* Estilizando os filhos do formulario eo formulario */
 .formStyle{
     display: flex;
