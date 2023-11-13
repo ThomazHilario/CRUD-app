@@ -7,6 +7,7 @@ export default function verifyLogin({children}){
     // state - logado
     const [logado,setLogado] = useState(null)
 
+    // Verificando se o usuario ja fez o login antes
     useEffect(() => {
         async function login(){
             try {
@@ -29,7 +30,9 @@ export default function verifyLogin({children}){
     // Condição para retornar a rota inicial da pagina
     if(logado === false){
        return <Navigate to='/' replace={true} />
+       
     }else{
+
         // Retornando o componente Admin
         return children
     } 
