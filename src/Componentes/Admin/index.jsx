@@ -58,26 +58,34 @@ export default function Admin(){
             // Cancelando formulario
             e.preventDefault()
 
-            // Setando a lista nova
-            setLista([...lista,{
-                nome:nome, 
-                idade:idade,
-                email:email,
-                telefone:telefone
-            }])
-
-            // Adicionando lista no banco de dados especifico
-            await setDoc(doc(database,'clientes',id),{
-                clientes: [...lista,{
+           if(nome !== '' && idade !== '' && email !== '' && telefone !== ''){
+                // Setando a lista nova
+                setLista([...lista,{
                     nome:nome, 
                     idade:idade,
                     email:email,
                     telefone:telefone
-                }]
-            })
+                }])
 
-            // Mudando o display do Modal
-            document.getElementById('modal_cadastro').style.display = 'none'
+                // Adicionando lista no banco de dados especifico
+                await setDoc(doc(database,'clientes',id),{
+                    clientes: [...lista,{
+                        nome:nome, 
+                        idade:idade,
+                        email:email,
+                        telefone:telefone
+                    }]
+                })
+
+                // Mudando o display do Modal
+                document.getElementById('modal_cadastro').style.display = 'none'
+
+                // Resetando os valores das states
+                setNome('')
+                setIdade('')
+                setEmail('')
+                setTelefone('')
+           }
         } catch (error) {
             console.log(error)
         }
