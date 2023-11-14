@@ -1,7 +1,7 @@
 import './admin.css'
 import {useParams} from 'react-router-dom'
 import { database, auth } from '../../Services/firebaseConnection'
-import {doc, setDoc, getDoc} from 'firebase/firestore'
+import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
 import {signOut} from 'firebase/auth'
 import { useState,useEffect } from 'react'
 
@@ -83,6 +83,28 @@ export default function Admin(){
         }
     }
 
+    // deleteUser
+    async function deleteUser(index){
+        try {
+            // Tirando usuario da lista
+            lista.splice(index,1)
+
+            // Setando nova lista na state lista
+            setLista([...lista])
+
+            // Pegando a referencia do banco de dados
+            const docRef = doc(database,'clientes',id)
+
+            // Fazendo a atualização da propriedade clientes
+            await updateDoc(docRef,{
+                clientes:lista
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     // Logout
     async function logOutUser(){
         try {
@@ -149,6 +171,7 @@ export default function Admin(){
                                     <td>{item.idade}</td>
                                     <td>{item.email}</td>
                                     <td>{item.telefone}</td>
+                                    <td><button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button></td>
                                 </tr>
                             )
                         })}
