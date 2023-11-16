@@ -47,8 +47,10 @@ export default function Admin(){
 
         if(modal.style.display === 'grid'){
             modal.style.display = 'none'
+            document.getElementById('openModal').textContent = 'Incluir usuario'
         } else{
             modal.style.display = 'grid'
+            document.getElementById('openModal').textContent = 'Fechar'
         }
     }
 
