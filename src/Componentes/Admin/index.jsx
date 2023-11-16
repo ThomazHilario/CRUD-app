@@ -64,7 +64,7 @@ export default function Admin(){
                     nome:nome, 
                     idade:idade,
                     email:email,
-                    telefone:telefone
+                    telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
                 }])
 
                 // Adicionando lista no banco de dados especifico
@@ -73,7 +73,7 @@ export default function Admin(){
                         nome:nome, 
                         idade:idade,
                         email:email,
-                        telefone:telefone
+                        telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
                     }]
                 })
 
@@ -137,22 +137,22 @@ export default function Admin(){
 
                     <div className='campo_nome'>
                         <label>Nome:</label>
-                        <input value={nome} onChange={(e) => setNome(e.target.value)}/>
+                        <input type='text' value={nome} onChange={(e) => setNome(e.target.value)}/>
                     </div>
 
                     <div className='campo_idade'>
                         <label>Idade:</label>
-                        <input value={idade} onChange={(e) => setIdade(e.target.value)}/>
+                        <input type='text' value={idade} onChange={(e) => setIdade(e.target.value)}/>
                     </div>
 
                     <div className='campo_telefone'>
                         <label>Telefone:</label>
-                        <input value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
+                        <input type='tel' value={telefone} onChange={(e) => setTelefone(e.target.value)} />
                     </div>
 
                     <div className='campo_email'>
                         <label>Email:</label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </div>
 
                     <div>
@@ -160,7 +160,7 @@ export default function Admin(){
                     </div>
                 </form>
 
-                <table>
+                <table className='bg-neutral-800 text-white table-auto'>
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -174,12 +174,15 @@ export default function Admin(){
                     <tbody>
                         {lista.map((item,idx) => {
                             return(
-                                <tr key={idx}>
+                                <tr key={idx} className='odd:bg-neutral-700'>
                                     <td>{item.nome}</td>
                                     <td>{item.idade}</td>
                                     <td>{item.email}</td>
                                     <td>{item.telefone}</td>
-                                    <td><button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button></td>
+                                    <td>
+                                        <button className='btn-edit'>Editar</button>
+                                        <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
+                                    </td>
                                 </tr>
                             )
                         })}
