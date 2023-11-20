@@ -22,13 +22,14 @@ header{
     height: 30px;
     font-weight: normal;
     background-color: rgb(74, 118, 205);
+    color: white;
 }
 
 #logoutUser{
     width: 100px;
     height: 30px;
     font-weight: normal;
-
+    color: white;
     background-color: rgb(200, 76, 76);
 }
 
