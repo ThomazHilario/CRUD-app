@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
 import {Link} from 'react-router-dom'
 import {auth} from '../../Services/firebaseConnection'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
@@ -23,7 +24,7 @@ export default function Register(){
             const cadastro = await createUserWithEmailAndPassword(auth,email,password)
 
             // mensagem de sucesso
-            alert('Usuario criado')
+            toast.success('Usuario criado')
 
             // navegando ate a pagina
             navigate(`/admin/${cadastro.user.uid}`)
