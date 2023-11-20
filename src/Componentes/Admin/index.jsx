@@ -40,6 +40,9 @@ export default function Admin(){
     const [email,setEmail] = useState('')
     const [telefone,setTelefone] = useState('')
 
+    // index
+    const [index,setindex] = useState(null)
+
     // openModal - incluir
     function openModal(){
         /* modal cadastro */
@@ -51,20 +54,40 @@ export default function Admin(){
         } else{
             modal.style.display = 'grid'
             document.getElementById('openModal').textContent = 'Fechar'
+
+            setNome('')
+            setIdade('')
+            setEmail('')
+            setTelefone('')
         }
     }
 
     // openModal - edicao
-    function openModalEdicao(){
+    function openModalEdicao(value){
         /* modal cadastro */
         let modal = document.getElementById('modal_edicao')
 
         if(modal.style.display === 'grid'){
+            document.querySelectorAll('.btn-edit')[value].textContent ='Editar'
             modal.style.display = 'none'
-            document.getElementById('editModal').textContent = 'Editar'
+
+            // Valor padrao do state index
+            setindex(null)
         } else{
+            document.querySelectorAll('.btn-edit')[value].textContent ='Fechar'
             modal.style.display = 'grid'
-            document.getElementById('editModal').textContent = 'Fechar'
+            
+            // setando valor na state de index
+            setindex(value)
+
+            // Pegando o obj pelo index
+            const item = lista[value]
+
+            // Setando os valores das propriedades do objeto nas states
+            setNome(item.nome)
+            setIdade(item.idade)
+            setEmail(item.email)
+            setTelefone(item.telefone)
         }
     }
 
@@ -101,12 +124,50 @@ export default function Admin(){
                 setIdade('')
                 setEmail('')
                 setTelefone('')
+
+                // Mudando o valor do button
+                document.getElementById('openModal').textContent = 'Incluir usuario'
            }
         } catch (error) {
             console.log(error)
         }
     }
 
+    // editperson
+    async function editPerson(e){
+        try {
+            // Cancelando o envio do formulario
+            e.preventDefault()
+
+            // Editando propriedade do index escolhido
+            lista[index].nome = nome
+            lista[index].idade = idade
+            lista[index].telefone = telefone
+            lista[index].email = email
+
+            // Setando alteracoes na lista
+            setLista(lista)
+
+            // Atualizar no banco de dados
+            const docRef = doc(database,'clientes',id)
+
+            // Salvando a nova lista no banco de dados
+            await updateDoc(docRef,{
+                clientes:lista
+            })
+
+            // Mudando o display do modal_edicao para none
+            document.getElementById('modal_edicao').style.display = 'none'
+
+            // Mudando o texto do button
+            document.querySelectorAll('.btn-edit')[index].textContent = 'Editar'
+
+            // Resetando state index
+            setindex(null)
+        } catch (error) {
+            console.log(error)
+        }
+    }
     // deleteUser
     async function deleteUser(index){
         try {
@@ -180,26 +241,26 @@ export default function Admin(){
                 <form className='modal' id='modal_edicao'>
                     <div className='campo_nome'>
                         <label>Nome:</label>
-                        <input type='' value={nome} onChange={(e) => setNome(e.target.value)}/>
+                        <input type='text' value={nome} onChange={(e) => setNome(e.target.value)}/>
                     </div>
 
                     <div className='campo_idade'>
                         <label>Idade:</label>
-                        <input type='' value={idade} onChange={(e) => setIdade(e.target.value)}/>
+                        <input type='text' value={idade} onChange={(e) => setIdade(e.target.value)}/>
                     </div>
 
                     <div className='campo_telefone'>
                         <label>telefone:</label>
-                        <input type='' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
+                        <input type='tel' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
                     </div>
 
                     <div className='campo_email'>
                         <label>Email:</label>
-                        <input type='' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </div>
 
                     <div>
-                        <button id='btn-editar'>Editar</button>
+                        <button id='btn-editar' onClick={editPerson}>Editar</button>
                     </div>
                 </form>
 
@@ -223,7 +284,7 @@ export default function Admin(){
                                     <td>{item.email}</td>
                                     <td>{item.telefone}</td>
                                     <td>
-                                        <button className='btn-edit' id='editModal' onClick={openModalEdicao}>Editar</button>
+                                        <button className='btn-edit' id='editModal' onClick={(e) => openModalEdicao(idx)}>Editar</button>
                                         <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
                                     </td>
                                 </tr>
