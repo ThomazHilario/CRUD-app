@@ -24,7 +24,7 @@ export default function Admin(){
             // snap
             const docSnap = await getDoc(docRef)
 
-           //
+           // condição caso tenha clientes
             if(docSnap.data().clientes){
                 setLista(docSnap.data().clientes)
             }
@@ -94,7 +94,7 @@ export default function Admin(){
     // addPerson
     async function addPerson(e){
         try {
-            
+
             // Cancelando formulario
             e.preventDefault()
             
