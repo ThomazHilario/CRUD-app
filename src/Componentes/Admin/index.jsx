@@ -94,8 +94,15 @@ export default function Admin(){
     // addPerson
     async function addPerson(e){
         try {
+            
             // Cancelando formulario
             e.preventDefault()
+            
+            // Mudando o display do Modal
+            document.getElementById('modal_cadastro').style.display = 'none'
+
+            // Mudando o valor do button
+            document.getElementById('openModal').textContent = 'Incluir usuario'
 
            if(nome !== '' && idade !== '' && email !== '' && telefone !== ''){
                 // Setando a lista nova
@@ -115,18 +122,14 @@ export default function Admin(){
                         telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
                     }]
                 })
-
-                // Mudando o display do Modal
-                document.getElementById('modal_cadastro').style.display = 'none'
-
+                const fim = performance.now()
+                
                 // Resetando os valores das states
                 setNome('')
                 setIdade('')
                 setEmail('')
                 setTelefone('')
 
-                // Mudando o valor do button
-                document.getElementById('openModal').textContent = 'Incluir usuario'
            }
         } catch (error) {
             console.log(error)
@@ -136,8 +139,15 @@ export default function Admin(){
     // editperson
     async function editPerson(e){
         try {
+
             // Cancelando o envio do formulario
             e.preventDefault()
+
+            // Mudando o display do modal_edicao para none
+            document.getElementById('modal_edicao').style.display = 'none'
+
+            // Mudando o texto do button
+            document.querySelectorAll('.btn-edit')[index].textContent = 'Editar'
 
             // Editando propriedade do index escolhido
             lista[index].nome = nome
@@ -156,14 +166,9 @@ export default function Admin(){
                 clientes:lista
             })
 
-            // Mudando o display do modal_edicao para none
-            document.getElementById('modal_edicao').style.display = 'none'
-
-            // Mudando o texto do button
-            document.querySelectorAll('.btn-edit')[index].textContent = 'Editar'
-
             // Resetando state index
             setindex(null)
+
         } catch (error) {
             console.log(error)
         }
