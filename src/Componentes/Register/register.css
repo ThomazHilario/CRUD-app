@@ -77,7 +77,7 @@ button{
 }
 
 /* link */
-a{
+#linkLogin{
     text-decoration: none;
     color: rgb(68, 68, 212);
 }
