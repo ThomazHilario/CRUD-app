@@ -70,7 +70,7 @@ th, td{
     margin-right: 5px;
 }
 /* modal de cadastro */
-#modal_cadastro{
+.modal{
     border: 1px solid black;
     border-radius: 3px;
 
@@ -96,7 +96,7 @@ th, td{
 }
 
 /* input */
-#modal_cadastro > div > input{
+.modal > div > input{
     display: block;
 
     height: 20px;
@@ -134,4 +134,8 @@ th, td{
 #btn-incluir{
     width: 80px;
     background-color: rgb(100, 100, 190);
+}
+#btn-editar{
+    background-color: rgb(44, 170, 99);
+    width: 80px;
 }

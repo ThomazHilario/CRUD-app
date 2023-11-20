@@ -40,7 +40,7 @@ export default function Admin(){
     const [email,setEmail] = useState('')
     const [telefone,setTelefone] = useState('')
 
-    // openModal
+    // openModal - incluir
     function openModal(){
         /* modal cadastro */
         let modal = document.getElementById('modal_cadastro')
@@ -51,6 +51,20 @@ export default function Admin(){
         } else{
             modal.style.display = 'grid'
             document.getElementById('openModal').textContent = 'Fechar'
+        }
+    }
+
+    // openModal - edicao
+    function openModalEdicao(){
+        /* modal cadastro */
+        let modal = document.getElementById('modal_edicao')
+
+        if(modal.style.display === 'grid'){
+            modal.style.display = 'none'
+            document.getElementById('editModal').textContent = 'Editar'
+        } else{
+            modal.style.display = 'grid'
+            document.getElementById('editModal').textContent = 'Fechar'
         }
     }
 
@@ -135,7 +149,7 @@ export default function Admin(){
             <div id='container_table'>
 
                 {/* Modal de cadastro */}
-                <form id='modal_cadastro'>
+                <form className='modal' id='modal_cadastro'>
 
                     <div className='campo_nome'>
                         <label>Nome:</label>
@@ -162,6 +176,33 @@ export default function Admin(){
                     </div>
                 </form>
 
+                {/* Modal de edição */}
+                <form className='modal' id='modal_edicao'>
+                    <div className='campo_nome'>
+                        <label>Nome:</label>
+                        <input type='' value={nome} onChange={(e) => setNome(e.target.value)}/>
+                    </div>
+
+                    <div className='campo_idade'>
+                        <label>Idade:</label>
+                        <input type='' value={idade} onChange={(e) => setIdade(e.target.value)}/>
+                    </div>
+
+                    <div className='campo_telefone'>
+                        <label>telefone:</label>
+                        <input type='' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
+                    </div>
+
+                    <div className='campo_email'>
+                        <label>Email:</label>
+                        <input type='' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+
+                    <div>
+                        <button id='btn-editar'>Editar</button>
+                    </div>
+                </form>
+
                 <table className='bg-neutral-800 text-white table-auto'>
                     <thead>
                         <tr>
@@ -182,7 +223,7 @@ export default function Admin(){
                                     <td>{item.email}</td>
                                     <td>{item.telefone}</td>
                                     <td>
-                                        <button className='btn-edit'>Editar</button>
+                                        <button className='btn-edit' id='editModal' onClick={openModalEdicao}>Editar</button>
                                         <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
                                     </td>
                                 </tr>
