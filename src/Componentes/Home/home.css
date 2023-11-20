@@ -77,7 +77,7 @@ button{
 }
 
 /* link */
-a{
+#linkCadastro{
     text-decoration: none;
     color: rgb(68, 68, 212);
 }

@@ -68,7 +68,7 @@ function Home(){
                 {/* buttons */}
                 <button className='loginButton' onClick={singInUser}>Login</button>
                 
-                <p>Não tem uma conta ? <Link to="/register">Cadastre-se</Link></p>
+                <p>Não tem uma conta ? <Link to="/register" id='linkCadastro'>Cadastre-se</Link></p>
             </form>
         </main>
     )
