@@ -281,24 +281,37 @@ export default function Admin(){
                     </thead>
 
                     <tbody>
-                        {lista.map((item,idx) => {
-                            return(
-                                <tr key={idx} className='odd:bg-neutral-700'>
-                                    <td>{item.nome}</td>
-                                    <td>{item.idade}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.telefone}</td>
-                                    <td>
-                                        <button className='btn-edit' id='editModal' onClick={(e) => openModalEdicao(idx)}>Editar</button>
-                                        <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
+                        
+                        {lista.map((item,idx) => <LinhasTable
+                        key={idx}
+                        idx={idx} 
+                        nome={item.nome} 
+                        idade={item.idade} 
+                        email={item.email} 
+                        telefone={item.telefone}
+                        openModalEdicao={openModalEdicao}
+                        deleteUser={deleteUser}/>)}
+
                     </tbody>
                     
                 </table>
             </div>
         </main>
+    )
+}
+
+// Componente para exibir os tr
+function LinhasTable({ idx, nome, idade, email, telefone, openModalEdicao, deleteUser}){
+    return(
+        <tr>
+            <td>{nome}</td>
+            <td>{idade}</td>
+            <td>{email}</td>
+            <td>{telefone}</td>
+            <td>
+                <button className='btn-edit' id='editModal' onClick={(e) => openModalEdicao(idx)}>Editar</button>
+                <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
+            </td>
+        </tr>
     )
 }
