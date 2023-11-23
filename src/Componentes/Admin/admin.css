@@ -2,21 +2,47 @@
     0%{transform: translateY(-40%);}
 }
 
+
+/* main_admin*/
+#main_admin{
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    height: 100vh;
+}
+
 /* header */
 header{
-    height: 10vh;
-
-    background-color: rgb(40, 40, 40);
+    height: 100vh;
+    background-color: rgb(49, 49, 49);
 
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
-    padding: 0px 30px;
+    padding: 10px 0px;
+}
+
+/* navegacao de configuracoes */
+#configuracoes{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* configButton */
+#configButton{
+    background-color: rgb(59, 58, 58);
+    color: white;
+    opacity: 0.9;
+    height: 30px;
+    width: 120px;
+    text-align: center;
 }
 
 /* buttons */
-
 #openModal{
     width: 120px;
     height: 30px;
@@ -26,7 +52,7 @@ header{
 }
 
 #logoutUser{
-    width: 100px;
+    width: 120px;
     height: 30px;
     font-weight: normal;
     color: white;
@@ -36,7 +62,6 @@ header{
 
 /* table */
 #container_table{
-    margin-top: 5px;
     display: flex;
     justify-content: center;
 
@@ -46,7 +71,7 @@ header{
 table{
     border-collapse: collapse;
     width: 100%;
-    max-width: 1000px;
+    height: 0vh;
 }
 
 th, td{
@@ -55,7 +80,6 @@ th, td{
     height: 45px;
     text-align: center;
 }
-
 .btn-delete{
     background-color: rgb(199, 76, 76);
     width: 70px;

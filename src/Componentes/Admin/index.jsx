@@ -1,5 +1,5 @@
 import './admin.css'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import { database, auth } from '../../Services/firebaseConnection'
 import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
 import {signOut} from 'firebase/auth'
@@ -122,7 +122,6 @@ export default function Admin(){
                         telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
                     }]
                 })
-                const fim = performance.now()
                 
                 // Resetando os valores das states
                 setNome('')
@@ -205,14 +204,18 @@ export default function Admin(){
     }
     
     return(
-        <main>
+        <main id='main_admin'>
             {/* Header */}
-            <header>
+            <header className='bg-slate-800'>
                 <button id='openModal' onClick={openModal}>Incluir usuario</button>
-                <button id='logoutUser' onClick={logOutUser}>Sair</button>
+                
+                <nav id='configuracoes'>
+                    <Link id='configButton'  className='rounded-sm' to={`/config/${id}`}>Configurações</Link>
+                    <button id='logoutUser' onClick={logOutUser}>Sair</button>
+                </nav>
             </header>
 
-            <div id='container_table'>
+            <div id='container_table' className='bg-slate-900'>
 
                 {/* Modal de cadastro */}
                 <form className='modal' id='modal_cadastro'>
@@ -269,7 +272,7 @@ export default function Admin(){
                     </div>
                 </form>
 
-                <table className='bg-neutral-800 text-white table-auto'>
+                <table className='text-white table-auto'>
                     <thead>
                         <tr>
                             <th>Nome</th>
