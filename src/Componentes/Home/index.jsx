@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {toast} from 'react-toastify'
@@ -7,6 +7,15 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import './home.css'
 
 function Home(){
+    // useEffect para tirar o header
+    useEffect(() => {
+
+        // Configurando header para a página
+        document.getElementById('header_flexivel').style.display = 'none'
+        document.getElementById('container_admin').style.gridTemplateColumns = 'none'
+    },[])
+
+
     // Navigate
     const navigate = useNavigate()
 

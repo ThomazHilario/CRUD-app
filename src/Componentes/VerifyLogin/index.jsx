@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useContext } from 'react'
+import { Context } from '../../Context'
 import { Navigate} from 'react-router-dom'
 import { auth } from '../../Services/firebaseConnection'
 import { onAuthStateChanged } from 'firebase/auth'
 
-export default function verifyLogin({children}){
+export default function VerifyLogin({children}){
     // state - logado
-    const [logado,setLogado] = useState(null)
+    const {logado,setLogado} = useContext(Context)
 
     // Verificando se o usuario ja fez o login antes
     useEffect(() => {
@@ -32,7 +33,6 @@ export default function verifyLogin({children}){
        return <Navigate to='/' replace={true} />
        
     }else{
-
         // Retornando o componente Admin
         return children
     } 

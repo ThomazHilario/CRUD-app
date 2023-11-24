@@ -1,13 +1,17 @@
 import './admin.css'
-import {useParams, Link} from 'react-router-dom'
-import { database, auth } from '../../Services/firebaseConnection'
+import {useParams} from 'react-router-dom'
+import { database } from '../../Services/firebaseConnection'
 import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
-import {signOut} from 'firebase/auth'
-import { useState,useEffect } from 'react'
+import { useState,useEffect, useContext } from 'react'
+import {Context} from '../../Context'
+
 
 export default function Admin(){
     // Id do usuario
-    const {id} = useParams()
+    const {idUser} = useParams()
+
+    // State global - id
+    const {id,setId} = useContext(Context)
 
     // state lista usuarios
     const [lista,setLista] = useState([])
@@ -15,52 +19,45 @@ export default function Admin(){
     // pegando usuarios da lista
     useEffect(() => {
 
+        // Setando id na state de id
+        setId(idUser)
+
+        // Configurando header para a página
+        document.getElementById('header_flexivel').style.display = 'flex'
+        document.getElementById('container_admin').style.gridTemplateColumns = '1fr 8fr'
+        
         //Função loadLista
         async function loadLista(){
 
-            // docRef
-            const docRef = doc(database,'clientes',id)
+            try{
+                // Pegando a referencia do documento
+                const docRef = doc(database,'clientes',idUser)
 
-            // snap
-            const docSnap = await getDoc(docRef)
+                // Pegando o documento
+                const docSnap = await getDoc(docRef)
 
-           // condição caso tenha clientes
-            if(docSnap.data().clientes){
-                setLista(docSnap.data().clientes)
+                // Condição caso tenha clientes
+                if(docSnap.data().clientes){
+                    setLista(docSnap.data().clientes)
+                }
+                
+            }catch(e){
+                console.log(e)
             }
         }
 
         // chamando funcao loadLista
         loadLista()
-    },[])
+    },[id, setId, idUser])
 
     // state - campos forms
-    const [nome,setNome] = useState('')
-    const [idade,setIdade] = useState('')
-    const [email,setEmail] = useState('')
-    const [telefone,setTelefone] = useState('')
+    const {nome,setNome} = useContext(Context)
+    const {idade,setIdade} = useContext(Context)
+    const {email,setEmail} = useContext(Context)
+    const {telefone,setTelefone} = useContext(Context)
 
     // index
-    const [index,setindex] = useState(null)
-
-    // openModal - incluir
-    function openModal(){
-        /* modal cadastro */
-        let modal = document.getElementById('modal_cadastro')
-
-        if(modal.style.display === 'grid'){
-            modal.style.display = 'none'
-            document.getElementById('openModal').textContent = 'Incluir usuario'
-        } else{
-            modal.style.display = 'grid'
-            document.getElementById('openModal').textContent = 'Fechar'
-
-            setNome('')
-            setIdade('')
-            setEmail('')
-            setTelefone('')
-        }
-    }
+    const {index,setindex} = useContext(Context)
 
     // openModal - edicao
     function openModalEdicao(value){
@@ -194,28 +191,11 @@ export default function Admin(){
         }
     }
 
-    // Logout
-    async function logOutUser(){
-        try {
-            await signOut(auth)
-        } catch (error) {
-            console.log(error)
-        }
-    }
     
     return(
-        <main id='main_admin'>
-            {/* Header */}
-            <header className='bg-slate-800'>
-                <button id='openModal' onClick={openModal}>Incluir usuario</button>
-                
-                <nav id='configuracoes'>
-                    <Link id='configButton'  className='rounded-sm' to={`/config/${id}`}>Configurações</Link>
-                    <button id='logoutUser' onClick={logOutUser}>Sair</button>
-                </nav>
-            </header>
+        <main id='main_admin' className='bg-slate-900'>
 
-            <div id='container_table' className='bg-slate-900'>
+            <div id='container_table'>
 
                 {/* Modal de cadastro */}
                 <form className='modal' id='modal_cadastro'>
@@ -312,9 +292,11 @@ function LinhasTable({ idx, nome, idade, email, telefone, openModalEdicao, delet
             <td>{email}</td>
             <td>{telefone}</td>
             <td>
-                <button className='btn-edit' id='editModal' onClick={(e) => openModalEdicao(idx)}>Editar</button>
+                <button className='btn-edit' id='editModal' onClick={() => openModalEdicao(idx)}>Editar</button>
                 <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
             </td>
         </tr>
     )
 }
+
+checkPropTypes({nome:String},'prop',LinhasTable)

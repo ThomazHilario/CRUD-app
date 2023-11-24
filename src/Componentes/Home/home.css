@@ -40,7 +40,7 @@ legend{
 
 /* inputs */
 .container_input > input{
-    background-color: #7c43a24b;
+    background-color: #7c43a245;
     color: white;
 
     display: block;
@@ -48,12 +48,12 @@ legend{
     width: 220px;
 
     border-radius: 3px;
-    border: 2px solid black;
+    border: 2px solid rgb(23, 23, 23);
     
     padding: 0px 5px;
     margin-top: 5px;
 
-    font-weight: bold;
+    font-weight: normal;
 
 }
 
