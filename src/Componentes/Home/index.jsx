@@ -3,21 +3,42 @@ import {useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {auth} from '../../Services/firebaseConnection'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import './home.css'
 
 function Home(){
-    // useEffect para tirar o header
+
+    // Navigate
+    const navigate = useNavigate()
+
+    // useEffect para tirar o header e ver se o usuario ja efetuou login
+
     useEffect(() => {
 
         // Configurando header para a página
         document.getElementById('header_flexivel').style.display = 'none'
         document.getElementById('container_admin').style.gridTemplateColumns = 'none'
-    },[])
 
+        // Verificando se o usuario ja efetuou o login
+        async function loadAuth(){
+            try {
+                await onAuthStateChanged(auth,(user) => {
+                    if(user){
+                        navigate(`/admin/${user.uid}`)
+                    } else{
+                        setCarregado(true)
+                    }
+                })
+            } catch (e) {
+                console.log(e)
+            }
+        }
 
-    // Navigate
-    const navigate = useNavigate()
+        loadAuth()
+    },[navigate])
+
+    // state - Carregado
+    const [carregado, setCarregado] = useState(false)
 
     // States - input
     const [email,setEmail] = useState('')
@@ -62,31 +83,36 @@ function Home(){
         }
     }
     
-    return(
-        <main id='mainHome'>
-            <form className='formStyle'>
-                {/* title form */}
-                <legend>Login</legend>
-
-                {/* container email */}
-                <div className='container_input'>
-                    <label>Email:</label>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                </div>
-
-                {/* container Password */}
-                <div className='container_input'>
-                    <label>Password:</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-
-                {/* buttons */}
-                <button className='loginButton' onClick={singInUser}>Login</button>
-                
-                <p>Não tem uma conta ? <Link to="/register" id='linkCadastro'>Cadastre-se</Link></p>
-            </form>
-        </main>
-    )
+    // Renderizaçãao condicional
+    if(carregado === false){
+        return <main className='mainHome'><h1>Carregando</h1></main>
+    }else{
+        return(
+            <main className='mainHome'>
+                <form className='formStyle'>
+                    {/* title form */}
+                    <legend>Login</legend>
+    
+                    {/* container email */}
+                    <div className='container_input'>
+                        <label>Email:</label>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+    
+                    {/* container Password */}
+                    <div className='container_input'>
+                        <label>Password:</label>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
+    
+                    {/* buttons */}
+                    <button className='loginButton' onClick={singInUser}>Login</button>
+                    
+                    <p>Não tem uma conta ? <Link to="/register" id='linkCadastro'>Cadastre-se</Link></p>
+                </form>
+            </main>
+        )
+    }
 }
 
 
