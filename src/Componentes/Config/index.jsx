@@ -10,6 +10,7 @@ export default function Config(){
 
     // buscando informacoes do usuario
     useEffect(() => {
+        
         // Configurando header para a página
         document.getElementById('header_flexivel').style.display = 'flex'
         document.getElementById('container_admin').style.gridTemplateColumns = '1fr 8fr'

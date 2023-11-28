@@ -1,7 +1,8 @@
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 import {Context} from '../Context'
 import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import { auth } from '../Services/firebaseConnection'
+import { onAuthStateChanged } from 'firebase/auth'
 import {signOut} from 'firebase/auth'
 import Home from '../Componentes/Home'
 import Register from '../Componentes/Register'
@@ -14,7 +15,28 @@ import Config from '../Componentes/Config'
 export default function RoutePage(){
 
     // state - id
-    const {id} = useContext(Context)
+    const {id, setId} = useContext(Context)
+
+    // ao renderizar o componente verificar se ja efetuou login
+    useEffect(() => {
+        // Função que guarda o id na state id
+        async function loadId(){
+            try {
+                // Verificando autenticação
+                await onAuthStateChanged(auth,(user) => {
+                    if(user.uid){
+                        setId(user.uid)
+                    }
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        // Executando loadId
+        loadId()
+
+    },[setId])
 
     // state - campos forms
     const {setNome} = useContext(Context)
