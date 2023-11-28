@@ -22,6 +22,7 @@ function Home(){
         // Verificando se o usuario ja efetuou o login
         async function loadAuth(){
             try {
+                // verificando se o usuario ja efetuou o login
                 await onAuthStateChanged(auth,(user) => {
                     if(user){
                         navigate(`/admin/${user.uid}`)
@@ -49,6 +50,9 @@ function Home(){
         try {
             // Cancelando envio do formulario
             e.preventDefault()   
+
+            // Setando novamente o carregado para false
+            setCarregado(false)
 
             // Logando usuario
             const login = await signInWithEmailAndPassword(auth,email,password)
