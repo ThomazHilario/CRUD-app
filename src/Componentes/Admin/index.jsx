@@ -37,7 +37,7 @@ export default function Admin(){
                 const docSnap = await getDoc(docRef)
 
                 // Condição caso tenha clientes
-                if(docSnap.data().clientes){
+                if(docSnap.data().clientes.length > 0){
                     setLista(docSnap.data().clientes)
                 }
                 

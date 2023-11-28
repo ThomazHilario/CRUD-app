@@ -1,6 +1,6 @@
 import {useContext} from 'react'
 import {Context} from '../Context'
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import { auth } from '../Services/firebaseConnection'
 import {signOut} from 'firebase/auth'
 import Home from '../Componentes/Home'
@@ -12,13 +12,16 @@ import Config from '../Componentes/Config'
 
 
 export default function RoutePage(){
+
     // state - id
     const {id} = useContext(Context)
+
     // state - campos forms
     const {setNome} = useContext(Context)
     const {setIdade} = useContext(Context)
     const {setEmail} = useContext(Context)
     const {setTelefone} = useContext(Context)
+
     
     // openModal - incluir
     function openModal(){
@@ -42,15 +45,18 @@ export default function RoutePage(){
     // Logout
     async function logOutUser(){
         try {
+            // Retornando a rota inicial
+            <Navigate to='/' />
+
+            // Efetuando LogOut
             await signOut(auth)
+            
         } catch (error) {
             console.log(error)
         }    
     }
 
     return(
-        <BrowserRouter>
-
             <div id='container_admin'>
 
                 {/* Header */}
@@ -75,6 +81,5 @@ export default function RoutePage(){
                 </Routes>
 
             </div>
-        </BrowserRouter>
     )
 }
