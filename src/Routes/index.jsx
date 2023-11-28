@@ -8,10 +8,12 @@ import Register from '../Componentes/Register'
 import Error from '../Componentes/Error'
 import Admin from '../Componentes/Admin'
 import VerifyLogin from '../Componentes/VerifyLogin'
+import Config from '../Componentes/Config'
 
 
 export default function RoutePage(){
-    
+    // state - id
+    const {id} = useContext(Context)
     // state - campos forms
     const {setNome} = useContext(Context)
     const {setIdade} = useContext(Context)
@@ -56,7 +58,7 @@ export default function RoutePage(){
                     <button id='openModal' onClick={openModal}>Incluir usuario</button>
                     
                     <nav id='configuracoes'>
-                        <Link id='configButton'  className='rounded-sm' to={`/config/${1}`}>Configurações</Link>
+                        <Link id='configButton'  className='rounded-sm' to={`/config/${id}`}>Configurações</Link>
                         <button id='logoutUser' onClick={logOutUser}>Sair</button>
                     </nav>
                 </header>
@@ -66,6 +68,7 @@ export default function RoutePage(){
                     <Route path='/' element={<Home/>}/>
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/admin/:idUser' element={<VerifyLogin> <Admin/> </VerifyLogin>}/>
+                    <Route path='/config/:idUser' element={ <Config/> }/>
 
                     {/* Pagina default */}
                     <Route path='*' element={<Error/>}/>

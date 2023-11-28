@@ -1,0 +1,16 @@
+#main_config{
+    height: 100vh;
+}
+
+#config_navigation{
+    padding: 0px 5px;
+}
+
+/* vetor */
+#imgVetor{
+    cursor: pointer;
+    background-color: rgb(25, 24, 24);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
