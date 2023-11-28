@@ -45,12 +45,16 @@ export default function RoutePage(){
     // Logout
     async function logOutUser(){
         try {
+
             // Retornando a rota inicial
-            <Navigate to='/' />
+            <Navigate to='/' replace={true} />
 
             // Efetuando LogOut
             await signOut(auth)
-            
+
+            // Removendo dados da localStorage
+            localStorage.removeItem('user')
+
         } catch (error) {
             console.log(error)
         }    
@@ -74,7 +78,7 @@ export default function RoutePage(){
                     <Route path='/' element={<Home/>}/>
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/admin/:idUser' element={<VerifyLogin> <Admin/> </VerifyLogin>}/>
-                    <Route path='/config/:idUser' element={ <Config/> }/>
+                    <Route path='/config/:idUser' element={<VerifyLogin> <Config/> </VerifyLogin>}/>
 
                     {/* Pagina default */}
                     <Route path='*' element={<Error/>}/>

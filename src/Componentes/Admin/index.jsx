@@ -1,6 +1,7 @@
 import './admin.css'
 import {useParams} from 'react-router-dom'
 import { database } from '../../Services/firebaseConnection'
+import { auth } from '../../Services/firebaseConnection'
 import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
 import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
@@ -26,6 +27,9 @@ export default function Admin(){
         document.getElementById('header_flexivel').style.display = 'flex'
         document.getElementById('container_admin').style.gridTemplateColumns = '1fr 8fr'
         
+        // salvando dados na localStorage
+        localStorage.setItem('user',JSON.stringify(auth.currentUser))
+
         //Função loadLista
         async function loadLista(){
 

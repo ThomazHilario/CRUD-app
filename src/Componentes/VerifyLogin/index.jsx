@@ -26,7 +26,7 @@ export default function VerifyLogin({children}){
 
         // Executando a função login
         login()
-    },[])
+    },[setLogado])
 
     // Condição para retornar a rota inicial da pagina
     if(logado === false){
