@@ -1,8 +1,10 @@
 import './config.css'
 import left from '../../assets/icons/left.png'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-
+import {auth, database} from '../../Services/firebaseConnection'
+import {doc, deleteDoc} from 'firebase/firestore'
+import {deleteUser} from 'firebase/auth'
 
 export default function Config(){
     // id do usuario
@@ -14,10 +16,34 @@ export default function Config(){
         // Configurando header para a página
         document.getElementById('header_flexivel').style.display = 'flex'
         document.getElementById('container_admin').style.gridTemplateColumns = '1fr 8fr'
+
+        let data = localStorage.getItem('user') !== '' ? JSON.parse(localStorage.getItem('user')) : null
+
+        setUser(data)
         
     },[])
 
+    // state - user
+    const [user, setUser] = useState({})
 
+    // Deletar a conta - handleAccount
+    async function handleAccount(e){
+        try {
+            // Cancelando envio do formulario
+            e.preventDefault()
+
+            // Deletando usuario
+            deleteUser(auth.currentUser)
+
+            // Deletando o banco de dados do usuario
+            await deleteDoc(doc(database,'clientes',user.uid))
+
+            // mensagem de sucesso
+            alert('Conta deletada')
+        } catch (e) {
+            console.log(e)
+        }
+    }
     return (
         <main id='main_config' className='bg-slate-900'>
             <nav id='config_navigation'>
@@ -25,8 +51,25 @@ export default function Config(){
             </nav>
 
             <div id='container_config'>
-                <div id='container_delete'>
 
+                {/* Title config */}
+                <h2 className='titleConfig'>Detalhes da conta</h2>
+
+                <div id='container_delete'>
+                    <form onSubmit={handleAccount}>
+                        <div className='campos_form_config'>
+                            <label>Id:</label>
+                            <input type='text' defaultValue={user.uid} disabled/>
+                        </div>
+
+
+                        <div className='campos_form_config'>
+                            <label>Email:</label>
+                            <input type='email' defaultValue={user.email} disabled/>
+                        </div>
+
+                        <button type='submit'>Delete my account</button>
+                    </form>
                 </div>
             </div>
         </main>
