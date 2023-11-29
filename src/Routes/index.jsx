@@ -74,8 +74,6 @@ export default function RoutePage(){
             // Efetuando LogOut
             await signOut(auth)
 
-            // Removendo dados da localStorage
-            localStorage.removeItem('user')
 
         } catch (error) {
             console.log(error)
