@@ -63,6 +63,7 @@ function Home(){
             // navegando ate a pagina admin do usuario
             navigate(`/admin/${login.user.uid}`)
 
+            localStorage.setItem('user',JSON.stringify(login.user))
 
             // mensagem de sucesso
             toast.update(id,{render:'Seja Bem-vindo!', autoClose:1000, type:'success', isLoading:false})

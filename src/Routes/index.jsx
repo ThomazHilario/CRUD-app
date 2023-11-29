@@ -2,14 +2,18 @@ import {useContext, useEffect} from 'react'
 import {Context} from '../Context'
 import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import { auth } from '../Services/firebaseConnection'
-import { onAuthStateChanged } from 'firebase/auth'
 import {signOut} from 'firebase/auth'
+
+// Componentes
+
 import Home from '../Componentes/Home'
 import Register from '../Componentes/Register'
 import Error from '../Componentes/Error'
 import Admin from '../Componentes/Admin'
 import VerifyLogin from '../Componentes/VerifyLogin'
 import Config from '../Componentes/Config'
+
+// ------
 
 
 export default function RoutePage(){
@@ -20,16 +24,9 @@ export default function RoutePage(){
     // ao renderizar o componente verificar se ja efetuou login
     useEffect(() => {
         // Função que guarda o id na state id
-        async function loadId(){
-            try {
-                // Verificando autenticação
-                await onAuthStateChanged(auth,(user) => {
-                    if(user.uid){
-                        setId(user.uid)
-                    }
-                })
-            } catch (error) {
-                console.log(error)
+        function loadId(){
+            if(localStorage.getItem('user') !== null){
+                setId(JSON.parse(localStorage.getItem('user')).uid)
             }
         }
 
@@ -74,6 +71,8 @@ export default function RoutePage(){
             // Efetuando LogOut
             await signOut(auth)
 
+            // Removendo dados da localStorage
+            localStorage.removeItem('user')
 
         } catch (error) {
             console.log(error)
