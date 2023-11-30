@@ -51,10 +51,10 @@ export default function Admin(){
     },[id, setId, idUser])
 
     // state - campos forms
-    const {nome,setNome} = useContext(Context)
-    const {idade,setIdade} = useContext(Context)
-    const {email,setEmail} = useContext(Context)
-    const {telefone,setTelefone} = useContext(Context)
+    const [nome,setNome] = useState('')
+    const [idade,setIdade] = useState('')
+    const [email,setEmail] = useState('')
+    const [telefone,setTelefone] = useState('')
 
     // index
     const {index,setindex} = useContext(Context)

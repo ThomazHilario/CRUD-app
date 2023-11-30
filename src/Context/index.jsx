@@ -8,12 +8,6 @@ export default function ContextProvider({children}){
     // id
     const [id,setId] = useState('')
 
-    // States - form
-    const [nome,setNome] = useState('')
-    const [idade,setIdade] = useState('')
-    const [email,setEmail] = useState('')
-    const [telefone,setTelefone] = useState('')
-
     // index
     const [index,setindex] = useState(null)
 
