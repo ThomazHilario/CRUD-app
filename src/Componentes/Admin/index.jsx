@@ -37,7 +37,7 @@ export default function Admin(){
                 const docSnap = await getDoc(docRef)
 
                 // Condição caso tenha clientes
-                if(docSnap.data().clientes.length > 0){
+                if(docSnap.data().clientes){
                     setLista(docSnap.data().clientes)
                 }
                 
@@ -51,10 +51,10 @@ export default function Admin(){
     },[id, setId, idUser])
 
     // state - campos forms
-    const [nome,setNome] = useState('')
-    const [idade,setIdade] = useState('')
-    const [email,setEmail] = useState('')
-    const [telefone,setTelefone] = useState('')
+    const {nome,setNome} = useContext(Context)
+    const {idade,setIdade} = useContext(Context)
+    const {email,setEmail} = useContext(Context)
+    const {telefone,setTelefone} = useContext(Context)
 
     // index
     const {index,setindex} = useContext(Context)
