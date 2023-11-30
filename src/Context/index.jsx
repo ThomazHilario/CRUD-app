@@ -15,7 +15,7 @@ export default function ContextProvider({children}){
     const [logado,setLogado] = useState(null)
 
     return(
-        <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, index, setindex, id, setId, logado, setLogado}}>
+        <Context.Provider value={{ index, setindex, id, setId, logado, setLogado}}>
             {children}
         </Context.Provider>
     )

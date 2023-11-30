@@ -51,11 +51,15 @@ function Home(){
             // Cancelando envio do formulario
             e.preventDefault()   
 
-            // Setando novamente o carregado para false
-            setCarregado(false)
-
             // Logando usuario
             const login = await signInWithEmailAndPassword(auth,email,password)
+
+            // Caso tenha user
+            if(login.user){
+                
+                // Setando novamente o carregado para false
+                setCarregado(false)
+            }
 
             // Mensagem de loading
             const id = toast.loading("Carregando")
