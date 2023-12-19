@@ -4,7 +4,8 @@
 }
 
 header{
-  display: none;
+  width: 13vw;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -13,8 +14,4 @@ header{
 }
 body{
   background-color: #3682B3;
-}
-
-#container_admin{
-  display: grid;
 }

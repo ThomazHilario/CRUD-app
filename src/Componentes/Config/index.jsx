@@ -12,10 +12,6 @@ export default function Config(){
 
     // buscando informacoes do usuario
     useEffect(() => {
-        
-        // Configurando header para a página
-        document.getElementById('header_flexivel').style.display = 'flex'
-        document.getElementById('container_admin').style.gridTemplateColumns = '1fr 8fr'
 
         let data = localStorage.getItem('user') !== '' ? JSON.parse(localStorage.getItem('user')) : null
 
@@ -44,6 +40,7 @@ export default function Config(){
             console.log(e)
         }
     }
+
     return (
         <main id='main_config' className='bg-slate-900'>
             <nav id='config_navigation'>

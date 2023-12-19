@@ -1,9 +1,10 @@
 import './admin.css'
-import {useParams} from 'react-router-dom'
-import { database } from '../../Services/firebaseConnection'
+import {useParams,} from 'react-router-dom'
+import { database,} from '../../Services/firebaseConnection'
 import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
 import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
+import Header from '../Header'
 
 
 export default function Admin(){
@@ -22,9 +23,7 @@ export default function Admin(){
         // Setando id na state de id
         setId(idUser)
 
-        // Configurando header para a página
-        document.getElementById('header_flexivel').style.display = 'flex'
-        document.getElementById('container_admin').style.gridTemplateColumns = '1fr 8fr'
+
 
         //Função loadLista
         async function loadLista(){
@@ -193,7 +192,10 @@ export default function Admin(){
 
     
     return(
-        <main id='main_admin' className='bg-slate-900'>
+        <main id='main_admin' className='bg-slate-900 flex'>
+
+            {/* header component */}
+            <Header/>
 
             <div id='container_table'>
 

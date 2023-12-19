@@ -11,13 +11,9 @@ function Home(){
     // Navigate
     const navigate = useNavigate()
 
-    // useEffect para tirar o header e ver se o usuario ja efetuou login
+    // useEffect para ver se o usuario ja efetuou login
 
     useEffect(() => {
-
-        // Configurando header para a página
-        document.getElementById('header_flexivel').style.display = 'none'
-        document.getElementById('container_admin').style.gridTemplateColumns = 'none'
 
         // Verificando se o usuario ja efetuou o login
         async function loadAuth(){
