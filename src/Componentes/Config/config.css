@@ -2,6 +2,10 @@
     height: 100vh;
 }
 
+#container_config{
+    width: 87vw;
+}
+
 #config_navigation{
     padding: 0px 5px;
 }

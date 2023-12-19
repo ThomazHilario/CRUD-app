@@ -192,7 +192,7 @@ export default function Admin(){
 
     
     return(
-        <main id='main_admin' className='bg-slate-900 flex'>
+        <main id='main_admin' className='bg-slate-900 flex justify-between'>
 
             {/* header component */}
             <Header/>

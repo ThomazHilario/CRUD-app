@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import {auth, database} from '../../Services/firebaseConnection'
 import {doc, deleteDoc} from 'firebase/firestore'
 import {deleteUser} from 'firebase/auth'
-
+import Header from '../Header'
 export default function Config(){
     // id do usuario
     const {idUser} = useParams()
@@ -42,12 +42,15 @@ export default function Config(){
     }
 
     return (
-        <main id='main_config' className='bg-slate-900'>
-            <nav id='config_navigation'>
-                <Link to={`/admin/${idUser}`}><img src={left} alt='vetor de esquerda' id='imgVetor' /></Link>
-            </nav>
+        <main id='main_config' className='bg-slate-900 flex'>
+            
+            <Header/>
 
             <div id='container_config'>
+
+                <nav id='config_navigation'>
+                    <Link to={`/admin/${idUser}`}><img src={left} alt='vetor de esquerda' id='imgVetor' /></Link>
+                </nav>
 
                 {/* Title config */}
                 <h2 className='titleConfig'>Detalhes da conta</h2>
