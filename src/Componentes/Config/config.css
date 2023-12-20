@@ -73,4 +73,7 @@
     display: block;
   }
 
+  #container_config{
+    width: 100vw;
+  }
 }
