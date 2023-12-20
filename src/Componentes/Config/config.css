@@ -67,3 +67,10 @@
     margin-top: 5px;
     background-color: rgb(232, 95, 95);
 }
+
+@media screen and (max-width:950px){
+  #main_config{
+    display: block;
+  }
+
+}
