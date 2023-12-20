@@ -149,3 +149,9 @@ th, td{
     background-color: rgb(44, 170, 99);
     width: 80px;
 }
+
+@media screen and (max-width:950px){
+    #main_admin{
+        display: block;
+    }
+}
