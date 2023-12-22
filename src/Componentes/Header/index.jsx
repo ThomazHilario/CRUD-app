@@ -14,7 +14,8 @@ export default function Header(){
     const {setEmail} = useContext(Context)
     const {setTelefone} = useContext(Context)
 
-    function openMenu(e){
+    // Alterar o display do menu
+    function openMenu(){
         const menu = document.getElementById('menu')
 
         if(menu.style.display === 'flex'){
@@ -63,9 +64,10 @@ export default function Header(){
 
     return(
         <header className='bg-slate-800' id='header_flexivel'>
+            {/* menu Hamburguer */}
             <span id='menuHamburguer' onClick={openMenu}><TiThMenu size={'3em'} color='white'/></span>
 
-
+            {/* Menu */}
             <menu id='menu'>
                 <button id='openModal' onClick={openModal}>Incluir usuario</button>
                 
