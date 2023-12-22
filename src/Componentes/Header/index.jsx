@@ -1,8 +1,10 @@
+import './header.css'
 import {Link, Navigate} from 'react-router-dom'
 import { auth } from '../../Services/firebaseConnection'
 import { signOut } from 'firebase/auth'
 import {useContext} from 'react'
 import { Context } from '../../Context'
+import { TiThMenu } from "react-icons/ti";
 
 export default function Header(){
     const {id} = useContext(Context)
@@ -11,6 +13,17 @@ export default function Header(){
     const {setIdade} = useContext(Context)
     const {setEmail} = useContext(Context)
     const {setTelefone} = useContext(Context)
+
+    function openMenu(e){
+        const menu = document.getElementById('menu')
+
+        if(menu.style.display === 'flex'){
+            menu.style.display = 'none'
+        } else{
+            menu.style.display = 'flex'
+        }
+    }
+
     // openModal - incluir
     function openModal(){
         /* modal cadastro */
@@ -50,12 +63,17 @@ export default function Header(){
 
     return(
         <header className='bg-slate-800' id='header_flexivel'>
-            <button id='openModal' onClick={openModal}>Incluir usuario</button>
-            
-            <nav id='configuracoes'>
-                <Link id='configButton'  className='rounded-sm' to={`/config/${id}`}>Configurações</Link>
-                <button id='logoutUser' onClick={logOutUser}>Sair</button>
-            </nav>
+            <span id='menuHamburguer' onClick={openMenu}><TiThMenu size={'3em'} color='white'/></span>
+
+
+            <menu id='menu'>
+                <button id='openModal' onClick={openModal}>Incluir usuario</button>
+                
+                <nav id='configuracoes'>
+                    <Link id='configButton'  className='rounded-sm' to={`/config/${id}`}>Configurações</Link>
+                    <button id='logoutUser' onClick={logOutUser}>Sair</button>
+                </nav>
+            </menu>
         </header>
     )
 }

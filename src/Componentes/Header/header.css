@@ -1,0 +1,75 @@
+header{
+    width: 13vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 20px 0px;
+}
+menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95vh;
+}
+
+#menuHamburguer{
+    display: none;
+}
+
+@media screen and (max-width:950px){
+    header{
+      flex-direction: row;
+      width: 100vw;
+      padding: 20px;
+    }
+  
+    menu{
+        height: 4.3vh;
+        flex-direction: row;
+        width: 100vw;
+    }
+
+    #configuracoes{
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+}
+
+@media screen and (max-width:431px){
+    header{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #menuHamburguer{
+        display: block;
+    }
+
+    menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        height: 14vh;
+        gap: 10px;
+    }
+
+    #openModal{
+        width: 70vw;
+    }
+
+    #configuracoes{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #configuracoes > button{
+        width: 70vw;
+    }
+
+    #configuracoes > a {
+        width: 70vw;
+    }
+}
