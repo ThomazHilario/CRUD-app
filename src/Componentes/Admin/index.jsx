@@ -5,6 +5,7 @@ import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
 import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
 import Header from '../Header'
+import PropTypes from 'prop-types'
 
 
 export default function Admin(){
@@ -301,3 +302,13 @@ function LinhasTable({ idx, nome, idade, email, telefone, openModalEdicao, delet
     )
 }
 
+// propTypes LinhasTable
+LinhasTable.propTypes = {
+    idx:PropTypes.node,
+    nome:PropTypes.node,
+    idade:PropTypes.node,
+    email:PropTypes.node,
+    telefone:PropTypes.node,
+    openModalEdicao:PropTypes.node,
+    deleteUser:PropTypes.node
+}
