@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react'
-
+import PropTypes from 'prop-types'
 // Criar um contexto
 export const Context = createContext({})
 
@@ -26,4 +26,8 @@ export default function ContextProvider({children}){
         </Context.Provider>
     )
 
+}
+
+ContextProvider.propTypes = {
+    children:PropTypes.node
 }
