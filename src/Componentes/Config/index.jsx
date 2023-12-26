@@ -6,7 +6,6 @@ import {auth, database} from '../../Services/firebaseConnection'
 import {doc, deleteDoc} from 'firebase/firestore'
 import {deleteUser} from 'firebase/auth'
 import Header from '../Header'
-import PropTypes from 'prop-types'
 
 
 export default function Config(){

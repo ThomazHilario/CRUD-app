@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react'
-import PropTypes from 'prop-types'
+
 // Criar um contexto
 export const Context = createContext({})
 

@@ -5,7 +5,6 @@ import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
 import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
 import Header from '../Header'
-import PropTypes from 'prop-types'
 
 
 export default function Admin(){
