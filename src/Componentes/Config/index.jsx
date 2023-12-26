@@ -94,9 +94,3 @@ function FormDetails({uid,email}){
         </div>
     )
 }
-
-// propTypes FormDetails
-FormDetails.propTypes = {
-    uid:PropTypes.node,
-    email:PropTypes.node
-}

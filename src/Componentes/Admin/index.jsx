@@ -302,13 +302,3 @@ function LinhasTable({ idx, nome, idade, email, telefone, openModalEdicao, delet
     )
 }
 
-// propTypes LinhasTable
-LinhasTable.propTypes = {
-    idx:PropTypes.node,
-    nome:PropTypes.node,
-    idade:PropTypes.node,
-    email:PropTypes.node,
-    telefone:PropTypes.node,
-    openModalEdicao:PropTypes.node,
-    deleteUser:PropTypes.node
-}
