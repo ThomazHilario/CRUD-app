@@ -158,10 +158,11 @@ th, td{
 
 @media screen and (max-width:720px){
     #main_admin{
-        height: 100%;
+        height: calc(100% + 609px);
     }
 
     #container_table {
+        width: 100%;
         padding: 0;
     }
 
