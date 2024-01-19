@@ -155,3 +155,39 @@ th, td{
         display: block;
     }
 }
+
+@media screen and (max-width:720px){
+    #main_admin{
+        height: 100%;
+    }
+
+    #container_table {
+        padding: 0;
+    }
+
+    table > thead {
+        display: none;
+    }
+
+    table > tbody{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .linha{
+        background-color: rgba(32, 29, 76, 0.721);
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    table > tbody > tr > td{
+        border: 0px;
+        display: flex;
+    }
+
+    table > tbody > tr > td::before{
+        content: attr(data-table);
+        margin-left: 10px;
+    }
+}

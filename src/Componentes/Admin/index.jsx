@@ -38,8 +38,11 @@ export default function Admin(){
                 // Condição caso tenha clientes
                 if(docSnap.data().clientes){
                     setLista(docSnap.data().clientes)
+
+                    // Alterando o padding do container table
+                    document.getElementById('container_table').style.padding = '10px'
                 }
-                
+            
             }catch(e){
                 console.log(e)
             }
@@ -288,11 +291,11 @@ export default function Admin(){
 // Componente para exibir os tr
 function LinhasTable({ idx, nome, idade, email, telefone, openModalEdicao, deleteUser}){
     return(
-        <tr>
-            <td>{nome}</td>
-            <td>{idade}</td>
-            <td>{email}</td>
-            <td>{telefone}</td>
+        <tr className='linha'>
+            <td data-table="Nome:">{nome}</td>
+            <td data-table="Idade:">{idade}</td>
+            <td data-table="Email:">{email}</td>
+            <td data-table="Telefone:">{telefone}</td>
             <td>
                 <button className='btn-edit' id='editModal' onClick={() => openModalEdicao(idx)}>Editar</button>
                 <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
