@@ -66,27 +66,52 @@ export default function Admin(){
         /* modal cadastro */
         let modal = document.getElementById('modal_edicao')
 
-        if(modal.style.display === 'grid'){
-            document.querySelectorAll('.btn-edit')[value].textContent ='Editar'
-            modal.style.display = 'none'
-
-            // Valor padrao do state index
-            setindex(null)
-        } else{
-            document.querySelectorAll('.btn-edit')[value].textContent ='Fechar'
-            modal.style.display = 'grid'
-            
-            // setando valor na state de index
-            setindex(value)
-
-            // Pegando o obj pelo index
-            const item = lista[value]
-
-            // Setando os valores das propriedades do objeto nas states
-            setNome(item.nome)
-            setIdade(item.idade)
-            setEmail(item.email)
-            setTelefone(item.telefone)
+        if(window.innerWidth > 420){
+            if(modal.style.display === 'grid'){
+                document.querySelectorAll('.btn-edit')[value].textContent ='Editar'
+                modal.style.display = 'none'
+    
+                // Valor padrao do state index
+                setindex(null)
+            } else{
+                document.querySelectorAll('.btn-edit')[value].textContent ='Fechar'
+                modal.style.display = 'grid'
+                
+                // setando valor na state de index
+                setindex(value)
+    
+                // Pegando o obj pelo index
+                const item = lista[value]
+    
+                // Setando os valores das propriedades do objeto nas states
+                setNome(item.nome)
+                setIdade(item.idade)
+                setEmail(item.email)
+                setTelefone(item.telefone)
+            }
+        }else{
+            if(modal.style.display === 'flex'){
+                document.querySelectorAll('.btn-edit')[value].textContent ='Editar'
+                modal.style.display = 'none'
+    
+                // Valor padrao do state index
+                setindex(null)
+            } else{
+                document.querySelectorAll('.btn-edit')[value].textContent ='Fechar'
+                modal.style.display = 'flex'
+                
+                // setando valor na state de index
+                setindex(value)
+    
+                // Pegando o obj pelo index
+                const item = lista[value]
+    
+                // Setando os valores das propriedades do objeto nas states
+                setNome(item.nome)
+                setIdade(item.idade)
+                setEmail(item.email)
+                setTelefone(item.telefone)
+            }
         }
     }
 

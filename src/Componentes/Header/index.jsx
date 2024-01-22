@@ -30,17 +30,32 @@ export default function Header(){
         /* modal cadastro */
         let modal = document.getElementById('modal_cadastro')
 
-        if(modal.style.display === 'grid'){
-            modal.style.display = 'none'
-            document.getElementById('openModal').textContent = 'Incluir usuario'
+        if(window.innerWidth > 420){
+            if(modal.style.display === 'grid'){
+                modal.style.display = 'none'
+                document.getElementById('openModal').textContent = 'Incluir usuario'
+            } else{
+                modal.style.display = 'grid'
+                document.getElementById('openModal').textContent = 'Fechar'
+    
+                setNome('')
+                setIdade('')
+                setEmail('')
+                setTelefone('')
+            }
         } else{
-            modal.style.display = 'grid'
-            document.getElementById('openModal').textContent = 'Fechar'
-
-            setNome('')
-            setIdade('')
-            setEmail('')
-            setTelefone('')
+            if(modal.style.display === 'flex'){
+                modal.style.display = 'none'
+                document.getElementById('openModal').textContent = 'Incluir usuario'
+            } else{
+                modal.style.display = 'flex'
+                document.getElementById('openModal').textContent = 'Fechar'
+    
+                setNome('')
+                setIdade('')
+                setEmail('')
+                setTelefone('')
+            }
         }
     }
 
