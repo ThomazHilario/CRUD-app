@@ -2,11 +2,14 @@ import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {Link} from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import {auth} from '../../Services/firebaseConnection'
 import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import './register.css'
 
 export default function Register(){
+    // Importando o register eo handleSubmit do useForm
+    const {register, handleSubmit} = useForm()
 
     // navigate
     const navigate = useNavigate()
@@ -33,22 +36,17 @@ export default function Register(){
 
     const [carregado,setCarregado] = useState(false)
 
-
-    // States - input
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    
     // Registrando usuario
-    async function registrarUsuario(e){
+    async function registrarUsuario(data){
         try {
-            // Cancelando formulario
-            e.preventDefault()
-
             // Criando usuario
-            const cadastro = await createUserWithEmailAndPassword(auth,email,password)
+            const cadastro = await createUserWithEmailAndPassword(auth,data.email,data.password)
 
             // mensagem de sucesso
             toast.success('Usuario criado')
+
+            // Salvando informações do usuário na localStorage
+            localStorage.setItem('user',JSON.stringify(cadastro.user))
 
             // navegando ate a pagina
             navigate(`/admin/${cadastro.user.uid}`)
@@ -87,24 +85,24 @@ export default function Register(){
     } else{
         return(
             <main className='mainRegister'>
-                <form className='formStyle'>
+                <form className='formStyle' onSubmit={handleSubmit(registrarUsuario)}>
                     {/* title form */}
                     <legend>Cadastro</legend>
     
                     {/* container email */}
                     <div className='container_input'>
                         <label>Email:</label>
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" {...register('email', { required: true })} id='email'/>
                     </div>
     
                     {/* container Password */}
                     <div className='container_input'>
                         <label>Password:</label>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" {...register('password', { required: true })} id='password'/>
                     </div>
     
                     {/* buttons */}
-                    <button className='registerButton' onClick={registrarUsuario}>Registrar</button>
+                    <button className='registerButton'>Registrar</button>
                     
                     <p>Possui uma conta ? <Link to="/" id='linkLogin'>Conectar agora</Link></p>
                 </form>

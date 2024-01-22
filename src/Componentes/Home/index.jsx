@@ -2,11 +2,15 @@ import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {toast} from 'react-toastify'
+import { useForm } from 'react-hook-form'
 import {auth} from '../../Services/firebaseConnection'
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import './home.css'
 
 function Home(){
+    // Instanciando o hook form
+    const { register, handleSubmit } = useForm()
+
 
     // Navigate
     const navigate = useNavigate()
@@ -19,7 +23,7 @@ function Home(){
         async function loadAuth(){
             try {
                 // verificando se o usuario ja efetuou o login
-                await onAuthStateChanged(auth,(user) => {
+                onAuthStateChanged(auth,(user) => {
                     if(user){
                         navigate(`/admin/${user.uid}`)
                     } else{
@@ -37,18 +41,11 @@ function Home(){
     // state - Carregado
     const [carregado, setCarregado] = useState(false)
 
-    // States - input
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-
     // Logando usuario
-    async function singInUser(e){
-        try {
-            // Cancelando envio do formulario
-            e.preventDefault()   
-
+    async function singInUser(data){
+        try { 
             // Logando usuario
-            const login = await signInWithEmailAndPassword(auth,email,password)
+            const login = await signInWithEmailAndPassword(auth,data.email,data.password)
 
             // Caso tenha user
             if(login.user){
@@ -94,24 +91,24 @@ function Home(){
     }else{
         return(
             <main className='mainHome'>
-                <form className='formStyle'>
+                <form className='formStyle' onSubmit={handleSubmit(singInUser)}>
                     {/* title form */}
                     <legend>Login</legend>
     
                     {/* container email */}
                     <div className='container_input'>
                         <label>Email:</label>
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" {...register('email', {required:true} )} id='email'/>
                     </div>
     
                     {/* container Password */}
                     <div className='container_input'>
                         <label>Password:</label>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" {...register('password', {required:true} )} id='password'/>
                     </div>
     
                     {/* buttons */}
-                    <button className='loginButton' onClick={singInUser}>Login</button>
+                    <button className='loginButton'>Login</button>
                     
                     <p>Não tem uma conta ? <Link to="/register" id='linkCadastro'>Cadastre-se</Link></p>
                 </form>
