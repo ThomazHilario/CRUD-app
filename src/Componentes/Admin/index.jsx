@@ -289,7 +289,7 @@ export default function Admin(){
                             <th>Idade</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Acao</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
 
