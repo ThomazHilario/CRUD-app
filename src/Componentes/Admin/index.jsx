@@ -50,7 +50,7 @@ export default function Admin(){
 
         // chamando funcao loadLista
         loadLista()
-    },[id, setId, idUser])
+    },[setId, idUser])
 
     // state - campos forms
     const {nome,setNome} = useContext(Context)
@@ -283,19 +283,19 @@ export default function Admin(){
                 </form>
 
                 <table className='text-white table-auto'>
-                    {lista.length > 0 ? <thead>
-                        <tr>
+                    <thead>
+                        {lista.length > 0 ? <tr>
                             <th>Nome</th>
                             <th>Idade</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>  : <p className='text-center'>Nenhum Chamado</p>}
+                            <th>Ação</th>   
+                        </tr> : <tr><th className='border-none'>nenhum chamado</th></tr>}
+                    </thead>
 
                     <tbody>
                         
-                        {lista.map((item,idx) => <LinhasTable
+                        {lista.length > 0 && lista.map((item,idx) => <LinhasTable
                         key={idx}
                         idx={idx} 
                         nome={item.nome} 
