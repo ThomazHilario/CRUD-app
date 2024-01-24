@@ -283,7 +283,7 @@ export default function Admin(){
                 </form>
 
                 <table className='text-white table-auto'>
-                    <thead>
+                    {lista.length > 0 ? <thead>
                         <tr>
                             <th>Nome</th>
                             <th>Idade</th>
@@ -291,7 +291,7 @@ export default function Admin(){
                             <th>Telefone</th>
                             <th>Ação</th>
                         </tr>
-                    </thead>
+                    </thead>  : <p className='text-center'>Nenhum Chamado</p>}
 
                     <tbody>
                         
