@@ -290,7 +290,7 @@ export default function Admin(){
                             <th>Email</th>
                             <th>Telefone</th>
                             <th>Ação</th>   
-                        </tr> : <tr><th className='border-none'>nenhum chamado</th></tr>}
+                        </tr> : <tr><th className='border-none'>Nenhum chamado</th></tr>}
                     </thead>
 
                     <tbody>

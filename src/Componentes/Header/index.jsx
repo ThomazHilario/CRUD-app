@@ -80,7 +80,7 @@ export default function Header(){
     return(
         <header className='bg-slate-800' id='header_flexivel'>
             {/* menu Hamburguer */}
-            <span id='menuHamburguer' onClick={openMenu}><TiThMenu size={'3em'} color='white'/></span>
+            <span id='menuHamburguer' onClick={openMenu}><TiThMenu size={'2em'} color='white'/></span>
 
             {/* Menu */}
             <menu id='menu'>
