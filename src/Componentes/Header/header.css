@@ -7,6 +7,24 @@ header{
   
     padding: 20px 0px;
 }
+#imgPerfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#imgPerfil > input{
+    display: none;
+}
+
+#userImg{
+    clip-path: circle(50%);
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    filter: brightness(110%);
+}
 menu{
     display: flex;
     flex-direction: column;
@@ -23,8 +41,13 @@ menu{
       flex-direction: row;
       width: 100vw;
       padding: 20px;
+      height: 15vh;
     }
   
+    #imgPerfil{
+        flex-direction: row;
+    }
+
     menu{
         height: 4.3vh;
         flex-direction: row;
@@ -38,10 +61,16 @@ menu{
     }
 }
 
-@media screen and (max-width:431px){
+@media screen and (max-width:550px){
     header{
         flex-direction: column;
         gap: 10px;
+        height: 100%;
+    }
+
+    #imgPerfil{
+        flex-direction: column;
+        align-items: center;
     }
 
     #menuHamburguer{
@@ -52,7 +81,7 @@ menu{
         display: none;
         flex-direction: column;
         align-items: center;
-        height: 14vh;
+        height: 30vh;
         gap: 10px;
     }
 

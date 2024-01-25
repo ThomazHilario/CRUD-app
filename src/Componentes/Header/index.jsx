@@ -1,12 +1,15 @@
 import './header.css'
 import {Link, Navigate} from 'react-router-dom'
-import { auth } from '../../Services/firebaseConnection'
+import { auth, storage, database } from '../../Services/firebaseConnection'
+import { doc, updateDoc } from 'firebase/firestore'
 import { signOut } from 'firebase/auth'
+import { uploadBytes, ref, getDownloadURL, getMetadata } from 'firebase/storage'
 import {useContext} from 'react'
 import { Context } from '../../Context'
 import { TiThMenu } from "react-icons/ti";
+import defaultImg from '../../assets/icons/userDefault.png'
+export default function Header({conta, setConta}){
 
-export default function Header(){
     const {id} = useContext(Context)
     // state - campos forms
     const {setNome} = useContext(Context)
@@ -77,6 +80,37 @@ export default function Header(){
         }    
     }
 
+    function changeImg(e){
+        e.target.parentElement.firstElementChild.click()
+    }
+
+    async function imgReceive(e){
+
+        try {
+            if(e.target.files[0].type === 'image/jpeg' || e.target.files[0].type === 'image/png'){
+                // url da minha img
+                const avatarUrl = URL.createObjectURL(e.target.files[0])
+
+                // Salvando na state conta
+                setConta({
+                    img:avatarUrl
+                })
+
+                // Storage reference
+                const storageRef = ref(storage, `clientesImg/${id}/${e.target.files[0].name}`)
+
+                // Salvando a foto no banco de dados
+                uploadBytes(storageRef,avatarUrl)
+            }
+            
+
+        } catch (e) {
+            console.log(e)
+        }
+
+
+    }
+
     return(
         <header className='bg-slate-800' id='header_flexivel'>
             {/* menu Hamburguer */}
@@ -84,7 +118,14 @@ export default function Header(){
 
             {/* Menu */}
             <menu id='menu'>
-                <button id='openModal' onClick={openModal}>Incluir usuario</button>
+                <div id='imgPerfil'>
+                    <input type='file' onChange={imgReceive}/>
+
+                    <img id='userImg' src={conta.img !== null ? conta.img : defaultImg} onClick={changeImg}/>
+
+                    <button id='openModal' onClick={openModal}>Incluir usuario</button>
+                </div>
+                
                 
                 <nav id='configuracoes'>
                     <Link id='configButton'  className='rounded-sm' to={`/config/${id}`}>Configurações</Link>

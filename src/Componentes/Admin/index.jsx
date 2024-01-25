@@ -1,6 +1,6 @@
 import './admin.css'
-import {useParams,} from 'react-router-dom'
-import { database,} from '../../Services/firebaseConnection'
+import {useParams} from 'react-router-dom'
+import { database} from '../../Services/firebaseConnection'
 import {doc, getDoc, updateDoc} from 'firebase/firestore'
 import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
@@ -13,6 +13,9 @@ export default function Admin(){
 
     // State global - id
     const {id,setId} = useContext(Context)
+
+    // state contaInfo
+    const [conta, setConta] = useState({})
 
     // state lista usuarios
     const [lista,setLista] = useState([])
@@ -35,11 +38,15 @@ export default function Admin(){
 
                 // Condição caso tenha clientes
                 if(docSnap.data().clientes){
+                    // Salvando os usuarios na state clientes
                     setLista(docSnap.data().clientes)
 
                     // Alterando o padding do container table
                     document.getElementById('container_table').style.padding = '10px'
-                }   
+                }
+
+                // Salvando informações da conta na state conta
+                setConta(docSnap.data().contaInfo)
             }catch(e){
                 console.log(e)
             }
@@ -48,7 +55,7 @@ export default function Admin(){
         // chamando funcao loadLista
         loadLista()
         
-    },[setId, idUser])
+    },[setId, idUser, id])
 
     // state - campos forms
     const {nome,setNome} = useContext(Context)
@@ -221,7 +228,7 @@ export default function Admin(){
         <main id='main_admin' className='bg-slate-900 flex justify-between'>
 
             {/* header component */}
-            <Header/>
+            <Header conta={conta} setConta={setConta}/>
 
             <div id='container_table'>
 
