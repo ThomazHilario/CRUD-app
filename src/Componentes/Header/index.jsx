@@ -1,14 +1,12 @@
 import './header.css'
 import {Link, Navigate} from 'react-router-dom'
-import { auth, storage, database } from '../../Services/firebaseConnection'
-import { doc, updateDoc } from 'firebase/firestore'
+import { auth } from '../../Services/firebaseConnection'
 import { signOut } from 'firebase/auth'
-import { uploadBytes, ref, getDownloadURL, getMetadata } from 'firebase/storage'
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import { Context } from '../../Context'
 import { TiThMenu } from "react-icons/ti";
 import defaultImg from '../../assets/icons/userDefault.png'
-export default function Header({conta, setConta}){
+export default function Header(){
 
     const {id} = useContext(Context)
     // state - campos forms
@@ -17,6 +15,7 @@ export default function Header({conta, setConta}){
     const {setEmail} = useContext(Context)
     const {setTelefone} = useContext(Context)
 
+    const [avatarUrl, setAvatarUrl] = useState(null)
     // Alterar o display do menu
     function openMenu(){
         const menu = document.getElementById('menu')
@@ -84,33 +83,6 @@ export default function Header({conta, setConta}){
         e.target.parentElement.firstElementChild.click()
     }
 
-    async function imgReceive(e){
-
-        try {
-            if(e.target.files[0].type === 'image/jpeg' || e.target.files[0].type === 'image/png'){
-                // url da minha img
-                const avatarUrl = URL.createObjectURL(e.target.files[0])
-
-                // Salvando na state conta
-                setConta({
-                    img:avatarUrl
-                })
-
-                // Storage reference
-                const storageRef = ref(storage, `clientesImg/${id}/${e.target.files[0].name}`)
-
-                // Salvando a foto no banco de dados
-                uploadBytes(storageRef,avatarUrl)
-            }
-            
-
-        } catch (e) {
-            console.log(e)
-        }
-
-
-    }
-
     return(
         <header className='bg-slate-800' id='header_flexivel'>
             {/* menu Hamburguer */}
@@ -119,9 +91,9 @@ export default function Header({conta, setConta}){
             {/* Menu */}
             <menu id='menu'>
                 <div id='imgPerfil'>
-                    <input type='file' onChange={imgReceive}/>
+                    <input type='file' />
 
-                    <img id='userImg' src={conta.img !== null ? conta.img : defaultImg} onClick={changeImg}/>
+                    <img id='userImg' src={avatarUrl !== null ? avatarUrl : defaultImg} onClick={changeImg}/>
 
                     <button id='openModal' onClick={openModal}>Incluir usuario</button>
                 </div>
