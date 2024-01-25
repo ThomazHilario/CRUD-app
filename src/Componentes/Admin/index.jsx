@@ -1,7 +1,7 @@
 import './admin.css'
 import {useParams,} from 'react-router-dom'
 import { database,} from '../../Services/firebaseConnection'
-import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore'
+import {doc, getDoc, updateDoc} from 'firebase/firestore'
 import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
 import Header from '../Header'
@@ -23,8 +23,6 @@ export default function Admin(){
         // Setando id na state de id
         setId(idUser)
 
-
-
         //Função loadLista
         async function loadLista(){
 
@@ -41,8 +39,7 @@ export default function Admin(){
 
                     // Alterando o padding do container table
                     document.getElementById('container_table').style.padding = '10px'
-                }
-            
+                }   
             }catch(e){
                 console.log(e)
             }
@@ -50,6 +47,7 @@ export default function Admin(){
 
         // chamando funcao loadLista
         loadLista()
+        
     },[setId, idUser])
 
     // state - campos forms
@@ -138,7 +136,7 @@ export default function Admin(){
                 }])
 
                 // Adicionando lista no banco de dados especifico
-                await setDoc(doc(database,'clientes',id),{
+                await updateDoc(doc(database,'clientes',id),{
                     clientes: [...lista,{
                         nome:nome, 
                         idade:idade,

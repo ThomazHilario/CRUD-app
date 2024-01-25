@@ -3,7 +3,8 @@ import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import {auth} from '../../Services/firebaseConnection'
+import { auth, database } from '../../Services/firebaseConnection'
+import { setDoc, doc } from 'firebase/firestore'
 import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import './register.css'
 
@@ -36,6 +37,16 @@ export default function Register(){
 
     const [carregado,setCarregado] = useState(false)
 
+    // Registrando informacoes do usuario
+    async function registrandoInfos(id){
+        await setDoc(doc(database,'clientes',id),{
+            contaInfo:{
+                img:null
+            },
+            clientes:[]
+        })
+    }
+
     // Registrando usuario
     async function registrarUsuario(data){
         try {
@@ -47,6 +58,9 @@ export default function Register(){
 
             // Salvando informações do usuário na localStorage
             localStorage.setItem('user',JSON.stringify(cadastro.user))
+
+            // Registrando informacoes no banco
+            registrandoInfos(cadastro.user.uid)
 
             // navegando ate a pagina
             navigate(`/admin/${cadastro.user.uid}`)
