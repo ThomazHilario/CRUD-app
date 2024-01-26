@@ -34,9 +34,13 @@
 /* Container ImageProfile */
 #containerImageProfile{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
+
+/* image container */
 #image{
     display: flex;
     flex-direction: column;
@@ -47,6 +51,41 @@
 #image > input{
     display: none;
 }
+#image > p{
+
+    color: white;
+    position: absolute;
+    opacity: 0;
+
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+#image > p:hover{
+    opacity: 0.7;
+    background-color: rgba(25, 24, 24, 0.557);
+}
+/* img tag */
+#image > img{
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+/* button salvar */
+#containerImageProfile > button{
+    background-color: rgb(63, 63, 185);
+}
+
 /* Container delete */
 #container_delete{
     height: calc(40vh - 52px);

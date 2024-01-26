@@ -3,8 +3,9 @@ import left from '../../assets/icons/left.png'
 import { useEffect, useState, useContext } from 'react'
 import { Context } from '../../Context'
 import { Link, useParams } from 'react-router-dom'
-import {auth, database} from '../../Services/firebaseConnection'
-import {doc, deleteDoc} from 'firebase/firestore'
+import {auth, database, storage} from '../../Services/firebaseConnection'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import {doc, deleteDoc, updateDoc} from 'firebase/firestore'
 import {deleteUser} from 'firebase/auth'
 import defaultImg from '../../assets/icons/userDefault.png'
 import Header from '../Header'
@@ -102,21 +103,60 @@ function FormDetails({uid,email}){
 
 // Component UpdateImageProfile
 function UpdateImageProfile(){
+    // id do usuario
+    const {idUser} = useParams()
+
     // state img
     const {avatarUrl, setAvatarUrl} = useContext(Context)
 
-    
+    function changeImg(){
+        // Acionando input file
+        document.getElementById('fileInput').click()        
+    }
+
+    async function updateImage(input){
+        // Salvando configuracoes do arquivo 
+        const inputFile = input.files[0]
+
+        // Criando a url da imagem
+        const avatarUrl = URL.createObjectURL(inputFile)
+
+        // setando nova imagem na state avatartUrl
+        setAvatarUrl(avatarUrl)
+
+        // referencia ao storage
+        const storageRef = ref(storage, `imagens/${idUser}/${inputFile.name}`)
+
+        // Salvando imagem no banco de dados
+        await uploadBytes(storageRef, inputFile)
+
+        // url da foto no banco de dados
+        const urlImage = await getDownloadURL(storageRef)
+
+        // Salvando a foto no banco de dados do usuario
+        await updateDoc(doc(database,'clientes',idUser),{
+            avatarUrl:urlImage
+        })
+
+        
+    }
+
     return(
         <div id='containerImageProfile'>
             {/* image */}
             <div id='image'>
 
                 {/* input file */}
-                <input type='file' />
+                <input type='file' id='fileInput' onChange={(e) => updateImage(e.target)}/>
 
                 {/* img */}
-                <img src={avatarUrl !== null ? avatarUrl : defaultImg} alt='imagem da foto'/>
+                <img src={avatarUrl !== null ? avatarUrl : defaultImg} alt='imagem da foto' />
+
+                {/* descricao */}
+                <p onClick={changeImg}>Alterar foto</p>
             </div>
+
+            <button>Salvar</button>
         </div>
     )
 }

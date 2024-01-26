@@ -157,7 +157,7 @@ th, td{
 
 @media screen and (max-width:720px){
     #main_admin{
-        height: 100vh;
+        height: auto;
     }
 
     #container_table {

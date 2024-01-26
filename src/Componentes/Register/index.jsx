@@ -40,9 +40,7 @@ export default function Register(){
     // Registrando informacoes do usuario
     async function registrandoInfos(id){
         await setDoc(doc(database,'clientes',id),{
-            contaInfo:{
-                img:null
-            },
+            avatarUrl:null,
             clientes:[]
         })
     }
