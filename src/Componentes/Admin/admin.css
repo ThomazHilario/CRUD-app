@@ -3,7 +3,6 @@
 }
 /* main_admin*/
 #main_admin{
-    grid-template-columns: 1fr;
     height: 100vh;
 }
 
@@ -158,12 +157,13 @@ th, td{
 
 @media screen and (max-width:720px){
     #main_admin{
-        height: calc(100% + 609px);
+        height: 100vh;
     }
 
     #container_table {
         width: 100%;
         padding: 0;
+        height: 100%;
     }
 
     table > thead {

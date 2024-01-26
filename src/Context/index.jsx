@@ -13,6 +13,7 @@ export default function ContextProvider({children}){
     const [idade,setIdade] = useState('')
     const [email,setEmail] = useState('')
     const [telefone,setTelefone] = useState('')
+    const [avatarUrl, setAvatarUrl] = useState(null)
 
     // index
     const [index,setindex] = useState(null)
@@ -21,7 +22,7 @@ export default function ContextProvider({children}){
     const [logado,setLogado] = useState(null)
 
     return(
-        <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, index, setindex, id, setId, logado, setLogado}}>
+        <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, index, setindex, id, setId, logado, setLogado, avatarUrl, setAvatarUrl}}>
             {children}
         </Context.Provider>
     )

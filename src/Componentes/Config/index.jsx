@@ -1,16 +1,19 @@
 import './config.css'
 import left from '../../assets/icons/left.png'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { Context } from '../../Context'
 import { Link, useParams } from 'react-router-dom'
 import {auth, database} from '../../Services/firebaseConnection'
 import {doc, deleteDoc} from 'firebase/firestore'
 import {deleteUser} from 'firebase/auth'
+import defaultImg from '../../assets/icons/userDefault.png'
 import Header from '../Header'
 
 
 export default function Config(){
     // id do usuario
     const {idUser} = useParams()
+
 
     // buscando informacoes do usuario
     useEffect(() => {
@@ -39,6 +42,9 @@ export default function Config(){
 
                 {/* Title config */}
                 <h2 className='titleConfig'>Detalhes da conta</h2>
+
+                {/* UpdateImageProfile */}
+                <UpdateImageProfile/>
 
                 {/* Formulario de detalhes da conta */}
                 <FormDetails uid={user.uid} email={user.email}/>
@@ -90,6 +96,27 @@ function FormDetails({uid,email}){
                 {/* button para excluir a conta */}
                 <button type='submit'>Delete my account</button>
             </form>
+        </div>
+    )
+}
+
+// Component UpdateImageProfile
+function UpdateImageProfile(){
+    // state img
+    const {avatarUrl, setAvatarUrl} = useContext(Context)
+
+    
+    return(
+        <div id='containerImageProfile'>
+            {/* image */}
+            <div id='image'>
+
+                {/* input file */}
+                <input type='file' />
+
+                {/* img */}
+                <img src={avatarUrl !== null ? avatarUrl : defaultImg} alt='imagem da foto'/>
+            </div>
         </div>
     )
 }

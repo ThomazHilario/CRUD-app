@@ -6,6 +6,7 @@ header{
     align-items: center;
   
     padding: 20px 0px;
+
 }
 #imgPerfil{
     display: flex;
@@ -64,8 +65,10 @@ menu{
 @media screen and (max-width:550px){
     header{
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
         gap: 10px;
-        height: 100%;
     }
 
     #imgPerfil{
@@ -81,8 +84,8 @@ menu{
         display: none;
         flex-direction: column;
         align-items: center;
-        height: 30vh;
         gap: 10px;
+        height: auto;
     }
 
     #openModal{

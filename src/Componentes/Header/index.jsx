@@ -2,7 +2,7 @@ import './header.css'
 import {Link, Navigate} from 'react-router-dom'
 import { auth } from '../../Services/firebaseConnection'
 import { signOut } from 'firebase/auth'
-import {useContext, useState} from 'react'
+import {useContext} from 'react'
 import { Context } from '../../Context'
 import { TiThMenu } from "react-icons/ti";
 import defaultImg from '../../assets/icons/userDefault.png'
@@ -14,8 +14,8 @@ export default function Header(){
     const {setIdade} = useContext(Context)
     const {setEmail} = useContext(Context)
     const {setTelefone} = useContext(Context)
+    const {avatarUrl} = useContext(Context)
 
-    const [avatarUrl, setAvatarUrl] = useState(null)
     // Alterar o display do menu
     function openMenu(){
         const menu = document.getElementById('menu')
@@ -79,10 +79,6 @@ export default function Header(){
         }    
     }
 
-    function changeImg(e){
-        e.target.parentElement.firstElementChild.click()
-    }
-
     return(
         <header className='bg-slate-800' id='header_flexivel'>
             {/* menu Hamburguer */}
@@ -93,7 +89,7 @@ export default function Header(){
                 <div id='imgPerfil'>
                     <input type='file' />
 
-                    <img id='userImg' src={avatarUrl !== null ? avatarUrl : defaultImg} onClick={changeImg}/>
+                    <img id='userImg' src={avatarUrl !== null ? avatarUrl : defaultImg} />
 
                     <button id='openModal' onClick={openModal}>Incluir usuario</button>
                 </div>

@@ -31,6 +31,22 @@
     border-radius: 5px;
 }
 
+/* Container ImageProfile */
+#containerImageProfile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#image > input{
+    display: none;
+}
 /* Container delete */
 #container_delete{
     height: calc(40vh - 52px);
