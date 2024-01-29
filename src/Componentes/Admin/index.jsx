@@ -12,10 +12,7 @@ export default function Admin(){
     const {idUser} = useParams()
 
     // State global - id
-    const {id,setId} = useContext(Context)
-
-    // state contaInfo
-    const [conta, setConta] = useState({})
+    const {id, setId, setAvatarUrl} = useContext(Context)
 
     // state lista usuarios
     const [lista,setLista] = useState([])
@@ -41,12 +38,15 @@ export default function Admin(){
                     // Salvando os usuarios na state clientes
                     setLista(docSnap.data().clientes)
 
+                    // Salvando informações da conta na state conta
+                    setAvatarUrl(docSnap.data().avatarUrl)
+
                     // Alterando o padding do container table
                     document.getElementById('container_table').style.padding = '10px'
                 }
 
-                // Salvando informações da conta na state conta
-                setConta(docSnap.data().contaInfo)
+                
+                
             }catch(e){
                 console.log(e)
             }
@@ -55,7 +55,7 @@ export default function Admin(){
         // chamando funcao loadLista
         loadLista()
         
-    },[setId, idUser, id])
+    },[setId, idUser, id, setAvatarUrl])
 
     // state - campos forms
     const {nome,setNome} = useContext(Context)
@@ -228,7 +228,7 @@ export default function Admin(){
         <main id='main_admin' className='bg-slate-900 flex justify-between'>
 
             {/* header component */}
-            <Header conta={conta} setConta={setConta}/>
+            <Header/>
 
             <div id='container_table'>
 

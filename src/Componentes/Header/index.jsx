@@ -9,6 +9,7 @@ import defaultImg from '../../assets/icons/userDefault.png'
 export default function Header(){
 
     const {id} = useContext(Context)
+    
     // state - campos forms
     const {setNome} = useContext(Context)
     const {setIdade} = useContext(Context)

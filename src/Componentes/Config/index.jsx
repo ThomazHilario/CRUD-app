@@ -7,6 +7,7 @@ import {auth, database, storage} from '../../Services/firebaseConnection'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import {doc, deleteDoc, updateDoc} from 'firebase/firestore'
 import {deleteUser} from 'firebase/auth'
+import { toast } from 'react-toastify'
 import defaultImg from '../../assets/icons/userDefault.png'
 import Header from '../Header'
 
@@ -138,7 +139,8 @@ function UpdateImageProfile(){
             avatarUrl:urlImage
         })
 
-        
+        // Notificacao de sucess
+        toast.success('Foto atualizada')
     }
 
     return(
@@ -155,8 +157,6 @@ function UpdateImageProfile(){
                 {/* descricao */}
                 <p onClick={changeImg}>Alterar foto</p>
             </div>
-
-            <button>Salvar</button>
         </div>
     )
 }

@@ -81,11 +81,6 @@
     border-radius: 50%;
 }
 
-/* button salvar */
-#containerImageProfile > button{
-    background-color: rgb(63, 63, 185);
-}
-
 /* Container delete */
 #container_delete{
     height: calc(40vh - 52px);
