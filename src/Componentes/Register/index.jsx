@@ -57,6 +57,9 @@ export default function Register(){
             // Salvando informações do usuário na localStorage
             localStorage.setItem('user',JSON.stringify(cadastro.user))
 
+            // Salvando o themeMode inicial ao entrar no sistema
+            localStorage.setItem('themeMode',JSON.stringify(false))
+
             // Registrando informacoes no banco
             registrandoInfos(cadastro.user.uid)
 

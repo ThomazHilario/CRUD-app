@@ -1,4 +1,5 @@
 import './header.css'
+import { useEffect } from 'react'
 import {Link, Navigate} from 'react-router-dom'
 import { auth } from '../../Services/firebaseConnection'
 import { signOut } from 'firebase/auth'
@@ -6,6 +7,7 @@ import {useContext} from 'react'
 import { Context } from '../../Context'
 import { TiThMenu } from "react-icons/ti";
 import defaultImg from '../../assets/icons/userDefault.png'
+
 export default function Header(){
 
     const {id} = useContext(Context)
@@ -16,6 +18,17 @@ export default function Header(){
     const {setEmail} = useContext(Context)
     const {setTelefone} = useContext(Context)
     const {avatarUrl} = useContext(Context)
+
+    useEffect(() => {
+
+        // Verificando se o header tem que estar no lighMode
+        if(JSON.parse(localStorage.getItem('themeMode')) === false){
+            document.querySelector('header').classList.remove('lightModeHeader')
+        } else{
+            document.querySelector('header').classList.add('lightModeHeader') 
+        }
+        
+    })
 
     // Alterar o display do menu
     function openMenu(){
@@ -74,6 +87,9 @@ export default function Header(){
 
             // Removendo dados da localStorage
             localStorage.removeItem('user')
+
+            // Removendo dados do themeMode
+            localStorage.removeItem('themeMode')
 
         } catch (error) {
             console.log(error)

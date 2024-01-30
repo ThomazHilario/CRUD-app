@@ -5,6 +5,11 @@
 #main_admin{
     height: 100vh;
 }
+/* darkMde */
+.main_light, .table_light{
+    background-color: rgb(234, 238, 255);
+    color: black;
+}
 
 /* navegacao de configuracoes */
 #configuracoes{
@@ -64,6 +69,7 @@ th, td{
     height: 45px;
     text-align: center;
 }
+
 .btn-delete{
     background-color: rgb(199, 76, 76);
     width: 70px;

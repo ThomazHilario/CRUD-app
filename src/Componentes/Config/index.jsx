@@ -19,10 +19,24 @@ export default function Config(){
 
     // buscando informacoes do usuario
     useEffect(() => {
+
+        // Salvando o valor do themeMode da localstorage no input
+        document.getElementById('themeTag').checked = JSON.parse(localStorage.getItem('themeMode'))
+
+        // Verificando a pagina config deve ficar no modo light ou dark
+        if(document.getElementById('themeTag').checked === true){
+            document.querySelectorAll('label').forEach(item => item.style.color = 'black')
+            document.getElementById('main_config').classList.add('lightMode')
+
+        }else{
+            document.querySelectorAll('label').forEach(item => item.style.color = 'white')
+            document.getElementById('main_config').classList.remove('lightMode')
+        }
+
         // Pegando informações na localStorage
         let data = localStorage.getItem('user') !== '' ? JSON.parse(localStorage.getItem('user')) : null
 
-        // Armazenando valor na staate user
+        // Armazenando valor na state user
         setUser(data)
         
     },[])
@@ -31,7 +45,7 @@ export default function Config(){
     const [user, setUser] = useState({})
 
     return (
-        <main id='main_config' className='bg-slate-900 flex'>
+        <main id='main_config' className='bg-slate-900 flex '>
             
             {/* Header component */}
             <Header/>
@@ -47,6 +61,9 @@ export default function Config(){
 
                 {/* UpdateImageProfile */}
                 <UpdateImageProfile/>
+
+                {/* UpdateThemeSystem */}
+                <UpdateThemeSystem/>
 
                 {/* Formulario de detalhes da conta */}
                 <FormDetails uid={user.uid} email={user.email}/>
@@ -158,5 +175,55 @@ function UpdateImageProfile(){
                 <p onClick={changeImg}>Alterar foto</p>
             </div>
         </div>
+    )
+}
+
+// Componente UpdateThemeSystem
+function UpdateThemeSystem(){
+
+    // updateMode
+    function updateMode(input){
+        if(input.checked === true){
+            input.checked = true
+
+            // Setando o valor na local storage
+            localStorage.setItem('themeMode',JSON.stringify(input.checked))
+
+            // Alterando o classList do header
+            document.querySelector('header').classList.add('lightModeHeader')
+
+            // Alterando o classList da main_config
+            document.getElementById('main_config').classList.add('lightMode')
+            
+            // Alterando a cor dos labels        
+            document.querySelectorAll('label').forEach(item => item.style.color = 'black')
+        } else{
+            input.checked = false
+
+            // Setando o valor na local storage
+            localStorage.setItem('themeMode',JSON.stringify(input.checked))
+
+            // Alterando o classList do header
+            document.querySelector('header').classList.remove('lightModeHeader')
+
+            // Alterando o classList da main_config
+            document.getElementById('main_config').classList.remove('lightMode')
+
+            // Alterando a cor dos labels            
+            document.querySelectorAll('label').forEach(item => item.style.color = 'white')
+        }
+
+    }
+
+    return(
+        <form id='form_theme_system'>
+            <label>Theme System:</label>
+
+            <label className="switch">
+                <input type="checkbox" id='themeTag' onChange={(e) => updateMode(e.target)}/>
+                <span className="slider" ></span>
+            </label>
+
+        </form>
     )
 }

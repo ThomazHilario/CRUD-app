@@ -60,7 +60,11 @@ function Home(){
             // navegando ate a pagina admin do usuario
             navigate(`/admin/${login.user.uid}`)
 
+            // Salvando informacoes do usuario na localStorage
             localStorage.setItem('user',JSON.stringify(login.user))
+
+            // Salvando o themeMode inicial ao entrar no sistema
+            localStorage.setItem('themeMode',JSON.stringify(false))
 
             // mensagem de sucesso
             toast.update(id,{render:'Seja Bem-vindo!', autoClose:1000, type:'success', isLoading:false})

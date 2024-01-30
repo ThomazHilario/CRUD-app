@@ -23,6 +23,15 @@ export default function Admin(){
         // Setando id na state de id
         setId(idUser)
 
+        if(JSON.parse(localStorage.getItem('themeMode')) === false){
+            
+            document.getElementById('main_admin').classList.remove('main_light')
+            document.querySelector('table').classList.remove('main_light')
+        } else{
+            document.getElementById('main_admin').classList.add('main_light')
+            document.querySelector('table').classList.add('table_light')
+        }
+
         //Função loadLista
         async function loadLista(){
 
