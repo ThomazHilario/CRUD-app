@@ -24,7 +24,6 @@ export default function Admin(){
         setId(idUser)
 
         if(JSON.parse(localStorage.getItem('themeMode')) === false){
-            
             document.getElementById('main_admin').classList.remove('main_light')
             document.querySelector('table').classList.remove('main_light')
         } else{

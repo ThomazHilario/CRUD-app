@@ -6,9 +6,24 @@
     height: 100vh;
 }
 /* darkMde */
-.main_light, .table_light{
+.main_light {
     background-color: rgb(234, 238, 255);
     color: black;
+    
+}
+
+/* Taable lightMode */
+.table_light{
+    background-color: rgb(234, 238, 255);
+    color: black;
+}
+
+.table_light > thead > tr > th{
+    border: 1px solid black;
+}
+
+.table_light > tbody > tr > td{
+    border: 1px solid black;
 }
 
 /* navegacao de configuracoes */
