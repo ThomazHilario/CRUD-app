@@ -178,7 +178,7 @@ th, td{
 
 @media screen and (max-width:720px){
     #main_admin{
-        height: auto;
+        height: 100%;
     }
 
     #container_table {
@@ -203,7 +203,16 @@ th, td{
         border-radius: 5px;
     }
 
+    .table_light > tbody > .linha{
+        background-color: rgba(16, 7, 149, 0.363)
+    }
+
     table > tbody > tr > td{
+        border: 0px;
+        display: flex;
+    }
+
+    .table_light > tbody > tr > td{
         border: 0px;
         display: flex;
     }

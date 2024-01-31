@@ -26,9 +26,11 @@ export default function Admin(){
         if(JSON.parse(localStorage.getItem('themeMode')) === false){
             document.getElementById('main_admin').classList.remove('main_light')
             document.querySelector('table').classList.remove('main_light')
+            document.querySelector('body').style.backgroundColor = 'rgb(15 23 42)'
         } else{
             document.getElementById('main_admin').classList.add('main_light')
             document.querySelector('table').classList.add('table_light')
+            document.querySelector('body').style.backgroundColor = 'rgb(234, 238, 255)'
         }
 
         //Função loadLista
