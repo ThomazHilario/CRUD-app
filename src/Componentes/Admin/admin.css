@@ -90,14 +90,12 @@ th, td{
     width: 70px;
     height: 25px;
     font-weight: normal;
-    margin-left: 5px;
 }
 .btn-edit{
     background-color: rgb(76, 199, 111);
     width: 70px;
     height: 25px;
     font-weight: normal;
-    margin-right: 5px;
 }
 /* modal de cadastro */
 .modal{

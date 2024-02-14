@@ -6,6 +6,7 @@ import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
 import Header from '../Header'
 
+import TableRow from '../TableRow'
 
 export default function Admin(){
     // Id do usuario
@@ -310,7 +311,7 @@ export default function Admin(){
 
                     <tbody>
                         
-                        {lista.length > 0 && lista.map((item,idx) => <LinhasTable
+                        {lista.length > 0 && lista.map((item,idx) => <TableRow
                         key={idx}
                         idx={idx} 
                         nome={item.nome} 
