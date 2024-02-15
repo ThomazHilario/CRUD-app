@@ -328,20 +328,3 @@ export default function Admin(){
         </main>
     )
 }
-
-// Componente para exibir os tr
-function LinhasTable({ idx, nome, idade, email, telefone, openModalEdicao, deleteUser}){
-    return(
-        <tr className='linha'>
-            <td data-table="Nome:">{nome}</td>
-            <td data-table="Idade:">{idade}</td>
-            <td data-table="Email:">{email}</td>
-            <td data-table="Telefone:">{telefone}</td>
-            <td>
-                <button className='btn-edit' id='editModal' onClick={() => openModalEdicao(idx)}>Editar</button>
-                <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
-            </td>
-        </tr>
-    )
-}
-
