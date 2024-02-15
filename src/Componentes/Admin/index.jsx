@@ -156,6 +156,7 @@ export default function Admin(){
                 // Adicionando lista no banco de dados especifico
                 await updateDoc(doc(database,'clientes',id),{
                     clientes: [...lista,{
+                        cratedDate:new Date().toLocaleDateString(),
                         nome:nome, 
                         idade:idade,
                         email:email,
@@ -313,7 +314,8 @@ export default function Admin(){
                         
                         {lista.length > 0 && lista.map((item,idx) => <TableRow
                         key={idx}
-                        idx={idx} 
+                        idx={idx}
+                        date={item.cratedDate} 
                         nome={item.nome} 
                         idade={item.idade} 
                         email={item.email} 

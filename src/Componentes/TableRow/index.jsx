@@ -3,7 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { FaAddressCard } from "react-icons/fa";
 
 // Componente para exibir os tr
-export default function TableRow({ idx, nome, idade, email, telefone, openModalEdicao, deleteUser}){
+export default function TableRow({ idx, date, nome, idade, email, telefone, openModalEdicao, deleteUser}){
     return(
         <tr className='linha'>
             <td data-table="Nome:">{nome}</td>
@@ -20,10 +20,11 @@ export default function TableRow({ idx, nome, idade, email, telefone, openModalE
 
                             <div className='p-7 mt-2 text-white flex flex-col gap-2'>
                                 <h2 className='text-2xl mb-2'>Informações:</h2>
-                                <p>Nome: {nome}</p>
-                                <p>Idade: {idade} anos</p>
-                                <p>Email: {email}</p>
-                                <p>Telefone: {telefone}</p>
+                                <p><strong>Data de registro</strong> : {date}</p>
+                                <p><strong>Nome</strong>: {nome}</p>
+                                <p><strong>Idade</strong>: {idade} anos</p>
+                                <p><strong>Email</strong>: {email}</p>
+                                <p><strong>Telefone</strong>: {telefone}</p>
                             </div>
                         </Dialog.Content>
                     </Dialog.Portal>
