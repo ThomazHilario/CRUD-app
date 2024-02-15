@@ -1,16 +1,27 @@
 import './config.css'
-import left from '../../assets/icons/left.png'
+
+// imports react
 import { useEffect, useState, useContext } from 'react'
-import { Context } from '../../Context'
 import { Link, useParams } from 'react-router-dom'
+import { Context } from '../../Context'
+
+// import avatar img
+import defaultImg from '../../assets/icons/userDefault.png'
+
+// imports react-toastify
+import { toast } from 'react-toastify'
+
+// import react-icons
+import { FaArrowLeft } from "react-icons/fa6";
+
+// imports components
+import Header from '../Header'
+
+// imports firebase
 import {auth, database, storage} from '../../Services/firebaseConnection'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import {doc, deleteDoc, updateDoc} from 'firebase/firestore'
 import {deleteUser} from 'firebase/auth'
-import { toast } from 'react-toastify'
-import defaultImg from '../../assets/icons/userDefault.png'
-import Header from '../Header'
-
 
 export default function Config(){
     // id do usuario
@@ -53,7 +64,7 @@ export default function Config(){
             <div id='container_config'>
 
                 <nav id='config_navigation'>
-                    <Link to={`/admin/${idUser}`}><img src={left} alt='vetor de esquerda' id='imgVetor' /></Link>
+                    <Link to={`/admin/${idUser}`}><FaArrowLeft color='red' size={35}/></Link>
                 </nav>
 
                 {/* Title config */}
