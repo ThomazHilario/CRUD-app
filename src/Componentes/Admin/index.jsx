@@ -18,6 +18,12 @@ export default function Admin(){
     // state lista usuarios
     const [lista,setLista] = useState([])
 
+    // state - seach
+    const [seach, setSeach] = useState('')
+
+    // state - filterList
+    const filterList = seach !== '' ? lista.filter(item => item.nome.toLowerCase().includes(seach.toLowerCase())) : lista
+
     // pegando usuarios da lista
     useEffect(() => {
 
@@ -301,7 +307,7 @@ export default function Admin(){
 
 
                 <form className='w-[85vw] mb-5 mt-2'>
-                    <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente...' autoFocus/>
+                    <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
                 </form>
 
                 <table className='text-white table-auto'>
@@ -317,7 +323,7 @@ export default function Admin(){
 
                     <tbody>
                         
-                        {lista.length > 0 && lista.map((item,idx) => <TableRow
+                        {filterList.length > 0 && filterList.map((item,idx) => <TableRow
                         key={idx}
                         idx={idx}
                         date={item.cratedDate} 
