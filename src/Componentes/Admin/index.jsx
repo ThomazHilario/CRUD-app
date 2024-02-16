@@ -299,6 +299,11 @@ export default function Admin(){
                     </div>
                 </form>
 
+
+                <form className='w-[85vw] mb-5 mt-2'>
+                    <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente...' autoFocus/>
+                </form>
+
                 <table className='text-white table-auto'>
                     <thead>
                         {lista.length > 0 ? <tr>
