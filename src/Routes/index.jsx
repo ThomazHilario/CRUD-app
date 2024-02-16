@@ -5,7 +5,7 @@ import { Routes, Route,} from 'react-router-dom'
 // Componentes
 
 import Home from '../Pages/Home'
-import Register from '../Componentes/Register'
+import Register from '../Pages/Register'
 import Error from '../Componentes/Error'
 import Admin from '../Pages/Admin'
 import VerifyLogin from '../Componentes/VerifyLogin'
