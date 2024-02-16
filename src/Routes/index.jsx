@@ -4,10 +4,10 @@ import { Routes, Route,} from 'react-router-dom'
 
 // Componentes
 
-import Home from '../Componentes/Home'
+import Home from '../Pages/Home'
 import Register from '../Componentes/Register'
 import Error from '../Componentes/Error'
-import Admin from '../Componentes/Admin'
+import Admin from '../Pages/Admin'
 import VerifyLogin from '../Componentes/VerifyLogin'
 import Config from '../Componentes/Config'
 

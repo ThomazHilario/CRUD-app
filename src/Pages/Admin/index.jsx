@@ -4,9 +4,9 @@ import { database} from '../../Services/firebaseConnection'
 import {doc, getDoc, updateDoc} from 'firebase/firestore'
 import { useState,useEffect, useContext } from 'react'
 import {Context} from '../../Context'
-import Header from '../Header'
+import Header from '../../Componentes/Header'
 
-import TableRow from '../TableRow'
+import TableRow from '../../Componentes/TableRow'
 
 import { Select } from '@radix-ui/themes'
 
