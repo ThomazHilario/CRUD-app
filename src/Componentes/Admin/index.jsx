@@ -306,8 +306,15 @@ export default function Admin(){
                 </form>
 
 
-                <form className='w-[85vw] mb-5 mt-2'>
+                <form className='w-[85vw] mb-5 mt-2 flex gap-1'>
+
+                    {/* input */}
                     <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
+
+                    {/* select */}
+                    <select className='rounded-sm'>
+                        <option>Ordem alfabetica</option>
+                    </select>
                 </form>
 
                 <table className='text-white table-auto'>
