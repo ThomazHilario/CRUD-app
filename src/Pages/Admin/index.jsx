@@ -308,23 +308,18 @@ export default function Admin(){
                 </form>
 
 
-                <form className='w-[85vw] mb-5 mt-2 flex gap-1'>
+                <form className='w-[85vw] mb-5 mt-2 flex gap-1 flex-col-reverse items-center sm:flex-row'>
 
                     {/* input */}
                     <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
 
                     {/* select */}
-                    <Select.Root defaultValue="apple">
-                        <Select.Trigger />
-                        <Select.Content>
-                            <Select.Group>
-                            <Select.Label>Fruits</Select.Label>
-                            <Select.Item value="orange">Orange</Select.Item>
-                            <Select.Item value="apple">Apple</Select.Item>
-                            <Select.Item value="grape" disabled>
-                                Grape
-                            </Select.Item>
-                            </Select.Group>
+                    <Select.Root defaultValue='default'>
+                        <Select.Trigger color='indigo' />
+                        <Select.Content color='purple' variant='soft' className='absolute top-11 right-6'>
+                            <Select.Item value='default'>Classificar por</Select.Item>
+                            <Select.Item value="orange">Ordem Alfabetica</Select.Item>
+                            <Select.Item value="apple">Idade</Select.Item>
                         </Select.Content>
                     </Select.Root>
                 </form>
