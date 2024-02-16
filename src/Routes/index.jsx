@@ -9,7 +9,7 @@ import Register from '../Pages/Register'
 import Error from '../Componentes/Error'
 import Admin from '../Pages/Admin'
 import VerifyLogin from '../Componentes/VerifyLogin'
-import Config from '../Componentes/Config'
+import Config from '../Pages/Config'
 
 // ------
 

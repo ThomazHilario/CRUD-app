@@ -12,10 +12,10 @@ import defaultImg from '../../assets/icons/userDefault.png'
 import { toast } from 'react-toastify'
 
 // import react-icons
-import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowLeft } from "react-icons/fa6"
 
 // imports components
-import Header from '../Header'
+import Header from '../../Componentes/Header'
 
 // imports firebase
 import {auth, database, storage} from '../../Services/firebaseConnection'
