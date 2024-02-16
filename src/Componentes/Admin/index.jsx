@@ -8,6 +8,8 @@ import Header from '../Header'
 
 import TableRow from '../TableRow'
 
+import { Select } from '@radix-ui/themes'
+
 export default function Admin(){
     // Id do usuario
     const {idUser} = useParams()
@@ -312,9 +314,19 @@ export default function Admin(){
                     <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
 
                     {/* select */}
-                    <select className='rounded-sm'>
-                        <option>Ordem alfabetica</option>
-                    </select>
+                    <Select.Root defaultValue="apple">
+                        <Select.Trigger />
+                        <Select.Content>
+                            <Select.Group>
+                            <Select.Label>Fruits</Select.Label>
+                            <Select.Item value="orange">Orange</Select.Item>
+                            <Select.Item value="apple">Apple</Select.Item>
+                            <Select.Item value="grape" disabled>
+                                Grape
+                            </Select.Item>
+                            </Select.Group>
+                        </Select.Content>
+                    </Select.Root>
                 </form>
 
                 <table className='text-white table-auto'>
