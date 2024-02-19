@@ -8,7 +8,7 @@ import Header from '../../Componentes/Header'
 
 import TableRow from '../../Componentes/TableRow'
 
-import { Select } from '@radix-ui/themes'
+import * as Dialog from '@radix-ui/react-dialog'
 
 export default function Admin(){
     // Id do usuario
@@ -22,6 +22,9 @@ export default function Admin(){
 
     // state - seach
     const [seach, setSeach] = useState('')
+
+    // state - selectValue
+    const [selectValue, setSelectValue] = useState('default')
 
     // state - filterList
     const filterList = seach !== '' ? lista.filter(item => item.nome.toLowerCase().includes(seach.toLowerCase())) : lista
@@ -243,7 +246,12 @@ export default function Admin(){
         }
     }
 
-    
+    // selectList
+    function selectList(){
+        console.log('oi')
+        console.log(selectList)
+    }
+
     return(
         <main id='main_admin' className='bg-slate-900 flex justify-between'>
 
@@ -314,14 +322,17 @@ export default function Admin(){
                     <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
 
                     {/* select */}
-                    <Select.Root defaultValue='default'>
-                        <Select.Trigger color='indigo' />
-                        <Select.Content color='purple' variant='soft' className='absolute top-11 right-6'>
-                            <Select.Item value='default'>Classificar por</Select.Item>
-                            <Select.Item value="orange">Ordem Alfabetica</Select.Item>
-                            <Select.Item value="apple">Idade</Select.Item>
-                        </Select.Content>
-                    </Select.Root>
+                    <Dialog.Root>
+                        <Dialog.Trigger className='h-8 text-start pl-3 bg-white/100 text-black'>{selectValue}</Dialog.Trigger>
+
+                            <Dialog.Content className='absolute top-32 sm:right-[7.7vw] sm:top-40 lg:top-14 lg:right-[1.25vw]'>
+                                <menu className='bg-white h-24 w-[170px] p-2'>
+                                    <li>Default</li>
+                                    <li>Ordem alfabetica</li>
+                                    <li>Idade</li>
+                                </menu>
+                            </Dialog.Content>
+                    </Dialog.Root>
                 </form>
 
                 <table className='text-white table-auto'>
