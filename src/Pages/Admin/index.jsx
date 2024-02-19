@@ -326,10 +326,11 @@ export default function Admin(){
                         <Dialog.Trigger className='h-8 text-start pl-3 bg-white/100 text-black'>{selectValue}</Dialog.Trigger>
 
                             <Dialog.Content className='absolute top-32 sm:right-[7.7vw] sm:top-40 lg:top-14 lg:right-[1.25vw]'>
-                                <menu className='bg-white h-24 w-[170px] p-2'>
-                                    <li>Default</li>
-                                    <li>Ordem alfabetica</li>
-                                    <li>Idade</li>
+                                <menu className='flex flex-col gap-1  rounded-sm bg-white h-32 w-[170px] p-2'>
+                                    <Dialog.Close className='text-black w-[9.7rem] hover:bg-black/30' onClick={(e) => setSelectValue(e.target.textContent)}>Default</Dialog.Close>
+                                    <Dialog.Close className='text-black w-[9.7rem] hover:bg-black/30' onClick={(e) => setSelectValue(e.target.textContent)}>Data de Emissão</Dialog.Close>
+                                    <Dialog.Close className='text-black w-[9.7rem] hover:bg-black/30' onClick={(e) => setSelectValue(e.target.textContent)}>Ordem alfabetica</Dialog.Close>
+                                    <Dialog.Close className='text-black w-[9.7rem] hover:bg-black/30' onClick={(e) => setSelectValue(e.target.textContent)}>Idade</Dialog.Close>
                                 </menu>
                             </Dialog.Content>
                     </Dialog.Root>
