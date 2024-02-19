@@ -158,6 +158,7 @@ export default function Admin(){
            if(nome !== '' && idade !== '' && email !== '' && telefone !== ''){
                 // Setando a lista nova
                 setLista([...lista,{
+                    createdDate:new Date().toLocaleDateString(),
                     nome:nome, 
                     idade:idade,
                     email:email,
@@ -167,7 +168,7 @@ export default function Admin(){
                 // Adicionando lista no banco de dados especifico
                 await updateDoc(doc(database,'clientes',id),{
                     clientes: [...lista,{
-                        cratedDate:new Date().toLocaleDateString(),
+                        createdDate:new Date().toLocaleDateString(),
                         nome:nome, 
                         idade:idade,
                         email:email,
@@ -244,12 +245,6 @@ export default function Admin(){
         } catch (error) {
             console.log(error)
         }
-    }
-
-    // selectList
-    function selectList(){
-        console.log('oi')
-        console.log(selectList)
     }
 
     return(
@@ -352,7 +347,7 @@ export default function Admin(){
                         {filterList.length > 0 && filterList.map((item,idx) => <TableRow
                         key={idx}
                         idx={idx}
-                        date={item.cratedDate} 
+                        date={item.createdDate} 
                         nome={item.nome} 
                         idade={item.idade} 
                         email={item.email} 
