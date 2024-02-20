@@ -29,6 +29,26 @@ export default function Admin(){
     // state - filterList
     const filterList = seach !== '' ? lista.filter(item => item.nome.toLowerCase().includes(seach.toLowerCase())) : lista
 
+    const selectFilter = filterList.sort((a,b) => {
+        if(selectValue === 'Ordem alfabetica'){
+            return a.nome.localeCompare(b.nome)
+        } else if(selectValue === 'Data de Emissão'){
+            
+            // Invertendo a data
+            let dataLast = a.createdDate.split('/')
+            let datalastInvertida = dataLast[2] + '-' + dataLast[1] + '-' + dataLast[0]
+
+            // Invertendo a data
+            let dataNext = b.createdDate.split('/')
+            let dataNextInvertida = dataNext[2] + '-' + dataNext[1] + '-' + dataNext[0]
+
+            // Retornando o array com ordenação em data
+            return new Date(datalastInvertida) - new Date(dataNextInvertida)
+        }
+    })
+
+    console.log(selectFilter)
+
     // pegando usuarios da lista
     useEffect(() => {
 
