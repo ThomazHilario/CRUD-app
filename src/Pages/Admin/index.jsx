@@ -9,6 +9,7 @@ import {Context} from '../../Context'
 
 // Imports components
 import Header from '../../Componentes/Header'
+import { FormAddPerson } from '../../Componentes/FormAddPerson'
 import { SelectionFilter } from '../../Componentes/SelectionFilter/inde'
 import TableRow from '../../Componentes/TableRow'
 
@@ -258,32 +259,7 @@ export default function Admin(){
             <div id='container_table'>
 
                 {/* Modal de cadastro */}
-                <form className='modal' id='modal_cadastro'>
-
-                    <div className='campo_nome'>
-                        <label>Nome:</label>
-                        <input type='text' value={nome} onChange={(e) => setNome(e.target.value)}/>
-                    </div>
-
-                    <div className='campo_idade'>
-                        <label>Idade:</label>
-                        <input type='text' value={idade} onChange={(e) => setIdade(e.target.value)}/>
-                    </div>
-
-                    <div className='campo_telefone'>
-                        <label>Telefone:</label>
-                        <input type='tel' value={telefone} onChange={(e) => setTelefone(e.target.value)} />
-                    </div>
-
-                    <div className='campo_email'>
-                        <label>Email:</label>
-                        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-                    </div>
-
-                    <div>
-                        <button id='btn-incluir' onClick={addPerson}>Incluir</button>
-                    </div>
-                </form>
+                <FormAddPerson nome={nome} setNome={setNome} idade={idade} setIdade={setIdade} email={email} setEmail={setEmail} telefone={telefone} setTelefone={setTelefone} lista={lista} setLista={setLista} id={id} />
 
                 {/* Modal de edição */}
                 <form className='modal' id='modal_edicao'>
