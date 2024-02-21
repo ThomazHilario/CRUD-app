@@ -266,15 +266,18 @@ export default function Admin(){
                     <tbody>
                         
                         {filterList.length > 0 && filterList.map((item,idx) => <TableRow
+                        idUser={id}
                         key={idx}
                         idx={idx}
-                        date={item.createdDate} 
-                        nome={item.nome} 
-                        idade={item.idade} 
-                        email={item.email} 
-                        telefone={item.telefone}
-                        openModalEdicao={openModalEdicao}
-                        deleteUser={deleteUser}/>)}
+                        CreatedDate={item.createdDate} 
+                        nomeCliente={item.nome} 
+                        idadeCliente={item.idade} 
+                        emailCliente={item.email} 
+                        telefoneCliente={item.telefone}
+                        deleteUser={deleteUser}
+                        lista={lista}
+                        setLista={setLista}
+                        />)}
 
                     </tbody>
                     
