@@ -51,6 +51,13 @@ export default function TableRow({ idx, CreatedDate, nomeCliente, idadeCliente, 
 
     }
 
+    function addValuesInStates(){
+        setNome(nomeCliente)
+        setIdade(idadeCliente)
+        setEmail(emailCliente)
+        setTelefone(telefoneCliente)
+    }
+
     return(
         <tr className='linha'>
             <td data-table="Nome:">{nomeCliente}</td>
@@ -81,7 +88,7 @@ export default function TableRow({ idx, CreatedDate, nomeCliente, idadeCliente, 
                 </Dialog.Root>
                 
                 <Dialog.Root>
-                    <Dialog.Trigger className='btn-edit w-[75px] bg-green-500' id='editModal'>Editar</Dialog.Trigger>
+                    <Dialog.Trigger className='btn-edit w-[75px] bg-green-500' id='editModal' onClick={addValuesInStates}>Editar</Dialog.Trigger>
 
                     <Dialog.Portal>
                         <Dialog.Overlay/>
