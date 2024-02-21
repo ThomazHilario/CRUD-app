@@ -32,9 +32,45 @@ export default function TableRow({ idx, date, nome, idade, email, telefone, open
                         </Dialog.Content>
                     </Dialog.Portal>
                 </Dialog.Root>
-                <button className='btn-edit w-[75px]' id='editModal' onClick={() => openModalEdicao(idx)}>Editar</button>
+                
+                <Dialog.Root>
+                    <Dialog.Trigger className='btn-edit w-[75px]' id='editModal'>Editar</Dialog.Trigger>
+
+                    <Dialog.Portal>
+                        <Dialog.Overlay/>
+
+                        <Dialog.Content className='absolute left-1/2 top-1/2 -translate-x-20 -translate-y-1/2'>
+                            <form className='bg-black grid grid-cols-2'>
+                                <div>
+                                    <label>Nome:</label>
+                                    <input type='text'/>
+                                </div>
+
+                                <div>
+                                    <label>Idade:</label>
+                                    <input type='text'/>
+                                </div>
+
+                                <div>
+                                    <label>Email:</label>
+                                    <input type='email'/>
+                                </div>
+
+                                <div>
+                                    <label>Telefone:</label>
+                                    <input type='text'/>
+                                </div>
+                            </form>
+                        </Dialog.Content>
+
+                    </Dialog.Portal>
+                </Dialog.Root>
                 <button className='btn-delete w-[75px]' onClick={() => deleteUser(idx)}>Delete</button>
             </td>
         </tr>
     )
 }
+
+/*
+<button className='btn-edit w-[75px]' id='editModal' onClick={() => openModalEdicao(idx)}>Editar</button>
+*/
