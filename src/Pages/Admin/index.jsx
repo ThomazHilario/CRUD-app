@@ -145,52 +145,6 @@ export default function Admin(){
         }
     }
 
-    // addPerson
-    async function addPerson(e){
-        try {
-
-            // Cancelando formulario
-            e.preventDefault()
-            
-            // Mudando o display do Modal
-            document.getElementById('modal_cadastro').style.display = 'none'
-
-            // Mudando o valor do button
-            document.getElementById('openModal').textContent = 'Incluir usuario'
-
-           if(nome !== '' && idade !== '' && email !== '' && telefone !== ''){
-                // Setando a lista nova
-                setLista([...lista,{
-                    createdDate:new Date().toLocaleDateString(),
-                    nome:nome, 
-                    idade:idade,
-                    email:email,
-                    telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
-                }])
-
-                // Adicionando lista no banco de dados especifico
-                await updateDoc(doc(database,'clientes',id),{
-                    clientes: [...lista,{
-                        createdDate:new Date().toLocaleDateString(),
-                        nome:nome, 
-                        idade:idade,
-                        email:email,
-                        telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
-                    }]
-                })
-                
-                // Resetando os valores das states
-                setNome('')
-                setIdade('')
-                setEmail('')
-                setTelefone('')
-
-           }
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     // editperson
     async function editPerson(e){
         try {
