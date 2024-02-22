@@ -63,26 +63,27 @@ export default function BoardEdit({idx, nomeCliente, idadeCliente, emailCliente,
             <Dialog.Portal>
                 <Dialog.Overlay/>
 
-                <Dialog.Content className='absolute left-1/2 top-[15rem] -translate-x-[7.10rem] -translate-y-1/2'>
-                    <form className='bg-zinc-800 grid grid-cols-2 gap-y-4 gap-x-3 py-3 px-3 rounded-md'>
+                <Dialog.Content className='absolute left-1/2 top-[15rem] -translate-x-1/2 -translate-y-1/2 lg:-translate-x-[8rem]'>
+
+                    <form className='bg-zinc-800 w-auto grid gap-y-4 py-3 px-3 sm:grid sm:grid-cols-2  sm:gap-x-3 sm:w-[480px] rounded-md '>
                         <div className='flex flex-col gap-3'>
                             <label>Nome:</label>
-                            <input type='text' className='w-[200px] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={nome} onChange={(e) => setNome(e.target.value)}/>
+                            <input type='text' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={nome} onChange={(e) => setNome(e.target.value)}/>
                         </div>
 
                         <div className='flex flex-col gap-3'>
                             <label>Idade:</label>
-                            <input type='text' className='w-[200px] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={idade} onChange={(e) => setIdade(e.target.value)}/>
+                            <input type='text' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={idade} onChange={(e) => setIdade(e.target.value)}/>
                         </div>
 
                         <div className='flex flex-col gap-3'>
                             <label>Email:</label>
-                            <input type='email' className='w-[200px] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input type='email' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </div>
 
                         <div className='flex flex-col gap-3'>
                             <label>Telefone:</label>
-                            <input type='text' className='w-[200px] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
+                            <input type='text' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
                         </div>
 
                         <Dialog.Close className='flex justify-center items-center bg-green-500 w-20 h-8 font-bold text-white' onClick={() => editPerson(idx)}>Editar</Dialog.Close>
