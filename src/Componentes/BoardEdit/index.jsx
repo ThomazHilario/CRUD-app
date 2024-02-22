@@ -61,29 +61,29 @@ export default function BoardEdit({idx, nomeCliente, idadeCliente, emailCliente,
             <Dialog.Trigger className='btn-edit w-[75px] bg-green-500' id='editModal' onClick={addValuesInStates}>Editar</Dialog.Trigger>
 
             <Dialog.Portal>
-                <Dialog.Overlay/>
+                <Dialog.Overlay className='fixed inset-0 bg-black/50 transition'/>
 
-                <Dialog.Content className='absolute left-1/2 top-[15rem] -translate-x-1/2 -translate-y-1/2 lg:-translate-x-[8rem]'>
+                <Dialog.Content className='absolute left-1/2 top-[15rem] -translate-x-1/2 -translate-y-1/2 lg:-translate-x-[9rem]'>
 
                     <form className='bg-zinc-800 w-auto grid gap-y-4 py-3 px-3 sm:grid sm:grid-cols-2  sm:gap-x-3 sm:w-[480px] rounded-md '>
                         <div className='flex flex-col gap-3'>
                             <label>Nome:</label>
-                            <input type='text' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={nome} onChange={(e) => setNome(e.target.value)}/>
+                            <input type='text' className='w-[13.5rem] h-7 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={nome} onChange={(e) => setNome(e.target.value)}/>
                         </div>
 
                         <div className='flex flex-col gap-3'>
                             <label>Idade:</label>
-                            <input type='text' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={idade} onChange={(e) => setIdade(e.target.value)}/>
+                            <input type='text' className='w-[13.5rem] h-7 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={idade} onChange={(e) => setIdade(e.target.value)}/>
                         </div>
 
                         <div className='flex flex-col gap-3'>
                             <label>Email:</label>
-                            <input type='email' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input type='email' className='w-[13.5rem] h-7 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </div>
 
                         <div className='flex flex-col gap-3'>
                             <label>Telefone:</label>
-                            <input type='text' className='w-[13.5rem] h-5 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
+                            <input type='text' className='w-[13.5rem] h-7 rounded-sm bg-blue-900/50 border-2 border-black text-white pl-1 py-[0.6rem]' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
                         </div>
 
                         <Dialog.Close className='flex justify-center items-center bg-green-500 w-20 h-8 font-bold text-white' onClick={() => editPerson(idx)}>Editar</Dialog.Close>
