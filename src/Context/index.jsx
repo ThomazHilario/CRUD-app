@@ -15,14 +15,11 @@ export default function ContextProvider({children}){
     const [telefone,setTelefone] = useState('')
     const [avatarUrl, setAvatarUrl] = useState(null)
 
-    // index
-    const [index,setindex] = useState(null)
-
     // state logado
     const [logado,setLogado] = useState(null)
 
     return(
-        <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, index, setindex, id, setId, logado, setLogado, avatarUrl, setAvatarUrl}}>
+        <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, id, setId, logado, setLogado, avatarUrl, setAvatarUrl}}>
             {children}
         </Context.Provider>
     )
