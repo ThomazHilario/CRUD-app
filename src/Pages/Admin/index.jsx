@@ -87,101 +87,7 @@ export default function Admin(){
     const {idade,setIdade} = useContext(Context)
     const {email,setEmail} = useContext(Context)
     const {telefone,setTelefone} = useContext(Context)
-
-    // index
-    const {index,setindex} = useContext(Context)
-
-    // openModal - edicao
-    function openModalEdicao(value){
-        /* modal cadastro */
-        let modal = document.getElementById('modal_edicao')
-
-        if(window.innerWidth > 420){
-            if(modal.style.display === 'grid'){
-                document.querySelectorAll('.btn-edit')[value].textContent ='Editar'
-                modal.style.display = 'none'
-    
-                // Valor padrao do state index
-                setindex(null)
-            } else{
-                document.querySelectorAll('.btn-edit')[value].textContent ='Fechar'
-                modal.style.display = 'grid'
-                
-                // setando valor na state de index
-                setindex(value)
-    
-                // Pegando o obj pelo index
-                const item = lista[value]
-    
-                // Setando os valores das propriedades do objeto nas states
-                setNome(item.nome)
-                setIdade(item.idade)
-                setEmail(item.email)
-                setTelefone(item.telefone)
-            }
-        }else{
-            if(modal.style.display === 'flex'){
-                document.querySelectorAll('.btn-edit')[value].textContent ='Editar'
-                modal.style.display = 'none'
-    
-                // Valor padrao do state index
-                setindex(null)
-            } else{
-                document.querySelectorAll('.btn-edit')[value].textContent ='Fechar'
-                modal.style.display = 'flex'
-                
-                // setando valor na state de index
-                setindex(value)
-    
-                // Pegando o obj pelo index
-                const item = lista[value]
-    
-                // Setando os valores das propriedades do objeto nas states
-                setNome(item.nome)
-                setIdade(item.idade)
-                setEmail(item.email)
-                setTelefone(item.telefone)
-            }
-        }
-    }
-
-    // editperson
-    async function editPerson(e){
-        try {
-
-            // Cancelando o envio do formulario
-            e.preventDefault()
-
-            // Mudando o display do modal_edicao para none
-            document.getElementById('modal_edicao').style.display = 'none'
-
-            // Mudando o texto do button
-            document.querySelectorAll('.btn-edit')[index].textContent = 'Editar'
-
-            // Editando propriedade do index escolhido
-            lista[index].nome = nome
-            lista[index].idade = idade
-            lista[index].telefone = telefone
-            lista[index].email = email
-
-            // Setando alteracoes na lista
-            setLista(lista)
-
-            // Atualizar no banco de dados
-            const docRef = doc(database,'clientes',id)
-
-            // Salvando a nova lista no banco de dados
-            await updateDoc(docRef,{
-                clientes:lista
-            })
-
-            // Resetando state index
-            setindex(null)
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
+ 
     // deleteUser
     async function deleteUser(index){
         try {
@@ -214,34 +120,6 @@ export default function Admin(){
 
                 {/* Modal de cadastro */}
                 <FormAddPerson nome={nome} setNome={setNome} idade={idade} setIdade={setIdade} email={email} setEmail={setEmail} telefone={telefone} setTelefone={setTelefone} lista={lista} setLista={setLista} id={id} />
-
-                {/* Modal de edição */}
-                <form className='modal' id='modal_edicao'>
-                    <div className='campo_nome'>
-                        <label>Nome:</label>
-                        <input type='text' value={nome} onChange={(e) => setNome(e.target.value)}/>
-                    </div>
-
-                    <div className='campo_idade'>
-                        <label>Idade:</label>
-                        <input type='text' value={idade} onChange={(e) => setIdade(e.target.value)}/>
-                    </div>
-
-                    <div className='campo_telefone'>
-                        <label>telefone:</label>
-                        <input type='tel' value={telefone} onChange={(e) => setTelefone(e.target.value)}/>
-                    </div>
-
-                    <div className='campo_email'>
-                        <label>Email:</label>
-                        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-                    </div>
-
-                    <div>
-                        <button id='btn-editar' onClick={editPerson}>Editar</button>
-                    </div>
-                </form>
-
 
                 <form className='w-[85vw] mb-5 mt-2 flex gap-1 flex-col-reverse items-center sm:flex-row'>
 
