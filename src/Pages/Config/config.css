@@ -187,6 +187,7 @@
 #container_delete > form > button{
     margin-top: 5px;
     background-color: rgb(232, 95, 95);
+    color: white;
 }
 
 @media screen and (max-width:950px){
