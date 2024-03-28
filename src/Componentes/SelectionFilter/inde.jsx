@@ -1,5 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog'
 
+// import css
+import './selectFilter.css'
+
 export const SelectionFilter = ({selectValue, filterList, setSelectValue}) =>{
 
     function selectFilter(text){
@@ -27,12 +30,12 @@ export const SelectionFilter = ({selectValue, filterList, setSelectValue}) =>{
 
     return(
         <Dialog.Root>
-            <Dialog.Trigger className='h-8 text-start pl-3 bg-white/100 text-black'>{selectValue}</Dialog.Trigger>
+            <Dialog.Trigger className='triggerSelect'>{selectValue}</Dialog.Trigger>
 
-                <Dialog.Content className='absolute top-32 sm:right-[7.7vw] sm:top-40 lg:top-14 lg:right-[1.25vw]'>
-                    <menu className='flex flex-col gap-1  rounded-sm bg-white h-30 w-[170px] p-2'>
-                        <Dialog.Close className='text-black w-[9.7rem] hover:bg-black/30' onClick={(e) => selectFilter(e.target.textContent)}>Recentes</Dialog.Close>
-                        <Dialog.Close className='text-black w-[9.7rem] hover:bg-black/30' onClick={(e) => selectFilter(e.target.textContent)}>Ordem alfabetica</Dialog.Close>
+                <Dialog.Content className='contentSelect'>
+                    <menu>
+                        <Dialog.Close onClick={(e) => selectFilter(e.target.textContent)}>Recentes</Dialog.Close>
+                        <Dialog.Close onClick={(e) => selectFilter(e.target.textContent)}>Ordem alfabetica</Dialog.Close>
                     </menu>
                 </Dialog.Content>
         </Dialog.Root>

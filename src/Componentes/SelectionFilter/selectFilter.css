@@ -1,0 +1,46 @@
+.triggerSelect{
+    background-color: white;
+    color: black;
+    height: 2rem;
+}
+
+/* contentSelect */
+.contentSelect{
+    position: absolute;
+    top: 3.5rem;
+    right: 0.60vw;
+}
+
+.contentSelect > menu{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-radius: 3px;
+    background-color: white;
+    height: 5rem;
+    width: 190px;
+    padding: 1rem;
+}
+
+.contentSelect > menu > button{
+    color: black;
+    width: 9.7rem;
+}
+
+.contentSelect > menu > button:hover{
+    background-color: rgba(0, 0, 0, 0.196);
+}
+
+/* max-width: 1024px */
+@media screen and (max-width:1024px){
+    .contentSelect{
+        top: 10rem;
+        right: 7.7vw;
+    }
+}
+
+@media screen and (max-width:640px){
+    .contentSelect{
+        top: 8rem;
+    }
+}
