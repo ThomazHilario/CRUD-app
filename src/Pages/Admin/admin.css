@@ -41,6 +41,15 @@
     border: 1px solid black;
 }
 
+/* Container table lightMode and Default Mode */
+.container_table_light{
+    background-color: rgb(234, 238, 255);
+}
+
+.container_table_default{
+    background-color: rgb(15 23 42);
+}
+
 /* navegacao de configuracoes */
 #configuracoes{
     display: flex;
@@ -80,12 +89,17 @@
 
 /* table */
 #container_table{
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
+}
+
+#container_table::-webkit-scrollbar{
+    display: none;
 }
 
 #formFilter{
@@ -209,21 +223,22 @@ th, td{
 }
 
 @media screen and (max-width:1024px){
-    #main_admin{
+    .main_admin{
         display: block;
     }
-}
 
-@media screen and (max-width:768px){
-    #main_admin{
-        height: 100%;
+    .main_light{
+        display: block;
     }
 
     #container_table {
         width: 100%;
         padding: 0;
-        height: 100%;
+        height: auto;
     }
+}
+
+@media screen and (max-width:768px){
 
     table > thead {
         display: none;

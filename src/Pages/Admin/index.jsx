@@ -109,7 +109,7 @@ export default function Admin(){
             {/* header component */}
             <Header/>
 
-            <div id='container_table'>
+            <div id='container_table' className={lightMode ? 'container_table_light' : 'container_table_default'}>
 
                 {/* Modal de cadastro */}
                 <FormAddPerson nome={nome} setNome={setNome} idade={idade} setIdade={setIdade} email={email} setEmail={setEmail} telefone={telefone} setTelefone={setTelefone} lista={lista} setLista={setLista} id={id} />
