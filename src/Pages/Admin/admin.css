@@ -2,16 +2,24 @@
     0%{transform: translateY(-40%);}
 }
 /* main_admin*/
-#main_admin{
+.main_admin{
     height: 100vh;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(15 23 42)
+    background-color: rgb(15 23 42);
 }
 
-/* darkMde */
+/* lightMode */
 .main_light {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
     background-color: rgb(234, 238, 255);
+    color: black;
+}
+
+/* colorSeachForm */
+.colorSeachInput{
     color: black;
 }
 
@@ -96,7 +104,6 @@
     border-radius: 5px;
     padding: 0.25rem 0.25rem 0.25rem 0.50rem;
     background-color: transparent;
-    color: white;
     border: 1px solid white;
 }
 

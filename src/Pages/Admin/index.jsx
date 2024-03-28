@@ -77,6 +77,9 @@ export default function Admin(){
     const {idade,setIdade} = useContext(Context)
     const {email,setEmail} = useContext(Context)
     const {telefone,setTelefone} = useContext(Context)
+
+    // lightMode
+    const { lightMode } = useContext(Context)
  
     // deleteUser
     async function deleteUser(index){
@@ -101,7 +104,7 @@ export default function Admin(){
     }
 
     return(
-        <main id='main_admin' className=''>
+        <main className={lightMode ? 'main_light' : 'main_admin'}>
 
             {/* header component */}
             <Header/>
@@ -114,13 +117,13 @@ export default function Admin(){
                 <form id='formFilter'>
 
                     {/* input */}
-                    <input type='text' placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
+                    <input type='text' className={lightMode && 'colorSeachInput'} placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
 
                     {/* select */}
                     <SelectionFilter filterList={filterList} selectValue={selectValue} setSelectValue={setSelectValue}/>
                 </form>
 
-                <table>
+                <table className={lightMode && 'table_light'}>
                     <thead>
                         {lista.length > 0 ? <tr>
                             <th>Nome</th>
