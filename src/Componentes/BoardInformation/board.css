@@ -1,0 +1,57 @@
+/* Trigger */
+.trigger{
+    height: 25px;
+    width: 40px;
+    background-color: rgb(71 85 105);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Overlay */
+.overlay{
+    position: fixed;
+    inset: 0;
+    background-color:rgba(0, 0, 0, 0.34);
+    transition: 0.7s;
+}
+
+/* Content */
+.content{
+    background-color: rgb(51 65 85);
+    width: 40vw;
+    height: 35vh;
+    position: absolute;
+    transform: translateY(-50%);
+    transform: translateX(-55%);
+    top: 15%;
+    left: 55%;
+    border-radius: 5px;
+}
+
+.content > div{
+    padding: 1.75rem;
+    margin-top: 0.5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.content > div > h2{
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* close */
+.close{
+    background-color: rgba(15, 23, 42, 0.475);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
