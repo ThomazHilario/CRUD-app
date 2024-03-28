@@ -18,6 +18,9 @@ export default function Header(){
     const {setTelefone} = useContext(Context)
     const {avatarUrl} = useContext(Context)
 
+    // lightMode - context
+    const{ lightMode } = useContext(Context)
+
     // Alterar o display do menu
     function openMenu(){
         const menu = document.getElementById('menu')
@@ -85,7 +88,7 @@ export default function Header(){
     }
 
     return(
-        <header className='bg-slate-800' id='header_flexivel'>
+        <header className={lightMode && 'lightModeHeader'} id='header_flexivel'>
             {/* menu Hamburguer */}
             <span id='menuHamburguer' onClick={openMenu}><TiThMenu size={'2em'} color='white'/></span>
 

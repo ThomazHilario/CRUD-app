@@ -1,4 +1,9 @@
+.lightModeHeader{
+    background-color: rgb(206, 205, 255)
+}
+
 header{
+    background-color: rgb(30 41 59);
     width: 13vw;
     display: flex;
     flex-direction: column;
