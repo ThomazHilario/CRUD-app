@@ -88,7 +88,7 @@ export default function Header(){
     }
 
     return(
-        <header className={lightMode && 'lightModeHeader'} id='header_flexivel'>
+        <header className={lightMode ? 'lightModeHeader' : undefined} id='header_flexivel'>
             {/* menu Hamburguer */}
             <span id='menuHamburguer' onClick={openMenu}><TiThMenu size={'2em'} color='white'/></span>
 

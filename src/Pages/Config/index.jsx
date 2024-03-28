@@ -107,13 +107,13 @@ function FormDetails({uid,email}){
             <form onSubmit={handleAccount}>
 
                 <div className='campos_form_config'>
-                    <label className={lightMode && 'camposConfigLight'}>Id:</label>
+                    <label className={lightMode ? 'camposConfigLight' : undefined}>Id:</label>
                     <input type='text' defaultValue={uid} disabled/>
                 </div>
 
 
                 <div className='campos_form_config'>
-                    <label className={lightMode && 'camposConfigLight'}>Email:</label>
+                    <label className={lightMode ? 'camposConfigLight' : undefined}>Email:</label>
                     <input type='email' defaultValue={email} disabled/>
                 </div>
 
@@ -214,7 +214,7 @@ function UpdateThemeSystem(){
 
     return(
         <form id='form_theme_system'>
-            <label className={lightMode && 'camposConfigLight'}>Theme System:</label>
+            <label className={lightMode ? 'camposConfigLight' : undefined}>Theme System:</label>
 
             <label className="switch">
                 <input type="checkbox" id='themeTag' onChange={(e) => updateMode(e.target)}/>

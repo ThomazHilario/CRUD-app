@@ -117,13 +117,13 @@ export default function Admin(){
                 <form id='formFilter'>
 
                     {/* input */}
-                    <input type='text' className={lightMode && 'colorSeachInput'} placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
+                    <input type='text' className={lightMode ? 'colorSeachInput' : undefined} placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
 
                     {/* select */}
                     <SelectionFilter filterList={filterList} selectValue={selectValue} setSelectValue={setSelectValue}/>
                 </form>
 
-                <table className={lightMode && 'table_light'}>
+                <table className={lightMode ?'table_light' : undefined}>
                     <thead>
                         {lista.length > 0 ? <tr>
                             <th>Nome</th>
