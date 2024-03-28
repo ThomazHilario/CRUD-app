@@ -38,16 +38,6 @@ export default function Admin(){
         // Setando id na state de id
         setId(idUser)
 
-        if(JSON.parse(localStorage.getItem('themeMode')) === false){
-            document.getElementById('main_admin').classList.remove('main_light')
-            document.querySelector('table').classList.remove('main_light')
-            document.querySelector('body').style.backgroundColor = 'rgb(15 23 42)'
-        } else{
-            document.getElementById('main_admin').classList.add('main_light')
-            document.querySelector('table').classList.add('table_light')
-            document.querySelector('body').style.backgroundColor = 'rgb(234, 238, 255)'
-        }
-
         //Função loadLista
         async function loadLista(){
 
@@ -111,7 +101,7 @@ export default function Admin(){
     }
 
     return(
-        <main id='main_admin'>
+        <main id='main_admin' className=''>
 
             {/* header component */}
             <Header/>

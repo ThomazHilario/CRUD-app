@@ -3,17 +3,16 @@
 }
 /* main_admin*/
 #main_admin{
-    background-color: rgb(15 23 42);
     height: 100vh;
     display: flex;
     justify-content: space-between;
+    background-color: rgb(15 23 42)
 }
 
 /* darkMde */
 .main_light {
     background-color: rgb(234, 238, 255);
     color: black;
-    
 }
 
 /* Taable lightMode */
@@ -24,6 +23,10 @@
 
 .table_light > thead > tr > th{
     border: 1px solid black;
+}
+
+.table_light > thead > tr > .chamado{
+    border:none
 }
 
 .table_light > tbody > tr > td{

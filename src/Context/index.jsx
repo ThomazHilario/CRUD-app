@@ -18,8 +18,11 @@ export default function ContextProvider({children}){
     // state logado
     const [logado,setLogado] = useState(null)
 
+    // lightMode
+    const [lightMode, setLightMode] = useState(false)
+
     return(
-        <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, id, setId, logado, setLogado, avatarUrl, setAvatarUrl}}>
+        <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, id, setId, logado, setLogado, avatarUrl, setAvatarUrl, lightMode, setLightMode}}>
             {children}
         </Context.Provider>
     )

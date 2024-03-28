@@ -27,22 +27,13 @@ export default function Config(){
     // id do usuario
     const {idUser} = useParams()
 
+    const {lightMode} = useContext(Context)
 
     // buscando informacoes do usuario
     useEffect(() => {
 
         // Salvando o valor do themeMode da localstorage no input
         document.getElementById('themeTag').checked = JSON.parse(localStorage.getItem('themeMode'))
-
-        // Verificando a pagina config deve ficar no modo light ou dark
-        if(document.getElementById('themeTag').checked === true){
-            document.querySelectorAll('label').forEach(item => item.style.color = 'black')
-            document.getElementById('main_config').classList.add('lightMode')
-
-        }else{
-            document.querySelectorAll('label').forEach(item => item.style.color = 'white')
-            document.getElementById('main_config').classList.remove('lightMode')
-        }
 
         // Pegando informações na localStorage
         let data = localStorage.getItem('user') !== '' ? JSON.parse(localStorage.getItem('user')) : null
@@ -56,7 +47,7 @@ export default function Config(){
     const [user, setUser] = useState({})
 
     return (
-        <main id='main_config' className='bg-slate-900 flex '>
+        <main id='main_config' className={lightMode ? 'main_config lightMode' : 'main_config'}>
             
             {/* Header component */}
             <Header/>
@@ -87,6 +78,9 @@ export default function Config(){
 // Component FormDetails
 function FormDetails({uid,email}){
 
+    // Context
+    const { lightMode } = useContext(Context)
+
       // Deletar a conta - handleAccount
       async function handleAccount(e){
         try {
@@ -113,13 +107,13 @@ function FormDetails({uid,email}){
             <form onSubmit={handleAccount}>
 
                 <div className='campos_form_config'>
-                    <label>Id:</label>
+                    <label className={lightMode && 'camposConfigLight'}>Id:</label>
                     <input type='text' defaultValue={uid} disabled/>
                 </div>
 
 
                 <div className='campos_form_config'>
-                    <label>Email:</label>
+                    <label className={lightMode && 'camposConfigLight'}>Email:</label>
                     <input type='email' defaultValue={email} disabled/>
                 </div>
 
@@ -192,6 +186,9 @@ function UpdateImageProfile(){
 // Componente UpdateThemeSystem
 function UpdateThemeSystem(){
 
+    // context
+    const { setLightMode, lightMode } = useContext(Context)
+
     // updateMode
     function updateMode(input){
         if(input.checked === true){
@@ -200,35 +197,24 @@ function UpdateThemeSystem(){
             // Setando o valor na local storage
             localStorage.setItem('themeMode',JSON.stringify(input.checked))
 
-            // Alterando o classList do header
-            document.querySelector('header').classList.add('lightModeHeader')
+            // Alterando valor na state lightMode
+            setLightMode(true)
 
-            // Alterando o classList da main_config
-            document.getElementById('main_config').classList.add('lightMode')
-            
-            // Alterando a cor dos labels        
-            document.querySelectorAll('label').forEach(item => item.style.color = 'black')
         } else{
             input.checked = false
 
             // Setando o valor na local storage
             localStorage.setItem('themeMode',JSON.stringify(input.checked))
 
-            // Alterando o classList do header
-            document.querySelector('header').classList.remove('lightModeHeader')
-
-            // Alterando o classList da main_config
-            document.getElementById('main_config').classList.remove('lightMode')
-
-            // Alterando a cor dos labels            
-            document.querySelectorAll('label').forEach(item => item.style.color = 'white')
+            // Alterando valor na state lightMode
+            setLightMode(false)
         }
 
     }
 
     return(
         <form id='form_theme_system'>
-            <label>Theme System:</label>
+            <label className={lightMode && 'camposConfigLight'}>Theme System:</label>
 
             <label className="switch">
                 <input type="checkbox" id='themeTag' onChange={(e) => updateMode(e.target)}/>
