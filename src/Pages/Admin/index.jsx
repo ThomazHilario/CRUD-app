@@ -134,8 +134,7 @@ export default function Admin(){
                         </tr> : <tr><th className='chamado'>Nenhum chamado</th></tr>}
                     </thead>
 
-                    <tbody>
-                        
+                    <tbody>                           
                         {filterList.length > 0 && filterList.map((item,idx) => <TableRow
                         idUser={id}
                         key={idx}
@@ -148,8 +147,7 @@ export default function Admin(){
                         deleteUser={deleteUser}
                         lista={lista}
                         setLista={setLista}
-                        />)}
-
+                        />)} 
                     </tbody>
                     
                 </table>

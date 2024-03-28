@@ -245,6 +245,8 @@ th, td{
     }
 
     table > tbody{
+        overflow: scroll;
+        height: 70vh;
         display: flex;
         flex-direction: column;
         gap: 20px;
