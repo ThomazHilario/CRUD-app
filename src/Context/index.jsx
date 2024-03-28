@@ -19,7 +19,7 @@ export default function ContextProvider({children}){
     const [logado,setLogado] = useState(null)
 
     // lightMode
-    const [lightMode, setLightMode] = useState(false)
+    const [lightMode, setLightMode] = useState(localStorage.getItem('themeMode') !== null ? JSON.parse(localStorage.getItem('themeMode')) : false)
 
     return(
         <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, id, setId, logado, setLogado, avatarUrl, setAvatarUrl, lightMode, setLightMode}}>
