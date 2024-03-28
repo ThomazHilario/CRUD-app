@@ -19,8 +19,8 @@
 /* Content */
 .content{
     background-color: rgb(51 65 85);
-    width: 40vw;
-    height: 35vh;
+    width: 45vw;
+    height: 40vh;
     position: absolute;
     transform: translateY(-50%);
     transform: translateX(-55%);
