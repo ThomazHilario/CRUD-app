@@ -14,7 +14,7 @@
     height: 100vh;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(234, 238, 255);
+    background-color: rgb(234, 232, 232);
     color: black;
 }
 
@@ -25,7 +25,7 @@
 
 /* Taable lightMode */
 .table_light{
-    background-color: rgb(234, 238, 255);
+    background-color: rgb(234, 232, 232);
     color: black;
 }
 
@@ -43,7 +43,7 @@
 
 /* Container table lightMode and Default Mode */
 .container_table_light{
-    background-color: rgb(234, 238, 255);
+    background-color: rgb(234, 232, 232);
 }
 
 .container_table_default{
