@@ -111,7 +111,7 @@ export default function Admin(){
     }
 
     return(
-        <main id='main_admin' className='bg-slate-900 flex justify-between'>
+        <main id='main_admin'>
 
             {/* header component */}
             <Header/>
@@ -121,16 +121,16 @@ export default function Admin(){
                 {/* Modal de cadastro */}
                 <FormAddPerson nome={nome} setNome={setNome} idade={idade} setIdade={setIdade} email={email} setEmail={setEmail} telefone={telefone} setTelefone={setTelefone} lista={lista} setLista={setLista} id={id} />
 
-                <form className='w-[85vw] mb-5 mt-2 flex gap-1 flex-col-reverse items-center sm:flex-row'>
+                <form id='formFilter'>
 
                     {/* input */}
-                    <input className='w-full rounded-sm p-1 pl-2 bg-transparent outline-0 border-[1px] border-white text-white' type='text' placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
+                    <input type='text' placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
 
                     {/* select */}
                     <SelectionFilter filterList={filterList} selectValue={selectValue} setSelectValue={setSelectValue}/>
                 </form>
 
-                <table className='text-white table-auto'>
+                <table>
                     <thead>
                         {lista.length > 0 ? <tr>
                             <th>Nome</th>
@@ -138,7 +138,7 @@ export default function Admin(){
                             <th>Email</th>
                             <th>Telefone</th>
                             <th>Ação</th>   
-                        </tr> : <tr><th className='border-none'>Nenhum chamado</th></tr>}
+                        </tr> : <tr><th className='chamado'>Nenhum chamado</th></tr>}
                     </thead>
 
                     <tbody>
