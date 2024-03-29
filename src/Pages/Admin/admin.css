@@ -106,6 +106,10 @@
     display: none;
 }
 
+tbody::-webkit-scrollbar{
+    display: none;
+}
+
 #formFilter{
     width: 85vw;
     margin: 0.5rem 0 1.25rem 0;
