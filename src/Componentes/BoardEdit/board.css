@@ -2,6 +2,7 @@
 .boardTrigger{
     width: 75px;
     background-color: rgb(34 197 94);
+    font-weight: bold;
 }
 
 /* overlay */

@@ -117,7 +117,7 @@ export default function Admin(){
                 <form id='formFilter'>
 
                     {/* input */}
-                    <input type='text' className={lightMode ? 'colorSeachInput' : undefined} placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
+                    <input type='text' className={lightMode ? 'colorSeachInput' : 'colorSeachInputefault'} placeholder='Busque por um cliente cadastrado...' autoFocus value={seach} onChange={(e) => setSeach(e.target.value)}/>
 
                     {/* select */}
                     <SelectionFilter filterList={filterList} selectValue={selectValue} setSelectValue={setSelectValue}/>
