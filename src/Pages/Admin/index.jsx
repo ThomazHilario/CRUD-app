@@ -123,15 +123,18 @@ export default function Admin(){
                     <SelectionFilter filterList={filterList} selectValue={selectValue} setSelectValue={setSelectValue}/>
                 </form>
 
+                {/* Caso a lista não tenha nenhum cliente */}
+                {lista.length === 0 && <h3 className='chamado'>Nenhum cliente cadastrado</h3>}
+
                 <table className={lightMode ?'table_light' : undefined}>
                     <thead>
-                        {lista.length > 0 ? <tr>
+                        {lista.length > 0 && <tr>
                             <th>Nome</th>
                             <th>Idade</th>
                             <th>Email</th>
                             <th>Telefone</th>
                             <th>Ação</th>   
-                        </tr> : <tr><th className='chamado'>Nenhum chamado</th></tr>}
+                        </tr>}
                     </thead>
 
                     <tbody>                           

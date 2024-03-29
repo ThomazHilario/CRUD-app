@@ -140,7 +140,10 @@ th, td{
 }
 
 .chamado{
-    border: none;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: white;
 }
 
 .btn-delete{
