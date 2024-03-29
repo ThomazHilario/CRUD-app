@@ -25,6 +25,7 @@
 .contentSelect > menu > button{
     color: black;
     width: 9.7rem;
+    background-color: transparent;
 }
 
 .contentSelect > menu > button:hover{
