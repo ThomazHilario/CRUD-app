@@ -55,7 +55,7 @@ export default function Config(){
             <div id='container_config'>
 
                 <nav id='config_navigation'>
-                    <Link to={`/admin/${idUser}`}><FaArrowLeft color='red' size={35}/></Link>
+                    <Link to={`/admin/${idUser}`}><FaArrowLeft color={lightMode ? 'black' : 'white'} size={35}/></Link>
                 </nav>
 
                 {/* Title config */}

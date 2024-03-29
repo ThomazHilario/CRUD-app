@@ -18,7 +18,7 @@
 }
 
 #config_navigation{
-    padding: 0px 5px;
+    padding: 10px 5px;
 }
 
 /* form_theme_system */
@@ -100,7 +100,7 @@
     font-size: 25px;
     font-weight: 600;
     padding: 2px 10px;
-    margin: 10px 10px;
+    margin: 2px 10px 10px 10px;
     border-radius: 5px;
 }
 
