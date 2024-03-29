@@ -10,7 +10,7 @@ import {Context} from '../../Context'
 // Imports components
 import Header from '../../Componentes/Header'
 import { FormAddPerson } from '../../Componentes/FormAddPerson'
-import { SelectionFilter } from '../../Componentes/SelectionFilter/inde'
+import { SelectionFilter } from '../../Componentes/SelectionFilter/index'
 import TableRow from '../../Componentes/TableRow'
 
 export default function Admin(){
