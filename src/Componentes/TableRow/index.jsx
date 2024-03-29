@@ -2,6 +2,9 @@
 import BoardInformation from '../BoardInformation';
 import BoardEdit from '../BoardEdit';
 
+// import css
+import './tableRow.css'
+
 // Componente para exibir os tr
 export default function TableRow({ idx, CreatedDate, nomeCliente, idadeCliente, emailCliente, telefoneCliente, deleteUser, lista, setLista, idUser}){
 
@@ -11,7 +14,7 @@ export default function TableRow({ idx, CreatedDate, nomeCliente, idadeCliente, 
             <td data-table="Idade:">{idadeCliente}</td>
             <td data-table="Email:">{emailCliente}</td>
             <td data-table="Telefone:">{telefoneCliente}</td>
-            <td className='flex justify-start items-center gap-2 md:justify-center'>
+            <td className='tableDataActions'>
 
                 <BoardInformation 
                 CreatedDate={CreatedDate} 
@@ -31,7 +34,7 @@ export default function TableRow({ idx, CreatedDate, nomeCliente, idadeCliente, 
                 idUser={idUser}
                 />
 
-                <button className='btn-delete w-[75px]' onClick={() => deleteUser(idx)}>Delete</button>
+                <button className='btn-delete' onClick={() => deleteUser(idx)}>Delete</button>
             </td>
         </tr>
     )
