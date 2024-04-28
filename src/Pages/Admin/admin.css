@@ -64,7 +64,7 @@
 }
 
 /* configButton */
-#configButton{
+.configButton{
     background-color: rgb(59, 58, 58);
     color: white;
     opacity: 0.9;
@@ -73,8 +73,21 @@
     text-align: center;
 }
 
+.configButtonMobile{
+    background-color: rgb(59, 58, 58);
+    color: white;
+    opacity: 0.9;
+    height: 30px;
+    width: 120px;
+    text-align: center;
+}
+
+.configButtonMobile > a{
+    color: white;
+    font-weight: bold;
+}
 /* buttons */
-#openModal{
+.openModal{
     width: 120px;
     height: 30px;
     font-weight: bold;
@@ -82,7 +95,7 @@
     color: white;
 }
 
-#logoutUser{
+.logoutUser{
     width: 120px;
     height: 30px;
     font-weight: bold;
@@ -172,7 +185,7 @@ th, td{
 
     padding: 10px;
 
-    display: none;
+    display: grid;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -291,6 +304,7 @@ th, td{
 
 @media screen and (max-width:420px){
     .modal{
+        display: flex;
         flex-direction: column;
     }
 }

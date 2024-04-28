@@ -77,6 +77,7 @@ export default function Admin(){
     const {idade,setIdade} = useContext(Context)
     const {email,setEmail} = useContext(Context)
     const {telefone,setTelefone} = useContext(Context)
+    const { isAddPerson } = useContext(Context)
 
     // lightMode
     const { lightMode } = useContext(Context)
@@ -112,7 +113,9 @@ export default function Admin(){
             <div id='container_table' className={lightMode ? 'container_table_light' : 'container_table_default'}>
 
                 {/* Modal de cadastro */}
-                <FormAddPerson nome={nome} setNome={setNome} idade={idade} setIdade={setIdade} email={email} setEmail={setEmail} telefone={telefone} setTelefone={setTelefone} lista={lista} setLista={setLista} id={id} />
+                {isAddPerson && (
+                    <FormAddPerson nome={nome} setNome={setNome} idade={idade} setIdade={setIdade} email={email} setEmail={setEmail} telefone={telefone} setTelefone={setTelefone} lista={lista} setLista={setLista} id={id} />
+                )}
 
                 <form id='formFilter'>
 

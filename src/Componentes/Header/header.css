@@ -43,6 +43,10 @@ header{
     display: none;
 }
 
+#menu-bt-mobile{
+    display: none;
+}
+
 @media screen and (max-width:1024px){
     header{
       flex-direction: row;
@@ -70,44 +74,37 @@ header{
 
 @media screen and (max-width:640px){
     header{
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        height: auto;
-        gap: 10px;
     }
-
-    #imgPerfil{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #menuHamburguer{
-        display: block;
-    }
-
+    
     #menu{
         display: none;
-        flex-direction: column;
+    }
+
+    #menu-bt-mobile{
+        display: block;
+        width: 40px;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 10px;
-        height: auto;
     }
+}
 
-    #openModal{
-        width: 70vw;
-    }
 
-    #configuracoes{
-        flex-direction: column;
-        gap: 10px;
-    }
+#content-menu-mobile{
+    background-color: rgba(36, 36, 36, 0.637);
+    width: 80vw;
+    height: 35vh;
+    border-radius: 3px;
+    position: absolute;
+    top: 4.5rem;
+    left: 50%;
+    transform: translateX(-50%);
 
-    #configuracoes > button{
-        width: 70vw;
-    }
-
-    #configuracoes > a {
-        width: 70vw;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }

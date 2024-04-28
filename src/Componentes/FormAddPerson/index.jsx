@@ -1,21 +1,28 @@
 import { database } from '../../Services/firebaseConnection'
 import {doc, updateDoc} from 'firebase/firestore'
 
+// react
+import { useContext } from 'react'
+
+// context
+import { Context } from '../../Context'
+
 export function FormAddPerson({nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, lista, setLista,id}){
+
+    // context
+    const { setIsAddPerson } = useContext(Context)
 
     async function addPerson(e){
         try {
 
             // Cancelando formulario
             e.preventDefault()
-            
-            // Mudando o display do Modal
-            document.getElementById('modal_cadastro').style.display = 'none'
-
-            // Mudando o valor do button
-            document.getElementById('openModal').textContent = 'Incluir usuario'
 
            if(nome !== '' && idade !== '' && email !== '' && telefone !== ''){
+
+                // Alterando contexto
+                setIsAddPerson(false)
+                
                 // Setando a lista nova
                 setLista([...lista,{
                     createdDate:new Date().toLocaleDateString(),

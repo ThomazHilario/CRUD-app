@@ -7,11 +7,15 @@ import { Context } from '../../Context'
 import { TiThMenu } from "react-icons/ti";
 import defaultImg from '../../assets/icons/userDefault.png'
 
+// radix
+import * as Dialog from '@radix-ui/react-dialog'
+
 export default function Header(){
 
     const {id} = useContext(Context)
     
     // state - campos forms
+    const { isAddPerson, setIsAddPerson } = useContext(Context)
     const {setNome} = useContext(Context)
     const {setIdade} = useContext(Context)
     const {setEmail} = useContext(Context)
@@ -21,48 +25,20 @@ export default function Header(){
     // lightMode - context
     const{ lightMode } = useContext(Context)
 
-    // Alterar o display do menu
-    function openMenu(){
-        const menu = document.getElementById('menu')
-
-        if(menu.style.display === 'flex'){
-            menu.style.display = 'none'
-        } else{
-            menu.style.display = 'flex'
-        }
-    }
-
     // openModal - incluir
-    function openModal(){
-        /* modal cadastro */
-        let modal = document.getElementById('modal_cadastro')
+    function openModal(e){
+        if(isAddPerson){
+            setIsAddPerson(false)
 
-        if(window.innerWidth > 420){
-            if(modal.style.display === 'grid'){
-                modal.style.display = 'none'
-                document.getElementById('openModal').textContent = 'Incluir usuario'
-            } else{
-                modal.style.display = 'grid'
-                document.getElementById('openModal').textContent = 'Fechar'
-    
-                setNome('')
-                setIdade('')
-                setEmail('')
-                setTelefone('')
-            }
+            setNome('')
+            setIdade('')
+            setEmail('')
+            setTelefone('')
+
+            e.target.textContent = 'Incluir Usuario'
         } else{
-            if(modal.style.display === 'flex'){
-                modal.style.display = 'none'
-                document.getElementById('openModal').textContent = 'Incluir usuario'
-            } else{
-                modal.style.display = 'flex'
-                document.getElementById('openModal').textContent = 'Fechar'
-    
-                setNome('')
-                setIdade('')
-                setEmail('')
-                setTelefone('')
-            }
+            setIsAddPerson(true)
+            e.target.textContent = 'Fechar'
         }
     }
 
@@ -89,8 +65,25 @@ export default function Header(){
 
     return(
         <header className={lightMode ? 'lightModeHeader' : undefined} id='header_flexivel'>
-            {/* menu Hamburguer */}
-            <span id='menuHamburguer' onClick={openMenu}><TiThMenu size={'2em'} color='white'/></span>
+
+            <Dialog.Root>
+                <Dialog.Trigger id='menu-bt-mobile'>
+                    <TiThMenu size={30}/>
+                </Dialog.Trigger>
+
+                <Dialog.Portal>
+                    <Dialog.Content id='content-menu-mobile'>
+
+                        <img id='userImg' src={avatarUrl !== null ? avatarUrl : defaultImg} />
+
+                        <Dialog.Close className='openModal' onClick={openModal}>Incluir Usuario</Dialog.Close>
+
+                        <Dialog.Close className='configButtonMobile'><Link to={`/config/${id}`}>Configurações</Link></Dialog.Close>
+
+                        <Dialog.Close className='logoutUser' onClick={logOutUser}>Sair</Dialog.Close>
+                    </Dialog.Content>
+                </Dialog.Portal>
+            </Dialog.Root>
 
             {/* Menu */}
             <menu id='menu'>
@@ -99,13 +92,13 @@ export default function Header(){
 
                     <img id='userImg' src={avatarUrl !== null ? avatarUrl : defaultImg} />
 
-                    <button id='openModal' onClick={openModal}>Incluir usuario</button>
+                    <button className='openModal' onClick={openModal}>Incluir usuario</button>
                 </div>
                 
                 
                 <nav id='configuracoes'>
-                    <Link id='configButton'  className='rounded-sm' to={`/config/${id}`}>Configurações</Link>
-                    <button id='logoutUser' onClick={logOutUser}>Sair</button>
+                    <Link className='configButton' to={`/config/${id}`}>Configurações</Link>
+                    <button className='logoutUser' onClick={logOutUser}>Sair</button>
                 </nav>
             </menu>
         </header>
