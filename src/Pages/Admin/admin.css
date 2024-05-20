@@ -163,6 +163,13 @@ th, td{
     color: white;
 }
 
+.chamadoForLightMode{
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: black;
+}
+
 .btn-delete{
     background-color: rgb(199, 76, 76);
     width: 70px;

@@ -127,7 +127,7 @@ export default function Admin(){
                 </form>
 
                 {/* Caso a lista não tenha nenhum cliente */}
-                {lista.length === 0 && <h3 className='chamado'>Nenhum cliente cadastrado</h3>}
+                {lista.length === 0 && <h3 className={lightMode ? 'chamadoForLightMode' : 'chamad'}>Nenhum cliente cadastrado</h3>}
 
                 <table className={lightMode ?'table_light' : undefined}>
                     <thead>
