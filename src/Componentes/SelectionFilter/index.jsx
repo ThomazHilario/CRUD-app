@@ -1,9 +1,16 @@
 import * as Dialog from '@radix-ui/react-dialog'
 
+// import react
+import { useContext } from 'react'
+
+// import context
+import { Context } from '../../Context/'
 // import css
 import './selectFilter.css'
 
 export const SelectionFilter = ({selectValue, filterList, setSelectValue}) =>{
+
+    const { lightMode } = useContext(Context)
 
     function selectFilter(text){
 
@@ -30,9 +37,9 @@ export const SelectionFilter = ({selectValue, filterList, setSelectValue}) =>{
 
     return(
         <Dialog.Root>
-            <Dialog.Trigger className='triggerSelect'>{selectValue}</Dialog.Trigger>
+            <Dialog.Trigger className={lightMode ? `triggerSelectForLightMode` : 'triggerSelect'}>{selectValue}</Dialog.Trigger>
 
-                <Dialog.Content className='contentSelect'>
+                <Dialog.Content className={lightMode ? `contentSelectForLightMode` : `contentSelect`}>
                     <menu>
                         <Dialog.Close onClick={(e) => selectFilter(e.target.textContent)}>Recentes</Dialog.Close>
                         <Dialog.Close onClick={(e) => selectFilter(e.target.textContent)}>Ordem alfabetica</Dialog.Close>

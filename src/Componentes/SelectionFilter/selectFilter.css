@@ -4,11 +4,45 @@
     height: 2rem;
 }
 
+.triggerSelectForLightMode{
+    background-color: #282828;
+    color: white;
+    height: 2rem;
+}
+
 /* contentSelect */
 .contentSelect{
     position: absolute;
     top: 3.5rem;
     right: 0.60vw;
+}
+
+.contentSelectForLightMode{
+    position: absolute;
+    top: 3.5rem;
+    right: 0.60vw; 
+}
+
+.contentSelectForLightMode > menu{
+    background-color: #282828;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-radius: 3px;
+    height: 5rem;
+    width: 190px;
+    padding: 1rem;
+}
+
+.contentSelectForLightMode > menu > button{
+    color: white;
+    width: 9.7rem;
+    background-color: transparent;
+}
+
+.contentSelectForLightMode > menu > button:hover{
+    background-color: rgba(242, 242, 242, 0.196);
 }
 
 .contentSelect > menu{
