@@ -37,9 +37,9 @@ export const SelectionFilter = ({selectValue, filterList, setSelectValue}) =>{
 
     return(
         <Dialog.Root>
-            <Dialog.Trigger className={lightMode ? `triggerSelectForLightMode` : 'triggerSelect'}>{selectValue}</Dialog.Trigger>
+            <Dialog.Trigger className={lightMode ? 'triggerSelectForLightMode' : 'triggerSelect'}>{selectValue}</Dialog.Trigger>
 
-                <Dialog.Content className={lightMode ? `contentSelectForLightMode` : `contentSelect`}>
+                <Dialog.Content className={lightMode ? 'contentSelectForLightMode' : 'contentSelect'}>
                     <menu>
                         <Dialog.Close onClick={(e) => selectFilter(e.target.textContent)}>Recentes</Dialog.Close>
                         <Dialog.Close onClick={(e) => selectFilter(e.target.textContent)}>Ordem alfabetica</Dialog.Close>
