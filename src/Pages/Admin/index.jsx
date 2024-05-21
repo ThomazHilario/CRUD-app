@@ -2,7 +2,7 @@ import './admin.css'
 import {useParams} from 'react-router-dom'
 import { database} from '../../Services/firebaseConnection'
 import {doc, getDoc, updateDoc} from 'firebase/firestore'
-import { useState,useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useCallback } from 'react'
 
 // Context
 import {Context} from '../../Context'
@@ -83,26 +83,28 @@ export default function Admin(){
     const { lightMode } = useContext(Context)
  
     // deleteUser
-    async function deleteUser(index){
-        try {
-            // Tirando usuario da lista
-            lista.splice(index,1)
+    const deleteUserCallback = useCallback(async (index) => {
+            try {
+                // Tirando usuario da lista
+                lista.splice(index,1)
+    
+                // Setando nova lista na state lista
+                setLista([...lista])
+    
+                // Pegando a referencia do banco de dados
+                const docRef = doc(database,'clientes',id)
+    
+                // Fazendo a atualização da propriedade clientes
+                await updateDoc(docRef,{
+                    clientes:lista
+                })
+    
+            } catch (error) {
+                console.log(error)
+            }
+        
+    },[setLista, lista, id])
 
-            // Setando nova lista na state lista
-            setLista([...lista])
-
-            // Pegando a referencia do banco de dados
-            const docRef = doc(database,'clientes',id)
-
-            // Fazendo a atualização da propriedade clientes
-            await updateDoc(docRef,{
-                clientes:lista
-            })
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
     return(
         <main className={lightMode ? 'main_light' : 'main_admin'}>
             
@@ -149,7 +151,7 @@ export default function Admin(){
                         idadeCliente={item.idade} 
                         emailCliente={item.email} 
                         telefoneCliente={item.telefone}
-                        deleteUser={deleteUser}
+                        deleteUser={deleteUserCallback}
                         lista={lista}
                         setLista={setLista}
                         />)} 
