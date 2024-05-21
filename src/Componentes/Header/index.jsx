@@ -35,7 +35,6 @@ export default function Header(){
             setEmail('')
             setTelefone('')
 
-            e.target.textContent = 'Incluir Usuario'
         } else{
             setIsAddPerson(true)
             e.target.textContent = 'Fechar'
@@ -92,7 +91,7 @@ export default function Header(){
 
                     <img id='userImg' src={avatarUrl !== null ? avatarUrl : defaultImg} />
 
-                    <button className='openModal' onClick={openModal}>Incluir usuario</button>
+                    <button className='openModal' onClick={openModal}>{isAddPerson ? 'Fechar' : 'Incluir usuario'}</button>
                 </div>
                 
                 

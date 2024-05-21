@@ -22,7 +22,7 @@ export default function ContextProvider({children}){
     const [lightMode, setLightMode] = useState(localStorage.getItem('themeMode') !== null ? JSON.parse(localStorage.getItem('themeMode')) : false)
 
     // isAddPerson
-    const [isAddPerson, setIsAddPerson] = useState()
+    const [isAddPerson, setIsAddPerson] = useState(false)
 
     return(
         <Context.Provider value={{nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, id, setId, logado, setLogado, avatarUrl, setAvatarUrl, lightMode, setLightMode,isAddPerson, setIsAddPerson}}>
