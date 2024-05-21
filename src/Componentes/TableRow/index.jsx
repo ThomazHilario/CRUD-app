@@ -39,7 +39,3 @@ export default function TableRow({ idx, CreatedDate, nomeCliente, idadeCliente, 
         </tr>
     )
 }
-
-/*
-<button className='btn-edit w-[75px]' id='editModal' onClick={() => openModalEdicao(idx)}>Editar</button>
-*/

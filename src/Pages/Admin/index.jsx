@@ -103,10 +103,9 @@ export default function Admin(){
             console.log(error)
         }
     }
-
     return(
         <main className={lightMode ? 'main_light' : 'main_admin'}>
-
+            
             {/* header component */}
             <Header/>
 
