@@ -75,7 +75,7 @@ export default function Header(){
 
                         <img id='userImg' src={avatarUrl !== null ? avatarUrl : defaultImg} />
 
-                        <Dialog.Close className='openModal' onClick={openModal}>Incluir Usuario</Dialog.Close>
+                        <Dialog.Close className='openModal' onClick={openModal}>{isAddPerson ? 'Fechar' : 'Incluir Usuario'}</Dialog.Close>
 
                         <Dialog.Close className='configButtonMobile'><Link to={`/config/${id}`}>Configurações</Link></Dialog.Close>
 
