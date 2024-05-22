@@ -107,13 +107,13 @@ export default function Register(){
                     {/* container email */}
                     <div className='container_input'>
                         <label>Email:</label>
-                        <input type="email" {...register('email', { required: true })} id='email'/>
+                        <input type="email" name='email' {...register('email', { required: true })} id='email'/>
                     </div>
     
                     {/* container Password */}
                     <div className='container_input'>
                         <label>Password:</label>
-                        <input type="password" {...register('password', { required: true })} id='password'/>
+                        <input type="password" name='senha' {...register('password', { required: true })} id='password'/>
                     </div>
     
                     {/* buttons */}
