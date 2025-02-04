@@ -1,0 +1,36 @@
+/* Container delete */
+#container_delete{
+    height: calc(40vh - 52px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* div dos inputs */
+.campos_form_config{
+    margin: 20px 0px;
+}
+
+/* label */
+.campos_form_config > label{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+}
+
+/* inputs */
+.campos_form_config > input{
+    background-color: rgba(51, 47, 47, 0.951);
+    display: block;
+    margin-top: 10px;
+    cursor: not-allowed;
+    padding: 3px 10px;
+    border-radius: 5px;
+    width: 220px;
+    color: white;
+}
+
+#container_delete > form > button{
+    margin-top: 5px;
+    background-color: rgb(232, 95, 95);
+    color: white;
+}

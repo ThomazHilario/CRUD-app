@@ -16,12 +16,12 @@ import { FaArrowLeft } from "react-icons/fa6"
 
 // imports components
 import Header from '../../Componentes/Header'
+import { FormDetails } from '../../Componentes/Config/FormDetails'
 
 // imports firebase
-import {auth, database, storage} from '../../Services/firebaseConnection'
+import {database, storage} from '../../Services/firebaseConnection'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import {doc, deleteDoc, updateDoc} from 'firebase/firestore'
-import {deleteUser} from 'firebase/auth'
+import {doc, updateDoc} from 'firebase/firestore'
 
 export default function Config(){
     // id do usuario
@@ -72,55 +72,6 @@ export default function Config(){
 
             </div>
         </main>
-    )
-}
-
-// Component FormDetails
-function FormDetails({uid,email}){
-
-    // Context
-    const { lightMode } = useContext(Context)
-
-      // Deletar a conta - handleAccount
-      async function handleAccount(e){
-        try {
-            // Cancelando envio do formulario
-            e.preventDefault()
-
-            // Deletando usuario
-            deleteUser(auth.currentUser)
-
-            // Deletando o banco de dados do usuario
-            await deleteDoc(doc(database,'clientes',uid))
-
-            // mensagem de sucesso
-            alert('Conta deletada')
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
-    return(
-        <div id='container_delete'>
-            
-            {/* Formulario com detalhes da conta */}
-            <form onSubmit={handleAccount}>
-
-                <div className='campos_form_config'>
-                    <label className={lightMode ? 'camposConfigLight' : undefined}>Id:</label>
-                    <input type='text' defaultValue={uid} disabled/>
-                </div>
-
-
-                <div className='campos_form_config'>
-                    <label className={lightMode ? 'camposConfigLight' : undefined}>Email:</label>
-                    <input type='email' defaultValue={email} disabled/>
-                </div>
-
-                {/* button para excluir a conta */}
-                <button type='submit'>Delete my account</button>
-            </form>
-        </div>
     )
 }
 
