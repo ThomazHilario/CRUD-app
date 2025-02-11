@@ -37,12 +37,12 @@ export default function Config(){
     const [user, setUser] = useState({})
 
     return (
-        <main id='main_config' className={lightMode ? 'main_config lightMode' : 'main_config'}>
+        <section id='section_config' className={lightMode ? 'section_config lightMode' : 'section_config'}>
             
             {/* Header component */}
             <Header/>
 
-            <div id='container_config'>
+            <article id='container_config'>
 
                 <nav id='config_navigation'>
                     <Link to={`/admin/${idUser}`}><FaArrowLeft color={lightMode ? 'black' : 'white'} size={35}/></Link>
@@ -60,8 +60,8 @@ export default function Config(){
                 {/* Formulario de detalhes da conta */}
                 <FormDetails uid={user.uid} email={user.email}/>
 
-            </div>
-        </main>
+            </article>
+        </section>
     )
 }
 
