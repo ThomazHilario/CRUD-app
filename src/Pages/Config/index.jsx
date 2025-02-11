@@ -5,23 +5,13 @@ import { useEffect, useState, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Context } from '../../Context'
 
-// import avatar img
-import defaultImg from '../../assets/icons/userDefault.png'
-
-// imports react-toastify
-import { toast } from 'react-toastify'
-
 // import react-icons
 import { FaArrowLeft } from "react-icons/fa6"
 
 // imports components
 import Header from '../../Componentes/Header'
 import { FormDetails } from '../../Componentes/Config/FormDetails'
-
-// imports firebase
-import {database, storage} from '../../Services/firebaseConnection'
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import {doc, updateDoc} from 'firebase/firestore'
+import { UpdateImageProfile } from '../../Componentes/Config/UpdateImageProfile'
 
 export default function Config(){
     // id do usuario
@@ -62,7 +52,7 @@ export default function Config(){
                 <h2 className='titleConfig'>Detalhes da conta</h2>
 
                 {/* UpdateImageProfile */}
-                <UpdateImageProfile/>
+                <UpdateImageProfile idUser={idUser}/>
 
                 {/* UpdateThemeSystem */}
                 <UpdateThemeSystem/>
@@ -72,65 +62,6 @@ export default function Config(){
 
             </div>
         </main>
-    )
-}
-
-// Component UpdateImageProfile
-function UpdateImageProfile(){
-    // id do usuario
-    const {idUser} = useParams()
-
-    // state img
-    const {avatarUrl, setAvatarUrl} = useContext(Context)
-
-    function changeImg(){
-        // Acionando input file
-        document.getElementById('fileInput').click()        
-    }
-
-    async function updateImage(input){
-        // Salvando configuracoes do arquivo 
-        const inputFile = input.files[0]
-
-        // Criando a url da imagem
-        const avatarUrl = URL.createObjectURL(inputFile)
-
-        // setando nova imagem na state avatartUrl
-        setAvatarUrl(avatarUrl)
-
-        // referencia ao storage
-        const storageRef = ref(storage, `imagens/${idUser}/${inputFile.name}`)
-
-        // Salvando imagem no banco de dados
-        await uploadBytes(storageRef, inputFile)
-
-        // url da foto no banco de dados
-        const urlImage = await getDownloadURL(storageRef)
-
-        // Salvando a foto no banco de dados do usuario
-        await updateDoc(doc(database,'clientes',idUser),{
-            avatarUrl:urlImage
-        })
-
-        // Notificacao de sucess
-        toast.success('Foto atualizada')
-    }
-
-    return(
-        <div id='containerImageProfile'>
-            {/* image */}
-            <div id='image'>
-
-                {/* input file */}
-                <input type='file' id='fileInput' onChange={(e) => updateImage(e.target)}/>
-
-                {/* img */}
-                <img src={avatarUrl !== null ? avatarUrl : defaultImg} alt='imagem da foto' />
-
-                {/* descricao */}
-                <p onClick={changeImg}>Alterar foto</p>
-            </div>
-        </div>
     )
 }
 
