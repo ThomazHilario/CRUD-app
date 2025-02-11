@@ -15,6 +15,9 @@ import { database, storage } from "../../../Services/firebaseConnection"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { updateDoc, doc } from "firebase/firestore"
 
+// Css
+import './update-image-profile.css'
+
 export const UpdateImageProfile = ({idUser}) => {
 
     const { avatarUrl, setAvatarUrl } = useContext(Context)
