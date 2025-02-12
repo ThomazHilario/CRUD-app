@@ -1,85 +1,85 @@
 import { database } from '../../Services/firebaseConnection'
 import {doc, updateDoc} from 'firebase/firestore'
 
+// React hook form
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+// Schema
+const schema = z.object({
+    nome:z.string(),
+    idade:z.string(),
+    email:z.string(),
+    telefone:z.string()
+})
+
 // react
 import { useContext } from 'react'
 
 // context
 import { Context } from '../../Context'
 
-export function FormAddPerson({nome, setNome, idade, setIdade, email, setEmail, telefone, setTelefone, lista, setLista,id}){
+export function FormAddPerson({ lista, setLista,id }){
 
     // context
     const { setIsAddPerson } = useContext(Context)
 
-    async function addPerson(e){
+    const { register, handleSubmit, formState:{errors} } = useForm({resolver:zodResolver(schema)})
+
+    async function addPerson(data){
         try {
-
-            // Cancelando formulario
-            e.preventDefault()
-
-           if(nome !== '' && idade !== '' && email !== '' && telefone !== ''){
 
                 // Alterando contexto
                 setIsAddPerson(false)
                 
-                // Setando a lista nova
-                setLista([...lista,{
+                // Estrutura do chamado
+                const objectStructure = {
                     createdDate:new Date().toLocaleDateString(),
-                    nome:nome, 
-                    idade:idade,
-                    email:email,
-                    telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
-                }])
+                    nome:data.nome, 
+                    idade:data.idade,
+                    email:data.email,
+                    telefone:`(${data.telefone.substring(0,2)}) ${data.telefone.substring(2,7)}-${data.telefone.substring(7,11)}`
+                }
+
+                // Setando a lista nova
+                setLista([...lista, objectStructure])
 
                 // Adicionando lista no banco de dados especifico
                 await updateDoc(doc(database,'clientes',id),{
-                    clientes: [...lista,{
-                        createdDate:new Date().toLocaleDateString(),
-                        nome:nome, 
-                        idade:idade,
-                        email:email,
-                        telefone:`(${telefone.substring(0,2)}) ${telefone.substring(2,7)}-${telefone.substring(7,11)}`
-                    }]
+                    clientes: [...lista, objectStructure]
                 })
                 
-                // Resetando os valores das states
-                setNome('')
-                setIdade('')
-                setEmail('')
-                setTelefone('')
-
-           }
         } catch (error) {
             console.log(error)
         }
     }
 
     return(
-        <form className='modal' id='modal_cadastro'>
+        <form className='modal' id='modal_cadastro' onSubmit={handleSubmit(addPerson)}>
 
             <div className='campo_nome'>
                 <label>Nome:</label>
-                <input type='text' value={nome} onChange={(e) => setNome(e.target.value)}/>
+                <input type='text' {...register('nome')}/>
             </div>
 
             <div className='campo_idade'>
                 <label>Idade:</label>
-                <input type='text' value={idade} onChange={(e) => setIdade(e.target.value)}/>
+                <input type='text' {...register('idade')}/>
             </div>
 
             <div className='campo_telefone'>
                 <label>Telefone:</label>
-                <input type='tel' value={telefone} onChange={(e) => setTelefone(e.target.value)} />
+                <input type='tel' {...register('telefone')}/>
             </div>
 
             <div className='campo_email'>
                 <label>Email:</label>
-                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input type='email' {...register('email')}/>
             </div>
 
             <div>
-                <button id='btn-incluir' onClick={addPerson}>Incluir</button>
+                <button type='submit' id='btn-incluir'>Incluir</button>
             </div>
         </form>
     )
