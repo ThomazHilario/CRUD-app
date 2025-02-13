@@ -18,7 +18,7 @@ export default function Admin(){
     const {idUser} = useParams()
 
     // State global - id
-    const {id, setId, setAvatarUrl} = useContext(Context)
+    const {id, setId, setAvatarUrl, isAddPerson} = useContext(Context)
 
     // state lista usuarios
     const [lista,setLista] = useState([])
@@ -72,13 +72,6 @@ export default function Admin(){
         
     },[setId, idUser, id, setAvatarUrl])
 
-    // state - campos forms
-    const {nome,setNome} = useContext(Context)
-    const {idade,setIdade} = useContext(Context)
-    const {email,setEmail} = useContext(Context)
-    const {telefone,setTelefone} = useContext(Context)
-    const { isAddPerson } = useContext(Context)
-
     // lightMode
     const { lightMode } = useContext(Context)
  
@@ -115,7 +108,7 @@ export default function Admin(){
 
                 {/* Modal de cadastro */}
                 {isAddPerson && (
-                    <FormAddPerson nome={nome} setNome={setNome} idade={idade} setIdade={setIdade} email={email} setEmail={setEmail} telefone={telefone} setTelefone={setTelefone} lista={lista} setLista={setLista} id={id} />
+                    <FormAddPerson lista={lista} setLista={setLista} id={id} />
                 )}
 
                 <form id='formFilter'>
