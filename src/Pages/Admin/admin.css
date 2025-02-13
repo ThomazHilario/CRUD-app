@@ -183,72 +183,7 @@ th, td{
     height: 25px;
     font-weight: normal;
 }
-/* modal de cadastro */
-.modal{
-    border: 1px solid black;
-    border-radius: 3px;
 
-    background-color: rgb(40, 40, 40);
-    color: white;
-
-    padding: 10px;
-
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
-    grid-template-areas: 
-    'nome idade'
-    'email telefone';
-
-    position: absolute;
-    top: 20%;
-
-    animation-name: animationModal;
-    animation-duration: 0.7s;
-}
-
-/* input */
-.modal > div > input{
-    display: block;
-
-    height: 20px;
-
-    padding-left: 5px;
-    margin-top: 5px;
-
-    border: 2px solid black;
-    border-radius: 3px;
-    
-    background-color: rgba(89, 89, 211, 0.438);
-    color: white;
-    
-}
-
-/* divs do formulario */
-
-.campo_nome{
-    grid-area: nome;
-}
-
-.campo_idade{
-    grid-area: idade;
-}
-
-.campo_telefone{
-    grid-area: telefone;
-}
-
-.campo_email{
-    grid-area: email;
-}
-
-/* button incluir*/
-#btn-incluir{
-    width: 80px;
-    background-color: rgb(100, 100, 190);
-}
 #btn-editar{
     background-color: rgb(44, 170, 99);
     width: 80px;
@@ -307,12 +242,5 @@ th, td{
     table > tbody > tr > td::before{
         content: attr(data-table);
         margin-left: 10px;
-    }
-}
-
-@media screen and (max-width:420px){
-    .modal{
-        display: flex;
-        flex-direction: column;
     }
 }

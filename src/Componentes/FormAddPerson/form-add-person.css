@@ -1,0 +1,70 @@
+.modal{
+    border: 1px solid black;
+    border-radius: 3px;
+
+    background-color: rgb(40, 40, 40);
+    color: white;
+
+    padding: 10px;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    grid-template-areas: 
+    'nome idade'
+    'email telefone';
+
+    position: absolute;
+    top: 20%;
+
+    animation-name: animationModal;
+    animation-duration: 0.7s;
+
+    @media screen and (max-width:420px){
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.field__style__form__add__person{
+    display: block;
+
+    height: 20px;
+
+    padding-left: 5px;
+    margin-top: 5px;
+
+    border: 2px solid black;
+    border-radius: 3px;
+    
+    background-color: rgba(89, 89, 211, 0.438);
+    color: white;
+    
+}
+
+.field_error_validation{
+    border: 2px solid rgb(224, 51, 51);
+}
+
+.campo_nome{
+    grid-area: nome;
+}
+
+.campo_idade{
+    grid-area: idade;
+}
+
+.campo_telefone{
+    grid-area: telefone;
+}
+
+.campo_email{
+    grid-area: email;
+}
+
+#btn-incluir{
+    width: 80px;
+    background-color: rgb(100, 100, 190);
+}
