@@ -5,11 +5,12 @@ import {toast} from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import {auth} from '../../Services/firebaseConnection'
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { myResolver } from '../../Services/schema-login-and-register-user'
 import './home.css'
 
 function Home(){
     // Instanciando o hook form
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm({resolver: myResolver})
 
 
     // Navigate
@@ -102,13 +103,13 @@ function Home(){
                     {/* container email */}
                     <div className='container_input'>
                         <label htmlFor='email'>Email:</label>
-                        <input type="email" name='email' {...register('email', {required:true} )} id='email'/>
+                        <input type="email" name='email' {...register('email')} id='email'/>
                     </div>
     
                     {/* container Password */}
                     <div className='container_input'>
                         <label htmlFor='password'>Password:</label>
-                        <input type="password" name='password' {...register('password', {required:true} )} id='password'/>
+                        <input type="password" name='password' {...register('password')} id='password'/>
                     </div>
     
                     {/* buttons */}

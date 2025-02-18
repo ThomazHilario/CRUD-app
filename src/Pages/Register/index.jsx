@@ -1,16 +1,17 @@
-import {useEffect, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
-import {toast} from 'react-toastify'
-import {Link} from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { auth, database } from '../../Services/firebaseConnection'
 import { setDoc, doc } from 'firebase/firestore'
 import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
+import { myResolver } from '../../Services/schema-login-and-register-user'
 import './register.css'
 
 export default function Register(){
     // Importando o register eo handleSubmit do useForm
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm({resolver:myResolver})
 
     // navigate
     const navigate = useNavigate()
@@ -107,13 +108,13 @@ export default function Register(){
                     {/* container email */}
                     <div className='container_input'>
                         <label htmlFor='email'>Email:</label>
-                        <input type="email" name='email' {...register('email', { required: true })} id='email'/>
+                        <input type="email" name='email' {...register('email')} id='email'/>
                     </div>
     
                     {/* container Password */}
                     <div className='container_input'>
                         <label htmlFor='password'>Password:</label>
-                        <input type="password" name='senha' {...register('password', { required: true })} id='password'/>
+                        <input type="password" name='senha' {...register('password')} id='password'/>
                     </div>
     
                     {/* buttons */}
