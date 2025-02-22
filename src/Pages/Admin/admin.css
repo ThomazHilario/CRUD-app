@@ -2,7 +2,7 @@
     0%{transform: translateY(-40%);}
 }
 /* main_admin*/
-.main_admin{
+.section_admin{
     height: 100vh;
     display: flex;
     justify-content: space-between;
@@ -10,7 +10,7 @@
 }
 
 /* lightMode */
-.main_light {
+.section_light {
     height: 100vh;
     display: flex;
     justify-content: space-between;
@@ -190,11 +190,11 @@ th, td{
 }
 
 @media screen and (max-width:1024px){
-    .main_admin{
+    .section_admin{
         display: block;
     }
 
-    .main_light{
+    .section_light{
         display: block;
     }
 

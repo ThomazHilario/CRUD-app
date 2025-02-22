@@ -99,12 +99,12 @@ export default function Admin(){
     },[setLista, lista, id])
 
     return(
-        <main className={lightMode ? 'main_light' : 'main_admin'}>
+        <section className={lightMode ? 'section_light' : 'section_admin'}>
             
             {/* header component */}
             <Header/>
 
-            <div id='container_table' className={lightMode ? 'container_table_light' : 'container_table_default'}>
+            <section id='container_table' className={lightMode ? 'container_table_light' : 'container_table_default'}>
 
                 {/* Modal de cadastro */}
                 {isAddPerson && (
@@ -151,7 +151,7 @@ export default function Admin(){
                     </tbody>
                     
                 </table>
-            </div>
-        </main>
+            </section>
+        </section>
     )
 }
