@@ -24,7 +24,7 @@ export default function Register(){
                     if(user){
                         navigate(`/admin/${user.uid}`)
                     } else{
-                        setCarregado(true)
+                        setCarregado(false)
                     }
                 })
             } catch (e) {
@@ -36,7 +36,7 @@ export default function Register(){
         loadAuth()
     },[navigate])
 
-    const [carregado,setCarregado] = useState(false)
+    const [carregado,setCarregado] = useState(true)
 
     // Registrando informacoes do usuario
     async function registrandoInfos(id){
@@ -96,33 +96,33 @@ export default function Register(){
         }
     }
 
-    if(carregado === false){
-        return <main className='mainRegister'><h1>Carregando</h1></main>
-    } else{
-        return(
-            <main className='mainRegister'>
-                <form className='formStyle' onSubmit={handleSubmit(registrarUsuario)}>
-                    {/* title form */}
-                    <legend>Cadastro</legend>
-    
-                    {/* container email */}
-                    <div className='container_input'>
-                        <label htmlFor='email'>Email:</label>
-                        <input type="email" name='email' {...register('email')} id='email'/>
-                    </div>
-    
-                    {/* container Password */}
-                    <div className='container_input'>
-                        <label htmlFor='password'>Password:</label>
-                        <input type="password" name='senha' {...register('password')} id='password'/>
-                    </div>
-    
-                    {/* buttons */}
-                    <button className='registerButton'>Registrar</button>
-                    
-                    <p>Possui uma conta ? <Link to="/" id='linkLogin'>Conectar agora</Link></p>
-                </form>
-            </main>
-        )
+    if(carregado){
+        return <section className='sectionRegister'><h1>Carregando</h1></section>
     }
+     
+    return(
+        <section className='sectionRegister'>
+            <form className='formStyle' onSubmit={handleSubmit(registrarUsuario)}>
+                {/* title form */}
+                <legend>Cadastro</legend>
+
+                {/* container email */}
+                <div className='container_input'>
+                    <label htmlFor='email'>Email:</label>
+                    <input type="email" name='email' {...register('email')} id='email'/>
+                </div>
+
+                {/* container Password */}
+                <div className='container_input'>
+                    <label htmlFor='password'>Password:</label>
+                    <input type="password" name='senha' {...register('password')} id='password'/>
+                </div>
+
+                {/* buttons */}
+                <button className='registerButton'>Registrar</button>
+                
+                <p>Possui uma conta ? <Link to="/" id='linkLogin'>Conectar agora</Link></p>
+            </form>
+        </section>
+    )
 }

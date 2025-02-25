@@ -28,7 +28,7 @@ function Home(){
                     if(user){
                         navigate(`/admin/${user.uid}`)
                     } else{
-                        setCarregado(true)
+                        setCarregado(false)
                     }
                 })
             } catch (e) {
@@ -40,7 +40,7 @@ function Home(){
     },[navigate])
 
     // state - Carregado
-    const [carregado, setCarregado] = useState(false)
+    const [carregado, setCarregado] = useState(true)
 
     // Logando usuario
     async function singInUser(data){
@@ -91,35 +91,35 @@ function Home(){
     }
     
     // Renderizaçãao condicional
-    if(carregado === false){
-        return <main className='mainHome'><h1>Carregando</h1></main>
-    }else{
-        return(
-            <main className='mainHome'>
-                <form className='formStyle' onSubmit={handleSubmit(singInUser)}>
-                    {/* title form */}
-                    <legend>Login</legend>
-    
-                    {/* container email */}
-                    <div className='container_input'>
-                        <label htmlFor='email'>Email:</label>
-                        <input type="email" name='email' {...register('email')} id='email'/>
-                    </div>
-    
-                    {/* container Password */}
-                    <div className='container_input'>
-                        <label htmlFor='password'>Password:</label>
-                        <input type="password" name='password' {...register('password')} id='password'/>
-                    </div>
-    
-                    {/* buttons */}
-                    <button className='loginButton'>Login</button>
-                    
-                    <p>Não tem uma conta ? <Link to="/register" id='linkCadastro'>Cadastre-se</Link></p>
-                </form>
-            </main>
-        )
+    if(carregado){
+        return <section className='sectionHome'><h1>Carregando</h1></section>
     }
+
+    return(
+        <section className='sectionHome'>
+            <form className='formStyle' onSubmit={handleSubmit(singInUser)}>
+                {/* title form */}
+                <legend>Login</legend>
+
+                {/* container email */}
+                <div className='container_input'>
+                    <label htmlFor='email'>Email:</label>
+                    <input type="email" name='email' {...register('email')} id='email'/>
+                </div>
+
+                {/* container Password */}
+                <div className='container_input'>
+                    <label htmlFor='password'>Password:</label>
+                    <input type="password" name='password' {...register('password')} id='password'/>
+                </div>
+
+                {/* buttons */}
+                <button className='loginButton'>Login</button>
+                
+                <p>Não tem uma conta ? <Link to="/register" id='linkCadastro'>Cadastre-se</Link></p>
+            </form>
+        </section>
+    )
 }
 
 
