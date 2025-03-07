@@ -12,6 +12,7 @@ import { FaArrowLeft } from "react-icons/fa6"
 import Header from '../../Componentes/Header'
 import { FormDetails } from '../../Componentes/Config/FormDetails'
 import { UpdateImageProfile } from '../../Componentes/Config/UpdateImageProfile'
+import { UpdateThemeSystem } from '../../Componentes/Config/UpdateThemeSystem'
 
 export default function Config(){
     // id do usuario
@@ -62,47 +63,5 @@ export default function Config(){
 
             </article>
         </section>
-    )
-}
-
-// Componente UpdateThemeSystem
-function UpdateThemeSystem(){
-
-    // context
-    const { setLightMode, lightMode } = useContext(Context)
-
-    // updateMode
-    function updateMode(input){
-        if(input.checked === true){
-            input.checked = true
-
-            // Setando o valor na local storage
-            localStorage.setItem('themeMode',JSON.stringify(input.checked))
-
-            // Alterando valor na state lightMode
-            setLightMode(true)
-
-        } else{
-            input.checked = false
-
-            // Setando o valor na local storage
-            localStorage.setItem('themeMode',JSON.stringify(input.checked))
-
-            // Alterando valor na state lightMode
-            setLightMode(false)
-        }
-
-    }
-
-    return(
-        <form id='form_theme_system'>
-            <label className={lightMode ? 'camposConfigLight' : undefined}>Theme System:</label>
-
-            <label className="switch">
-                <input type="checkbox" id='themeTag' onChange={(e) => updateMode(e.target)}/>
-                <span className="slider" ></span>
-            </label>
-
-        </form>
     )
 }
